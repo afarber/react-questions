@@ -10,5 +10,9 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/react-admin/screenshot.png)
 
+[set-title](https://github.com/afarber/react-questions/tree/master/set-title) create a custom effect:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/set-title/screenshot.png)
+
 [My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[react])
 
