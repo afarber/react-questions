@@ -6,11 +6,15 @@ The files are public domain - unless there is a different note (by their respect
 Screenshots
 ==========
 
+[name-in-context](https://github.com/afarber/react-questions/tree/master/name-in-context) pass data via Context API:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/name-in-context/screenshot.png)
+
 [react-admin](https://github.com/afarber/react-questions/tree/master/react-admin) from the tutorial [Build a COMPLETE React Admin Dashboard App | React, Material UI, Data Grid, Light & Dark Mode](https://youtu.be/wYpCWwD1oz0):
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/react-admin/screenshot.png)
 
-[set-title](https://github.com/afarber/react-questions/tree/master/set-title) create a custom effect:
+[set-title](https://github.com/afarber/react-questions/tree/master/set-title) creating a custom effect:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/set-title/screenshot.png)
 
