@@ -4,6 +4,8 @@ import {
   Badge,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   styled,
@@ -11,7 +13,7 @@ import {
 import LunchDiningIcon from "@mui/icons-material/LunchDining";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import React from "react";
+import React, { useState } from "react";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -26,11 +28,34 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
-  display: "flex",
+  display: "none",
   gap: "20px",
+  alignItems: "center",
+  [theme.breakpoints.up("sm")]: {
+    display: "flex",
+  },
+}));
+
+const UserBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: "12px",
+  alignItems: "center",
+  [theme.breakpoints.up("sm")]: {
+    display: "none",
+  },
 }));
 
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (ev) => {
+    console.log("handleClick");
+    setAnchorEl(ev.currentTarget);
+  };
+  const handleClose = () => {
+    console.log("handleClose");
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -51,9 +76,35 @@ const Navbar = () => {
           <Avatar
             src="https://afarber.de/images/farber.jpg"
             sx={{ width: 30, height: 30 }}
+            onClick={handleClick}
           ></Avatar>
         </Icons>
+        <UserBox>
+          <Avatar
+            src="https://afarber.de/images/farber.jpg"
+            sx={{ width: 30, height: 30 }}
+            onClick={handleClick}
+          ></Avatar>
+          <Typography variant="body1">Alex</Typography>
+        </UserBox>
       </StyledToolbar>
+      <Menu
+        open={anchorEl != null}
+        onClose={handleClose}
+        anchorEl={anchorEl}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
