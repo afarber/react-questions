@@ -22,5 +22,9 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/set-title/screenshot.png)
 
+[top-list](https://github.com/afarber/react-questions/tree/master/top-list) display JSON data in a table:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/top-list/screenshot.png)
+
 [My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[react])
 
