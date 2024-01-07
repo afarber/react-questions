@@ -1,5 +1,5 @@
 # Creating the top-list app:
 
-`npx create-react-app top-list`
-`npm install @mui/material @emotion/react @emotion/styled`
-`npm install @mui/x-data-grid @mui/x-charts`
+`npx create-next-app top-list`
+`npm install @mui/material @mui/icons-material @emotion/react @emotion/styled @mui/x-data-grid @mui/x-charts`
+`npm run dev`
