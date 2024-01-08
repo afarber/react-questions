@@ -1,5 +1,7 @@
 # Creating the top-list app:
 
-`npx create-next-app top-list`
+`npm create vite@latest`
+`cd top-list`
+`npm install`
 `npm install @mui/material @mui/icons-material @emotion/react @emotion/styled @mui/x-data-grid @mui/x-charts`
 `npm run dev`
