@@ -17,29 +17,6 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-function createTableRow(name, calories, fat, carbs, protein, price) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        date: "2020-01-05",
-        customerId: "11091700",
-        amount: 3,
-      },
-      {
-        date: "2020-01-02",
-        customerId: "Anonymous",
-        amount: 1,
-      },
-    ],
-  };
-}
-
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
@@ -57,43 +34,32 @@ function Row(props) {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.elo}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
+        <TableCell align="right">{row.given}</TableCell>
+        <TableCell align="right">
+          <img src={row.photo} className="avatar" />
+        </TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                History
+                Stats
               </Typography>
-              <Table size="small" aria-label="purchases">
+              <Table size="small" aria-label="player stats" border="1">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Date</TableCell>
-                    <TableCell>Customer</TableCell>
-                    <TableCell align="right">Amount</TableCell>
-                    <TableCell align="right">Total price ($)</TableCell>
+                    <TableCell align="right">Average score</TableCell>
+                    <TableCell align="right">{row.avg_score}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell align="right">Average time</TableCell>
+                    <TableCell align="right">{row.avg_time}</TableCell>
                   </TableRow>
                 </TableHead>
-                <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.date}
-                      </TableCell>
-                      <TableCell>{historyRow.customerId}</TableCell>
-                      <TableCell align="right">{historyRow.amount}</TableCell>
-                      <TableCell align="right">
-                        {Math.round(historyRow.amount * row.price * 100) / 100}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
+                <TableBody></TableBody>
               </Table>
             </Box>
           </Collapse>
@@ -105,29 +71,15 @@ function Row(props) {
 
 Row.propTypes = {
   row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
+    uid: PropTypes.number.isRequired,
+    elo: PropTypes.number.isRequired,
+    given: PropTypes.string.isRequired,
+    photo: PropTypes.string,
+    motto: PropTypes.string,
+    avg_time: PropTypes.string.isRequired,
+    avg_score: PropTypes.number.isRequired,
   }).isRequired,
 };
-
-const rows = [
-  createTableRow("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createTableRow("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createTableRow("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createTableRow("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createTableRow("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-];
 
 export default function TopTable() {
   const [data, setData] = useState([]);
@@ -144,20 +96,18 @@ export default function TopTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
+      <Table aria-label="collapsible table" border="1">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
+            <TableCell>Elo</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Photo</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
+          {data.map((row) => (
+            <Row key={row.uid} row={row} />
           ))}
         </TableBody>
       </Table>
