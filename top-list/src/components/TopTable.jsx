@@ -17,6 +17,10 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
+const PHOTO_PATTERN = /^https:/i;
+const JSON_URL =
+  "https://raw.githubusercontent.com/afarber/react-questions/main/top-list/public/top-data.json";
+
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
@@ -37,8 +41,18 @@ function Row(props) {
           {row.elo}
         </TableCell>
         <TableCell align="right">{row.given}</TableCell>
-        <TableCell align="right">
-          <img src={row.photo} className="avatar" />
+        <TableCell align="center">
+          {row.photo && PHOTO_PATTERN.test(row.photo) && (
+            <img
+              src={row.photo}
+              className="avatar"
+              onError={({ currentTarget }) => {
+                // prevents looping
+                currentTarget.onerror = null;
+                currentTarget.src = "male_sad.png";
+              }}
+            />
+          )}
         </TableCell>
       </TableRow>
       <TableRow>
@@ -51,12 +65,12 @@ function Row(props) {
               <Table size="small" aria-label="player stats" border="1">
                 <TableHead>
                   <TableRow>
-                    <TableCell align="right">Average score</TableCell>
-                    <TableCell align="right">{row.avg_score}</TableCell>
+                    <TableCell>Average score</TableCell>
+                    <TableCell>{row.avg_score}</TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell align="right">Average time</TableCell>
-                    <TableCell align="right">{row.avg_time}</TableCell>
+                    <TableCell>Average time</TableCell>
+                    <TableCell>{row.avg_time}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody></TableBody>
@@ -85,9 +99,7 @@ export default function TopTable() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/afarber/react-questions/main/top-list/public/top-data.json"
-    )
+    fetch(JSON_URL)
       .then((response) => response.json())
       .then((jsonData) => setData(jsonData.data));
   }, []);
@@ -106,9 +118,7 @@ export default function TopTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
-            <Row key={row.uid} row={row} />
-          ))}
+          {data && data.map((row) => <Row key={row.uid} row={row} />)}
         </TableBody>
       </Table>
     </TableContainer>
