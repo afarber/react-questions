@@ -1,7 +1,7 @@
 "use client";
 
 import "./TopTable.css";
-import * as React from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
@@ -42,10 +42,10 @@ function createTableRow(name, calories, fat, carbs, protein, price) {
 
 function Row(props) {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <React.Fragment>
+    <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
           <IconButton
@@ -99,7 +99,7 @@ function Row(props) {
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -129,16 +129,24 @@ const rows = [
   createTableRow("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
 ];
 
-console.log(rows);
-
 export default function TopTable() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://wordsbyfarber.com/ru/top-5")
+      .then((response) => response.json())
+      .then((jsonData) => setData(jsonData.data));
+  }, []);
+
+  console.log(data);
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Dessert (100g serving)</TableCell>
+            <TableCell>Dessert</TableCell>
             <TableCell align="right">Calories</TableCell>
             <TableCell align="right">Fat&nbsp;(g)</TableCell>
             <TableCell align="right">Carbs&nbsp;(g)</TableCell>
