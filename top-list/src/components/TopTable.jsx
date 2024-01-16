@@ -25,6 +25,10 @@ function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
 
+  const wrongImgHandler = (photo) => {
+    return photo && PHOTO_PATTERN.test(photo) ? photo : "female_sad.png";
+  };
+
   const imgErrorHandler = ({ currentTarget }) => {
     // prevents looping
     currentTarget.onerror = null;
@@ -48,9 +52,11 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.given}</TableCell>
         <TableCell align="center">
-          {row.photo && PHOTO_PATTERN.test(row.photo) && (
-            <img src={row.photo} className="avatar" onError={imgErrorHandler} />
-          )}
+          <img
+            src={wrongImgHandler(row.photo)}
+            className="avatar"
+            onError={imgErrorHandler}
+          />
         </TableCell>
       </TableRow>
       <TableRow>
