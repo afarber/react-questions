@@ -133,7 +133,9 @@ export default function TopTable() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("https://wordsbyfarber.com/ru/top-5")
+    fetch(
+      "https://raw.githubusercontent.com/afarber/react-questions/main/top-list/public/top-data.json"
+    )
       .then((response) => response.json())
       .then((jsonData) => setData(jsonData.data));
   }, []);
