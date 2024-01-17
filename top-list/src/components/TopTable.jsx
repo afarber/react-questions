@@ -39,11 +39,7 @@ function Row(props) {
     <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
+          <IconButton aria-label="expand row" onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -62,24 +58,18 @@ function Row(props) {
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Stats
-              </Typography>
-              <Table size="small" aria-label="player stats" border="1">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Average score</TableCell>
-                    <TableCell>{row.avg_score}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Average time</TableCell>
-                    <TableCell>{row.avg_time}</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody></TableBody>
-              </Table>
-            </Box>
+            <Table size="small" aria-label="player stats" sx={{ margin: 1 }}>
+              <TableBody>
+                <TableRow>
+                  <TableCell>Average score:</TableCell>
+                  <TableCell>{row.avg_score}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Average time:</TableCell>
+                  <TableCell>{row.avg_time}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
           </Collapse>
         </TableCell>
       </TableRow>
