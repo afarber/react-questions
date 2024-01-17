@@ -3,7 +3,6 @@
 import "./TopTable.css";
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
@@ -12,7 +11,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -37,9 +35,9 @@ function Row(props) {
 
   return (
     <>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+      <TableRow>
         <TableCell>
-          <IconButton aria-label="expand row" onClick={() => setOpen(!open)}>
+          <IconButton onClick={() => setOpen(!open)}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -58,7 +56,7 @@ function Row(props) {
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={4}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Table size="small" aria-label="player stats" sx={{ margin: 1 }}>
+            <Table size="small" sx={{ margin: 1 }} border="1">
               <TableBody>
                 <TableRow>
                   <TableCell>Average score:</TableCell>
@@ -102,7 +100,7 @@ export default function TopTable() {
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table" border="1">
+      <Table border="1">
         <TableHead>
           <TableRow>
             <TableCell />
