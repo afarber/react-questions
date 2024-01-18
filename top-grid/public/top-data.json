@@ -1,0 +1,139 @@
+{
+  "data": [
+    {
+      "uid": 16155,
+      "elo": 3060,
+      "motto": null,
+      "given": "Edward",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-UkK8D_ktYDH2izvyKR-QhCqmkgyIyJwDU15TdmWi6et",
+      "avg_time": "11:24",
+      "avg_score": 24.3
+    },
+    {
+      "uid": 13480,
+      "elo": 3000,
+      "motto": null,
+      "given": "Nataly",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-RFK8Qm80TDVlViAXFuow3aAAidn0V3tv6ZbeULL2kox",
+      "avg_time": "02:48",
+      "avg_score": 23.1
+    },
+    {
+      "uid": 15624,
+      "elo": 2947,
+      "motto": "Excellence is my standard",
+      "given": "Anna",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-U7f2mXgauIGx2OPiiqep7Gj30jJrWXT-vuv4vKeOR0Q",
+      "avg_time": "03:54",
+      "avg_score": 22.7
+    },
+    {
+      "uid": 18384,
+      "elo": 2897,
+      "motto": null,
+      "given": "Swetlana",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-SdMEmq5Lp_fvwlWhh1M2FwlJsOFavc3Aow2F9Gssd4Q",
+      "avg_time": "03:23",
+      "avg_score": 21.8
+    },
+    {
+      "uid": 18811,
+      "elo": 2893,
+      "motto": null,
+      "given": "Alesia",
+      "photo": "https://i.mycdn.me/i?r=BFG-ulnayfO9fXmL0BgUW9By6i1KPrZ8oF8OtHhryQ2zgnqIBmJ48Y-tVdgD6iT_NzFQOlWUv-vXWuSXVAv0sp7ej7GPTPpophiTAkP8AaxwGw",
+      "avg_time": "03:44",
+      "avg_score": 21.2
+    },
+    {
+      "uid": 19650,
+      "elo": 2878,
+      "motto": "Teamwork makes the dream work",
+      "given": "Helena",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-fD2p7LwnWBcTAUqAmLnc34T0H0ZmS3CLP7otoS8Ia4d",
+      "avg_time": "02:47",
+      "avg_score": 20.1
+    },
+    {
+      "uid": 9844,
+      "elo": 2876,
+      "motto": null,
+      "given": "Olga",
+      "photo": "https://sun2-21.userapi.com/s/v1/ig2/Dp5kvFilOeNkIfPabDxgw7wYLpg140JEubzekukj4YluBwKaIMH16VvQdFJq2_APS3YOau1ZzfRXJHXlPr8nukn2.jpg?size=200x200&quality=95&crop=96,288,774,774&ava=1",
+      "avg_time": "05:26",
+      "avg_score": 21.9
+    },
+    {
+      "uid": 13014,
+      "elo": 2857,
+      "motto": null,
+      "given": "Swetlana",
+      "photo": "https://sun2-18.userapi.com/s/v1/if2/8yQoeZnb4e3XaJYYBqtECfjkgUNnUde2bx_4_7JbKUzcgVihFxgU63ko1UhQ5iIwWnEFSIr7GkU7sDC50Ik5-4i6.jpg?size=200x200&quality=96&crop=402,84,1751,1751&ava=1",
+      "avg_time": "09:15",
+      "avg_score": 23.4
+    },
+    {
+      "uid": 20823,
+      "elo": 2838,
+      "motto": null,
+      "given": "SANCO",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-ZLz2uMZog6EAvo2m0maVp4BWjqAO7OmMMfA-Yr27Wcw",
+      "avg_time": "02:21",
+      "avg_score": 17.7
+    },
+    {
+      "uid": 15512,
+      "elo": 2830,
+      "motto": null,
+      "given": "Serge",
+      "photo": null,
+      "avg_time": "04:44",
+      "avg_score": 18.6
+    },
+    {
+      "uid": 17722,
+      "elo": 2821,
+      "motto": "Win every game!",
+      "given": "Ludmila",
+      "photo": "https://avt-6.foto.mail.ru/mail/gerasikova.l/_avatar180?1609834192",
+      "avg_time": "03:20",
+      "avg_score": 20.3
+    },
+    {
+      "uid": 21568,
+      "elo": 2821,
+      "motto": "Let's play quickly",
+      "given": "Idana",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-Wq0q8M0i_onhFxc845qzo2MJgnmph9EP6Ak5-p-OYQ4",
+      "avg_time": "02:16",
+      "avg_score": 17.6
+    },
+    {
+      "uid": 20176,
+      "elo": 2814,
+      "motto": null,
+      "given": "Irina",
+      "photo": "https://i.mycdn.me/i?r=BEFtZAWxAeM0jR2s1bShUdWX2zQQRSIb9h6cOX5-5eSL-eWxcY6lBrRQZI2L9Ktgd5KBEf5WM2bEqporVhzie8UW",
+      "avg_time": "03:26",
+      "avg_score": 20.6
+    },
+    {
+      "uid": 16007,
+      "elo": 2804,
+      "motto": null,
+      "given": "Nadia",
+      "photo": "https://example.com/faulty.jpg",
+      "avg_time": "03:44",
+      "avg_score": 21.4
+    },
+    {
+      "uid": 14382,
+      "elo": 2804,
+      "motto": null,
+      "given": "Victoria",
+      "photo": "https://lh3.googleusercontent.com/a-/AOh14GjarhYIsBpf_lrpbBnILXXjmoAqR7yqvtI7n7aTLg",
+      "avg_time": "03:33",
+      "avg_score": 20.0
+    }
+  ]
+}

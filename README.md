@@ -22,7 +22,11 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/set-title/screenshot.png)
 
-[top-list](https://github.com/afarber/react-questions/tree/master/top-list) display JSON data in a table:
+[top-grid](https://github.com/afarber/react-questions/tree/master/top-grid) display JSON data in a MUI X Data Grid:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/top-grid/screenshot.png)
+
+[top-list](https://github.com/afarber/react-questions/tree/master/top-list) display JSON data in a MUI Table with expandable rows:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/top-list/screenshot.png)
 
