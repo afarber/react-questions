@@ -88,15 +88,15 @@ Row.propTypes = {
 };
 
 export default function TopTable() {
-  const [data, setData] = useState([]);
+  const [rows, setRows] = useState([]);
 
   useEffect(() => {
     fetch(JSON_URL)
       .then((response) => response.json())
-      .then((jsonData) => setData(jsonData.data));
+      .then((json) => setRows(json.data));
   }, []);
 
-  console.log(data);
+  console.log(rows);
 
   return (
     <TableContainer component={Paper}>
@@ -110,7 +110,7 @@ export default function TopTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data && data.map((row) => <Row key={row.uid} row={row} />)}
+          {rows && rows.map((row) => <Row key={row.uid} row={row} />)}
         </TableBody>
       </Table>
     </TableContainer>

@@ -34,19 +34,15 @@ const columns = [
   {
     field: "photo",
     headerName: "Photo",
-    width: 150,
-  },
-  /*
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
     sortable: false,
     width: 160,
     valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+      `<img
+        src=${wrongImgHandler(params.row.photo)}
+        className="avatar"
+        onError=${imgErrorHandler}
+      />`,
   },
-  */
 ];
 
 export default function TopGrid() {
