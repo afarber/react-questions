@@ -24,24 +24,24 @@ const columns = [
     field: "elo",
     headerName: "Elo",
     type: "number",
-    width: 90,
   },
   {
     field: "given",
     headerName: "First name",
-    width: 150,
+    width: 200,
   },
   {
     field: "photo",
     headerName: "Photo",
+    align: "center",
     sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `<img
-        src=${wrongImgHandler(params.row.photo)}
+    renderCell: (params) => (
+      <img
+        src={wrongImgHandler(params.row.photo)}
         className="avatar"
-        onError=${imgErrorHandler}
-      />`,
+        onError={imgErrorHandler}
+      />
+    ),
   },
 ];
 
