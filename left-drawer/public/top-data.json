@@ -1,0 +1,139 @@
+{
+  "data": [
+    {
+      "uid": 16155,
+      "elo": 3060,
+      "motto": null,
+      "given": "Edward",
+      "photo": "https://openclipart.org/image/400px/181856",
+      "avg_time": "11:24",
+      "avg_score": 24.3
+    },
+    {
+      "uid": 13480,
+      "elo": 3000,
+      "motto": null,
+      "given": "Nataly",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "02:48",
+      "avg_score": 23.1
+    },
+    {
+      "uid": 15624,
+      "elo": 2947,
+      "motto": "Excellence is my standard",
+      "given": "Anna",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "03:54",
+      "avg_score": 22.7
+    },
+    {
+      "uid": 18384,
+      "elo": 2897,
+      "motto": null,
+      "given": "Swetlana",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "03:23",
+      "avg_score": 21.8
+    },
+    {
+      "uid": 18811,
+      "elo": 2893,
+      "motto": null,
+      "given": "Alesia",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "03:44",
+      "avg_score": 21.2
+    },
+    {
+      "uid": 19650,
+      "elo": 2878,
+      "motto": "Teamwork makes the dream work",
+      "given": "Helena",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "02:47",
+      "avg_score": 20.1
+    },
+    {
+      "uid": 9844,
+      "elo": 2876,
+      "motto": null,
+      "given": "Olga",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "05:26",
+      "avg_score": 21.9
+    },
+    {
+      "uid": 13014,
+      "elo": 2857,
+      "motto": null,
+      "given": "Swetlana",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "09:15",
+      "avg_score": 23.4
+    },
+    {
+      "uid": 20823,
+      "elo": 2838,
+      "motto": null,
+      "given": "SANCO",
+      "photo": "https://openclipart.org/image/400px/181856",
+      "avg_time": "02:21",
+      "avg_score": 17.7
+    },
+    {
+      "uid": 15512,
+      "elo": 2830,
+      "motto": null,
+      "given": "Serge",
+      "photo": null,
+      "avg_time": "04:44",
+      "avg_score": 18.6
+    },
+    {
+      "uid": 17722,
+      "elo": 2821,
+      "motto": "Win every game!",
+      "given": "Ludmila",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "03:20",
+      "avg_score": 20.3
+    },
+    {
+      "uid": 21568,
+      "elo": 2821,
+      "motto": "Let's play quickly",
+      "given": "Idana",
+      "photo": "https://openclipart.org/image/400px/219558",
+      "avg_time": "02:16",
+      "avg_score": 17.6
+    },
+    {
+      "uid": 20176,
+      "elo": 2814,
+      "motto": null,
+      "given": "Irina",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "03:26",
+      "avg_score": 20.6
+    },
+    {
+      "uid": 16007,
+      "elo": 2804,
+      "motto": null,
+      "given": "Nadia",
+      "photo": "https://example.com/faulty.jpg",
+      "avg_time": "03:44",
+      "avg_score": 21.4
+    },
+    {
+      "uid": 14382,
+      "elo": 2804,
+      "motto": null,
+      "given": "Victoria",
+      "photo": "https://openclipart.org/image/400px/181239",
+      "avg_time": "03:33",
+      "avg_score": 20.0
+    }
+  ]
+}

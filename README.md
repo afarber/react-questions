@@ -22,6 +22,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/set-title/screenshot.png)
 
+[left-drawer](https://github.com/afarber/react-questions/tree/master/left-drawer) display a drawer on the left side:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/left-drawer/screenshot.png)
+
 [top-grid](https://github.com/afarber/react-questions/tree/master/top-grid) display JSON data in a MUI X Data Grid:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/top-grid/screenshot.png)
