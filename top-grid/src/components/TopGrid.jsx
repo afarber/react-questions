@@ -2,6 +2,7 @@
 
 import "./TopGrid.css";
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 
@@ -9,14 +10,30 @@ const PHOTO_PATTERN = /^https:/i;
 const JSON_URL =
   "https://raw.githubusercontent.com/afarber/react-questions/main/top-grid/public/top-data.json";
 
-const wrongImgHandler = (photo) => {
-  return photo && PHOTO_PATTERN.test(photo) ? photo : "female_sad.png";
-};
+function Avatar(props) {
+  const { photo } = props;
 
-const imgErrorHandler = ({ currentTarget }) => {
-  // prevents looping
-  currentTarget.onerror = null;
-  currentTarget.src = "male_sad.png";
+  const wrongImgHandler = (photo) => {
+    return photo && PHOTO_PATTERN.test(photo) ? photo : "female_sad.png";
+  };
+
+  const imgErrorHandler = ({ currentTarget }) => {
+    // prevents looping
+    currentTarget.onerror = null;
+    currentTarget.src = "male_sad.png";
+  };
+
+  return (
+    <img
+      src={wrongImgHandler(photo)}
+      className="avatar"
+      onError={imgErrorHandler}
+    />
+  );
+}
+
+Avatar.propTypes = {
+  photo: PropTypes.string.isRequired,
 };
 
 const columns = [
@@ -35,13 +52,7 @@ const columns = [
     headerName: "Photo",
     align: "center",
     sortable: false,
-    renderCell: (params) => (
-      <img
-        src={wrongImgHandler(params.row.photo)}
-        className="avatar"
-        onError={imgErrorHandler}
-      />
-    ),
+    renderCell: (params) => <Avatar photo={params.row.photo} />,
   },
 ];
 

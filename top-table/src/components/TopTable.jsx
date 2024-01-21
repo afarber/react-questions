@@ -19,9 +19,8 @@ const PHOTO_PATTERN = /^https:/i;
 const JSON_URL =
   "https://raw.githubusercontent.com/afarber/react-questions/main/top-table/public/top-data.json";
 
-function Row(props) {
-  const { row } = props;
-  const [open, setOpen] = useState(false);
+function Avatar(props) {
+  const { photo } = props;
 
   const wrongImgHandler = (photo) => {
     return photo && PHOTO_PATTERN.test(photo) ? photo : "female_sad.png";
@@ -32,6 +31,23 @@ function Row(props) {
     currentTarget.onerror = null;
     currentTarget.src = "male_sad.png";
   };
+
+  return (
+    <img
+      src={wrongImgHandler(photo)}
+      className="avatar"
+      onError={imgErrorHandler}
+    />
+  );
+}
+
+Avatar.propTypes = {
+  photo: PropTypes.string.isRequired,
+};
+
+function Row(props) {
+  const { row } = props;
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -46,11 +62,7 @@ function Row(props) {
         </TableCell>
         <TableCell align="right">{row.given}</TableCell>
         <TableCell align="center">
-          <img
-            src={wrongImgHandler(row.photo)}
-            className="avatar"
-            onError={imgErrorHandler}
-          />
+          <Avatar photo={row.photo} />
         </TableCell>
       </TableRow>
       <TableRow>
