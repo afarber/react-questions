@@ -30,9 +30,9 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/top-grid/screenshot.png)
 
-[top-list](https://github.com/afarber/react-questions/tree/master/top-list) display JSON data in a MUI Table with expandable rows:
+[top-table](https://github.com/afarber/react-questions/tree/master/top-table) display JSON data in a MUI Table with expandable rows:
 
-![screenshot](https://raw.github.com/afarber/react-questions/master/top-list/screenshot.png)
+![screenshot](https://raw.github.com/afarber/react-questions/master/top-table/screenshot.png)
 
 [My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[react])
 
