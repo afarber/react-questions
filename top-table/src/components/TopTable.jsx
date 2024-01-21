@@ -19,9 +19,7 @@ const PHOTO_PATTERN = /^https:/i;
 const JSON_URL =
   "https://raw.githubusercontent.com/afarber/react-questions/main/top-table/public/top-data.json";
 
-function Avatar(props) {
-  const { photo } = props;
-
+function Avatar({ photo }) {
   const wrongImgHandler = (photo) => {
     return photo && PHOTO_PATTERN.test(photo) ? photo : "female_sad.png";
   };
