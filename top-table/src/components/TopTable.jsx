@@ -17,7 +17,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 const PHOTO_PATTERN = /^https:/i;
 const JSON_URL =
-  "https://raw.githubusercontent.com/afarber/react-questions/main/top-list/public/top-data.json";
+  "https://raw.githubusercontent.com/afarber/react-questions/main/top-table/public/top-data.json";
 
 function Row(props) {
   const { row } = props;
