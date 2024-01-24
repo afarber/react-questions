@@ -30,7 +30,7 @@ export default function LeftDrawer() {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState((prevState) => ({ ...prevState, [anchor]: open }));
   };
 
   const list = (anchor) => (
