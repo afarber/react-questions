@@ -26,6 +26,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/left-drawer/screenshot.png)
 
+[router-1](https://github.com/afarber/react-questions/tree/master/router-1) an example with React Router:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/router-1/screenshot.png)
+
 [top-grid](https://github.com/afarber/react-questions/tree/master/top-grid) display JSON data in a MUI X Data Grid:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/top-grid/screenshot.png)

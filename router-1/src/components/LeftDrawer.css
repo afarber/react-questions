@@ -1,0 +1,20 @@
+img.avatar {
+  border: 0;
+  max-width: 60px;
+  max-height: 80px;
+  vertical-align: middle;
+}
+
+img.avatar2 {
+  border: 0;
+  max-width: 120px;
+  max-height: 160px;
+  vertical-align: middle;
+}
+
+img.avatar3 {
+  border: 0;
+  max-width: 180px;
+  max-height: 240px;
+  vertical-align: middle;
+}
