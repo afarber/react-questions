@@ -4,7 +4,7 @@ import LeftDrawer from "./components/LeftDrawer";
 export default function App() {
   return (
     <>
-      <h1>Left Drawer</h1>
+      <h1>Appbar Drawer</h1>
       <LeftDrawer />
     </>
   );
