@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["New game", "Statistics", "Rating"];
 
 function LeftDrawer(props) {
   const { window } = props;
@@ -64,14 +64,10 @@ function LeftDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             MUI
           </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box>
             {navItems.map((item) => (
               <Button key={item} sx={{ color: "#fff" }}>
                 {item}
@@ -87,12 +83,14 @@ function LeftDrawer(props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
+            // Better open performance on mobile
+            keepMounted: true,
           }}
-          sx={{
-            "& .MuiDrawer-paper": {
+          PaperProps={{
+            sx: {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor: "lightblue",
             },
           }}
         >
@@ -144,10 +142,7 @@ function LeftDrawer(props) {
 }
 
 LeftDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+  // Needed to work in an iframe.
   window: PropTypes.func,
 };
 
