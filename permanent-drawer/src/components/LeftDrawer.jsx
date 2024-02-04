@@ -14,18 +14,44 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import {
+  AddCircle,
+  BarChart,
+  EmojiEvents,
+  Help,
+  MenuBook,
+  ModeNight,
+  Search,
+} from "@mui/icons-material";
 
 const drawerWidth = 240;
 
-function MyListItem({ text, index }) {
+const list1 = [
+  { text: "New game", icon: <AddCircle /> },
+  { text: "Statistics", icon: <BarChart /> },
+  { text: "Rating", icon: <EmojiEvents /> },
+];
+
+const list2 = [
+  { text: "Word search", icon: <Search /> },
+  { text: "2 letters", icon: <MenuBook /> },
+  { text: "3 letters", icon: <MenuBook /> },
+  { text: "Letter Q", icon: <MenuBook /> },
+  { text: "Letter Z", icon: <MenuBook /> },
+];
+
+const list3 = [
+  { text: "Night mode", icon: <ModeNight /> },
+  { text: "Help", icon: <Help /> },
+  { text: "Privacy policy", icon: <Help /> },
+  { text: "Terms of service", icon: <Help /> },
+];
+
+function MyListItem({ text, icon }) {
   return (
     <ListItem disablePadding>
       <ListItemButton>
-        <ListItemIcon>
-          {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-        </ListItemIcon>
+        <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={text} />
       </ListItemButton>
     </ListItem>
@@ -34,7 +60,7 @@ function MyListItem({ text, index }) {
 
 MyListItem.propTypes = {
   text: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
+  icon: PropTypes.string.isRequired,
 };
 
 export default function LeftDrawer() {
@@ -74,29 +100,21 @@ export default function LeftDrawer() {
       >
         <Toolbar />
         <List>
-          {["New game", "Statistics", "Rating"].map((text, index) => (
-            <MyListItem key={text} index={index} text={text} />
+          {list1.map((item, index) => (
+            <MyListItem key={index} icon={item.icon} text={item.text} />
           ))}
         </List>
         <Divider />
         <List>
-          {[
-            "Word search",
-            "2 letters",
-            "3 letters",
-            "Letter Q",
-            "Letter Z",
-          ].map((text, index) => (
-            <MyListItem key={text} index={index} text={text} />
+          {list2.map((item, index) => (
+            <MyListItem key={index} icon={item.icon} text={item.text} />
           ))}
         </List>
         <Divider />
         <List>
-          {["Night mode", "Help", "Privacy policy", "Terms of service"].map(
-            (text, index) => (
-              <MyListItem key={text} index={index} text={text} />
-            )
-          )}
+          {list3.map((item, index) => (
+            <MyListItem key={index} icon={item.icon} text={item.text} />
+          ))}
         </List>
       </Drawer>
       <Box
