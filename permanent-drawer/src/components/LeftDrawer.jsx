@@ -43,7 +43,9 @@ export default function LeftDrawer() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
@@ -70,6 +72,7 @@ export default function LeftDrawer() {
         variant="permanent"
         anchor="left"
       >
+        <Toolbar />
         <List>
           {["New game", "Statistics", "Rating"].map((text, index) => (
             <MyListItem key={text} index={index} text={text} />
