@@ -80,9 +80,23 @@ export default function LeftDrawer() {
         </List>
         <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {[
+            "Word search",
+            "2 letters",
+            "3 letters",
+            "Letter Q",
+            "Letter Z",
+          ].map((text, index) => (
             <MyListItem key={text} index={index} text={text} />
           ))}
+        </List>
+        <Divider />
+        <List>
+          {["Night mode", "Help", "Privacy policy", "Terms of service"].map(
+            (text, index) => (
+              <MyListItem key={text} index={index} text={text} />
+            )
+          )}
         </List>
       </Drawer>
       <Box
