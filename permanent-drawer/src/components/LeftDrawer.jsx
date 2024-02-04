@@ -1,6 +1,7 @@
 "use client";
 
 import "./LeftDrawer.css";
+import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -18,7 +19,25 @@ import MailIcon from "@mui/icons-material/Mail";
 
 const drawerWidth = 240;
 
-export default function PermanentDrawerLeft() {
+function MyListItem({ text, index }) {
+  return (
+    <ListItem disablePadding>
+      <ListItemButton>
+        <ListItemIcon>
+          {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+        </ListItemIcon>
+        <ListItemText primary={text} />
+      </ListItemButton>
+    </ListItem>
+  );
+}
+
+MyListItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+export default function LeftDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -36,9 +55,16 @@ export default function PermanentDrawerLeft() {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
+        }}
+        ModalProps={{
+          // Better open performance on mobile
+          keepMounted: true,
+        }}
+        PaperProps={{
+          sx: {
             boxSizing: "border-box",
+            width: drawerWidth,
+            backgroundColor: "lightblue",
           },
         }}
         variant="permanent"
@@ -46,14 +72,7 @@ export default function PermanentDrawerLeft() {
       >
         <List>
           {["New game", "Statistics", "Rating"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
+            <MyListItem key={text} index={index} text={text} />
           ))}
         </List>
         <Divider />
