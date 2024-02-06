@@ -1,7 +1,7 @@
 import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 import "./App.css";
 import Main from "./pages/Main";
-import LeftDrawer from "./components/LeftDrawer";
+import NavDrawer from "./components/NavDrawer";
 
 export default function App() {
   return (
@@ -20,7 +20,7 @@ export default function App() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <LeftDrawer />
+        <NavDrawer />
         <Toolbar />
         <Main />
       </Box>

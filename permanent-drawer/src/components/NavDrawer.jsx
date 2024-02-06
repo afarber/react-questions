@@ -1,6 +1,6 @@
 "use client";
 
-import "./LeftDrawer.css";
+import "./NavDrawer.css";
 import PropTypes from "prop-types";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
