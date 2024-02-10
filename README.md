@@ -14,6 +14,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/permanent-drawer/screenshot.png)
 
+[router-nav-drawer](https://github.com/afarber/react-questions/tree/master/router-nav-drawer) display a temporary drawer on the left side:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/router-nav-drawer/screenshot.png)
+
 [name-in-context](https://github.com/afarber/react-questions/tree/master/name-in-context) pass data via Context API:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/name-in-context/screenshot.png)
