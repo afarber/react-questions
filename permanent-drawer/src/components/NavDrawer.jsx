@@ -10,6 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {
   AddCircle,
   BarChart,
@@ -48,7 +49,9 @@ function MyListItem({ text, icon }) {
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText primary={text} />
+        <Link to="/letters2">
+          <ListItemText primary={text} />
+        </Link>
       </ListItemButton>
     </ListItem>
   );
@@ -81,23 +84,27 @@ export default function LeftDrawer() {
       anchor="left"
     >
       <Toolbar />
-      <List>
-        {list1.map((item, index) => (
-          <MyListItem key={index} icon={item.icon} text={item.text} />
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {list2.map((item, index) => (
-          <MyListItem key={index} icon={item.icon} text={item.text} />
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {list3.map((item, index) => (
-          <MyListItem key={index} icon={item.icon} text={item.text} />
-        ))}
-      </List>
+      <BrowserRouter>
+        <nav>
+          <List>
+            {list1.map((item, index) => (
+              <MyListItem key={index} icon={item.icon} text={item.text} />
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {list2.map((item, index) => (
+              <MyListItem key={index} icon={item.icon} text={item.text} />
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {list3.map((item, index) => (
+              <MyListItem key={index} icon={item.icon} text={item.text} />
+            ))}
+          </List>
+        </nav>
+      </BrowserRouter>
     </Drawer>
   );
 }

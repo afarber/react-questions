@@ -24,6 +24,15 @@ export default function App() {
         </AppBar>
         <NavDrawer />
         <Toolbar />
+        <BrowserRouter>
+          <Routes>
+            <Route path="letters2" element={<WordList />} />
+            <Route path="letters3" element={<WordList />} />
+            <Route path="rare1" element={<WordList />} />
+            <Route path="rare2" element={<WordList />} />
+            <Route path="*" element={<Main />} />
+          </Routes>
+        </BrowserRouter>
         <Main />
       </Box>
     </>
