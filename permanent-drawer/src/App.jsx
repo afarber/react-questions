@@ -1,6 +1,8 @@
 import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 import "./App.css";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Main from "./pages/Main";
+import WordList from "./pages/WordList";
 import NavDrawer from "./components/NavDrawer";
 
 export default function App() {
