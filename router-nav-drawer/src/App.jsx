@@ -1,9 +1,11 @@
-import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 import "./App.css";
+import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Main from "./pages/Main";
-import WordList from "./pages/WordList";
 import NavDrawer from "./components/NavDrawer";
+import Page1 from "./pages/Page1";
+import Page2 from "./pages/Page2";
+import Page3 from "./pages/Page3";
+import Page4 from "./pages/Page4";
 
 export default function App() {
   return (
@@ -17,8 +19,8 @@ export default function App() {
           }}
         >
           <Toolbar>
-            <Typography variant="h6" noWrap component="div">
-              Permanent drawer
+            <Typography variant="p" noWrap component="div">
+              How to use BrowserRouter with MUI Drawer?
             </Typography>
           </Toolbar>
         </AppBar>
@@ -26,14 +28,12 @@ export default function App() {
         <Toolbar />
         <BrowserRouter>
           <Routes>
-            <Route path="letters2" element={<WordList />} />
-            <Route path="letters3" element={<WordList />} />
-            <Route path="rare1" element={<WordList />} />
-            <Route path="rare2" element={<WordList />} />
-            <Route path="*" element={<Main />} />
+            <Route path="page1" element={<Page1 />} />
+            <Route path="page2" element={<Page2 />} />
+            <Route path="page3" element={<Page3 />} />
+            <Route path="*" element={<Page4 />} />
           </Routes>
         </BrowserRouter>
-        <Main />
       </Box>
     </>
   );
