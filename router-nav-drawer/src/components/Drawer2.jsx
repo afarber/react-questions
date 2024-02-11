@@ -8,32 +8,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import {
-  Casino,
-  Flag,
-  Fullscreen,
-  History,
-  PlayCircle,
-  Settings,
-  Share,
-  SkipNext,
-  SwapHoriz,
-  SwapVert,
-} from "@mui/icons-material";
+import { Fullscreen, SkipNext, SwapVert } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
-const list1 = [
+const myActions = [
   { text: "Full screen", icon: <Fullscreen /> },
   { text: "Swap", icon: <SwapVert /> },
   { text: "Skip", icon: <SkipNext /> },
-  { text: "Resign", icon: <Flag /> },
-  { text: "Pile: 79", icon: <Casino /> },
-  { text: "Moves history", icon: <History /> },
-  { text: "Settings", icon: <Settings /> },
-  { text: "Share", icon: <Share /> },
-  { text: "Play", icon: <PlayCircle /> },
-  { text: "Shuffle", icon: <SwapHoriz /> },
 ];
 
 function MyListItem({ text, icon }) {
@@ -67,7 +49,7 @@ export default function MainDrawer() {
         sx: {
           boxSizing: "border-box",
           width: drawerWidth,
-          backgroundColor: "lightblue",
+          backgroundColor: "lightgreen",
         },
       }}
       variant="permanent"
@@ -75,7 +57,7 @@ export default function MainDrawer() {
     >
       <Toolbar />
       <List>
-        {list1.map((item, index) => (
+        {myActions.map((item, index) => (
           <MyListItem key={index} icon={item.icon} text={item.text} />
         ))}
       </List>
