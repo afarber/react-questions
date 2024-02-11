@@ -14,9 +14,9 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/permanent-drawer/screenshot.png)
 
-[router-nav-drawer](https://github.com/afarber/react-questions/tree/master/router-nav-drawer) display a temporary drawer on the left side:
+[router-nav-drawer](https://github.com/afarber/react-questions/tree/master/router-nav-drawer) asked at Stackoverflow [How to use MUI Drawer in a separate .jsx file with BrowserRouter?](https://stackoverflow.com/q/77976553/165071):
 
-![screenshot](https://raw.github.com/afarber/react-questions/master/router-nav-drawer/screenshot.png)
+![screenshot](https://raw.github.com/afarber/react-questions/master/router-nav-drawer/screenshot.gif)
 
 [name-in-context](https://github.com/afarber/react-questions/tree/master/name-in-context) pass data via Context API:
 
