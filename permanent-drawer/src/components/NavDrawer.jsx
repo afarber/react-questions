@@ -10,7 +10,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   AddCircle,
   BarChart,
@@ -24,32 +24,32 @@ import {
 const drawerWidth = 240;
 
 const list1 = [
-  { text: "New game", icon: <AddCircle /> },
-  { text: "Statistics", icon: <BarChart /> },
-  { text: "Rating", icon: <EmojiEvents /> },
+  { path: "new-game", text: "New game", icon: <AddCircle /> },
+  { path: "stats", text: "Statistics", icon: <BarChart /> },
+  { path: "rating", text: "Rating", icon: <EmojiEvents /> },
 ];
 
 const list2 = [
-  { text: "Word search", icon: <Search /> },
-  { text: "2 letters", icon: <MenuBook /> },
-  { text: "3 letters", icon: <MenuBook /> },
-  { text: "Letter Q", icon: <MenuBook /> },
-  { text: "Letter Z", icon: <MenuBook /> },
+  { path: "words-search", text: "Word search", icon: <Search /> },
+  { path: "letters-2", text: "2 letters", icon: <MenuBook /> },
+  { path: "letters-3", text: "3 letters", icon: <MenuBook /> },
+  { path: "rare-1", text: "Letter Q", icon: <MenuBook /> },
+  { path: "rare-2", text: "Letter Z", icon: <MenuBook /> },
 ];
 
 const list3 = [
-  { text: "Night mode", icon: <ModeNight /> },
-  { text: "Help", icon: <Help /> },
-  { text: "Privacy policy", icon: <Help /> },
-  { text: "Terms of service", icon: <Help /> },
+  { path: "night-mode", text: "Night mode", icon: <ModeNight /> },
+  { path: "help", text: "Help", icon: <Help /> },
+  { path: "privacy-policy", text: "Privacy policy", icon: <Help /> },
+  { path: "terms-of-service", text: "Terms of service", icon: <Help /> },
 ];
 
-function MyListItem({ text, icon }) {
+function DrawerItem({ text, path, icon }) {
   return (
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>{icon}</ListItemIcon>
-        <Link to="/letters2">
+        <Link to={path} className="link">
           <ListItemText primary={text} />
         </Link>
       </ListItemButton>
@@ -57,8 +57,9 @@ function MyListItem({ text, icon }) {
   );
 }
 
-MyListItem.propTypes = {
+DrawerItem.propTypes = {
   text: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
   icon: PropTypes.object.isRequired,
 };
 
@@ -84,27 +85,40 @@ export default function LeftDrawer() {
       anchor="left"
     >
       <Toolbar />
-      <BrowserRouter>
-        <nav>
-          <List>
-            {list1.map((item, index) => (
-              <MyListItem key={index} icon={item.icon} text={item.text} />
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {list2.map((item, index) => (
-              <MyListItem key={index} icon={item.icon} text={item.text} />
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {list3.map((item, index) => (
-              <MyListItem key={index} icon={item.icon} text={item.text} />
-            ))}
-          </List>
-        </nav>
-      </BrowserRouter>
+      <nav>
+        <List>
+          {list1.map((item, index) => (
+            <DrawerItem
+              key={index}
+              icon={item.icon}
+              path={item.path}
+              text={item.text}
+            />
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {list2.map((item, index) => (
+            <DrawerItem
+              key={index}
+              icon={item.icon}
+              path={item.path}
+              text={item.text}
+            />
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {list3.map((item, index) => (
+            <DrawerItem
+              key={index}
+              icon={item.icon}
+              path={item.path}
+              text={item.text}
+            />
+          ))}
+        </List>
+      </nav>
     </Drawer>
   );
 }

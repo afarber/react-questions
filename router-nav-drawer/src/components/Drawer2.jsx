@@ -18,7 +18,7 @@ const drawerActions = [
   { text: "Skip", icon: <SkipNext /> },
 ];
 
-function MyListItem({ text, icon }) {
+function DrawerItem({ text, icon }) {
   return (
     <ListItem disablePadding>
       <ListItemButton>
@@ -29,7 +29,7 @@ function MyListItem({ text, icon }) {
   );
 }
 
-MyListItem.propTypes = {
+DrawerItem.propTypes = {
   text: PropTypes.string.isRequired,
   icon: PropTypes.object.isRequired,
 };
@@ -58,7 +58,7 @@ export default function MainDrawer() {
       <Toolbar />
       <List>
         {drawerActions.map((item, index) => (
-          <MyListItem key={index} icon={item.icon} text={item.text} />
+          <DrawerItem key={index} icon={item.icon} text={item.text} />
         ))}
       </List>
     </Drawer>

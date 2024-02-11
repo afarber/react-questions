@@ -1,6 +1,6 @@
 import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 import "./App.css";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./pages/Main";
 import WordList from "./pages/WordList";
 import NavDrawer from "./components/NavDrawer";
@@ -22,18 +22,18 @@ export default function App() {
             </Typography>
           </Toolbar>
         </AppBar>
-        <NavDrawer />
-        <Toolbar />
+
         <BrowserRouter>
+          <NavDrawer />
+          <Toolbar />
           <Routes>
-            <Route path="letters2" element={<WordList />} />
-            <Route path="letters3" element={<WordList />} />
-            <Route path="rare1" element={<WordList />} />
-            <Route path="rare2" element={<WordList />} />
+            <Route path="letters-2" element={<WordList />} />
+            <Route path="letters-3" element={<WordList />} />
+            <Route path="rare-1" element={<WordList />} />
+            <Route path="rare-2" element={<WordList />} />
             <Route path="*" element={<Main />} />
           </Routes>
         </BrowserRouter>
-        <Main />
       </Box>
     </>
   );

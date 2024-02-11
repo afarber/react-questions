@@ -20,12 +20,12 @@ const drawerLinks = [
   { text: "Page 4", path: "/page4", icon: <CarRepair /> },
 ];
 
-function MyListItem({ text, path, icon }) {
+function DrawerItem({ text, path, icon }) {
   return (
     <ListItem disablePadding>
       <ListItemButton>
         <ListItemIcon>{icon}</ListItemIcon>
-        <Link to={path}>
+        <Link to={path} style={{ color: "#333" }}>
           <ListItemText primary={text} />
         </Link>
       </ListItemButton>
@@ -33,7 +33,7 @@ function MyListItem({ text, path, icon }) {
   );
 }
 
-MyListItem.propTypes = {
+DrawerItem.propTypes = {
   text: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
   icon: PropTypes.object.isRequired,
@@ -64,7 +64,7 @@ export default function NavDrawer() {
       <nav>
         <List>
           {drawerLinks.map((item, index) => (
-            <MyListItem
+            <DrawerItem
               key={index}
               text={item.text}
               path={item.path}
