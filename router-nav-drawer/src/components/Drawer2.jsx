@@ -12,7 +12,7 @@ import { Fullscreen, SkipNext, SwapVert } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
-const myActions = [
+const drawerActions = [
   { text: "Full screen", icon: <Fullscreen /> },
   { text: "Swap", icon: <SwapVert /> },
   { text: "Skip", icon: <SkipNext /> },
@@ -57,7 +57,7 @@ export default function MainDrawer() {
     >
       <Toolbar />
       <List>
-        {myActions.map((item, index) => (
+        {drawerActions.map((item, index) => (
           <MyListItem key={index} icon={item.icon} text={item.text} />
         ))}
       </List>

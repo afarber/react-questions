@@ -1,6 +1,6 @@
 import "./App.css";
 import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavDrawer from "./components/NavDrawer";
 import Page1 from "./pages/Page1";
 import Page2 from "./pages/Page2";
@@ -20,13 +20,14 @@ export default function App() {
         >
           <Toolbar>
             <Typography variant="p" noWrap component="div">
-              How to use BrowserRouter with MUI Drawer?
+              Use BrowserRouter with MUI Drawer!
             </Typography>
           </Toolbar>
         </AppBar>
-        <NavDrawer />
-        <Toolbar />
+
         <BrowserRouter>
+          <NavDrawer />
+          <Toolbar />
           <Routes>
             <Route path="page1" element={<Page1 />} />
             <Route path="page2" element={<Page2 />} />

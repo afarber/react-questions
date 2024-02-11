@@ -8,12 +8,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CarCrash, CarRepair, Directions, Help } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
-const myLinks = [
+const drawerLinks = [
   { text: "Page 1", path: "/page1", icon: <CarCrash /> },
   { text: "Page 2", path: "/page2", icon: <Help /> },
   { text: "Page 3", path: "/page3", icon: <Directions /> },
@@ -61,15 +61,18 @@ export default function NavDrawer() {
       anchor="left"
     >
       <Toolbar />
-      <BrowserRouter>
-        <nav>
-          <List>
-            {myLinks.map((item, index) => (
-              <MyListItem key={index} icon={item.icon} text={item.text} />
-            ))}
-          </List>
-        </nav>
-      </BrowserRouter>
+      <nav>
+        <List>
+          {drawerLinks.map((item, index) => (
+            <MyListItem
+              key={index}
+              text={item.text}
+              path={item.path}
+              icon={item.icon}
+            />
+          ))}
+        </List>
+      </nav>
     </Drawer>
   );
 }
