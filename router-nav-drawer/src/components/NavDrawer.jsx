@@ -39,7 +39,7 @@ MyListItem.propTypes = {
   icon: PropTypes.object.isRequired,
 };
 
-export default function LeftDrawer() {
+export default function NavDrawer() {
   return (
     <Drawer
       sx={{
