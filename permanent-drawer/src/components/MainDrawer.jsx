@@ -1,14 +1,10 @@
 "use client";
 
 import "./MainDrawer.css";
-import PropTypes from "prop-types";
+import DrawerItem from "./DrawerItem";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import {
   Casino,
   Flag,
@@ -36,22 +32,6 @@ const list1 = [
   { text: "Play", icon: <PlayCircle /> },
   { text: "Shuffle", icon: <SwapHoriz /> },
 ];
-
-function DrawerItem({ text, icon }) {
-  return (
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText primary={text} />
-      </ListItemButton>
-    </ListItem>
-  );
-}
-
-DrawerItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-};
 
 export default function MainDrawer() {
   return (

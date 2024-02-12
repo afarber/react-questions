@@ -1,15 +1,10 @@
 "use client";
 
-import PropTypes from "prop-types";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { Link } from "react-router-dom";
 import { CarCrash, CarRepair, Directions, Help } from "@mui/icons-material";
+import DrawerItem from "./DrawerItem";
 
 const drawerWidth = 240;
 
@@ -19,25 +14,6 @@ const drawerLinks = [
   { text: "Page 3", path: "/page3", icon: <Directions /> },
   { text: "Page 4", path: "/page4", icon: <CarRepair /> },
 ];
-
-function DrawerItem({ text, path, icon }) {
-  return (
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <Link to={path} style={{ color: "#333" }}>
-          <ListItemText primary={text} />
-        </Link>
-      </ListItemButton>
-    </ListItem>
-  );
-}
-
-DrawerItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-};
 
 export default function NavDrawer() {
   return (

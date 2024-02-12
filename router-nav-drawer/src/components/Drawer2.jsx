@@ -1,13 +1,9 @@
 "use client";
 
-import PropTypes from "prop-types";
+import DrawerItem from "./DrawerItem";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import { Fullscreen, SkipNext, SwapVert } from "@mui/icons-material";
 
 const drawerWidth = 240;
@@ -17,22 +13,6 @@ const drawerActions = [
   { text: "Swap", icon: <SwapVert /> },
   { text: "Skip", icon: <SkipNext /> },
 ];
-
-function DrawerItem({ text, icon }) {
-  return (
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText primary={text} />
-      </ListItemButton>
-    </ListItem>
-  );
-}
-
-DrawerItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-};
 
 export default function MainDrawer() {
   return (

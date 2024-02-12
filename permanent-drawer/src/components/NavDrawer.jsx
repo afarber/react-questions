@@ -1,16 +1,11 @@
 "use client";
 
 import "./NavDrawer.css";
-import PropTypes from "prop-types";
+import DrawerItem from "./DrawerItem";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import { Link } from "react-router-dom";
 import {
   AddCircle,
   BarChart,
@@ -44,26 +39,7 @@ const list3 = [
   { path: "terms-of-service", text: "Terms of service", icon: <Help /> },
 ];
 
-function DrawerItem({ text, path, icon }) {
-  return (
-    <ListItem disablePadding>
-      <ListItemButton>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <Link to={path} className="link">
-          <ListItemText primary={text} />
-        </Link>
-      </ListItemButton>
-    </ListItem>
-  );
-}
-
-DrawerItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
-};
-
-export default function LeftDrawer() {
+export default function NavDrawer() {
   return (
     <Drawer
       sx={{
