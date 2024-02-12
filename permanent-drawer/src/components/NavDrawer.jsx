@@ -18,13 +18,13 @@ import {
 
 const drawerWidth = 240;
 
-const list1 = [
+const drawerLinks1 = [
   { path: "new-game", text: "New game", icon: <AddCircle /> },
   { path: "stats", text: "Statistics", icon: <BarChart /> },
   { path: "rating", text: "Rating", icon: <EmojiEvents /> },
 ];
 
-const list2 = [
+const drawerLinks2 = [
   { path: "words-search", text: "Word search", icon: <Search /> },
   { path: "letters-2", text: "2 letters", icon: <MenuBook /> },
   { path: "letters-3", text: "3 letters", icon: <MenuBook /> },
@@ -32,7 +32,7 @@ const list2 = [
   { path: "rare-2", text: "Letter Z", icon: <MenuBook /> },
 ];
 
-const list3 = [
+const drawerLinks3 = [
   { path: "night-mode", text: "Night mode", icon: <ModeNight /> },
   { path: "help", text: "Help", icon: <Help /> },
   { path: "privacy-policy", text: "Privacy policy", icon: <Help /> },
@@ -63,7 +63,7 @@ export default function NavDrawer() {
       <Toolbar />
       <nav>
         <List>
-          {list1.map((item, index) => (
+          {drawerLinks1.map((item, index) => (
             <DrawerItem
               key={index}
               icon={item.icon}
@@ -74,7 +74,7 @@ export default function NavDrawer() {
         </List>
         <Divider />
         <List>
-          {list2.map((item, index) => (
+          {drawerLinks2.map((item, index) => (
             <DrawerItem
               key={index}
               icon={item.icon}
@@ -85,7 +85,7 @@ export default function NavDrawer() {
         </List>
         <Divider />
         <List>
-          {list3.map((item, index) => (
+          {drawerLinks3.map((item, index) => (
             <DrawerItem
               key={index}
               icon={item.icon}

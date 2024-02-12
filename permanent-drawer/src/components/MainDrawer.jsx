@@ -20,7 +20,7 @@ import {
 
 const drawerWidth = 240;
 
-const list1 = [
+const drawerActions = [
   { text: "Full screen", icon: <Fullscreen /> },
   { text: "Swap", icon: <SwapVert /> },
   { text: "Skip", icon: <SkipNext /> },
@@ -56,7 +56,7 @@ export default function MainDrawer() {
     >
       <Toolbar />
       <List>
-        {list1.map((item, index) => (
+        {drawerActions.map((item, index) => (
           <DrawerItem key={index} icon={item.icon} text={item.text} />
         ))}
       </List>
