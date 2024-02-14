@@ -29,7 +29,7 @@ export default function App() {
           <NavDrawer />
           <Toolbar />
           <Routes>
-            <Route path="page1" element={<Page1 />} />
+            <Route index element={<Page1 />} />
             <Route path="page2" element={<Page2 />} />
             <Route path="page3" element={<Page3 />} />
             <Route path="*" element={<Page4 />} />
