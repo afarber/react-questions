@@ -11,8 +11,10 @@ export default function WordList() {
     <div className="wordList">
       {top.data.map((user) => (
         <div key={user.uid}>
-          <p>{user.given}</p>
-          <p>Elo {user.elo}</p>
+          <p>
+            <b>{user.given}</b>
+          </p>
+          <p>Elo: {user.elo}</p>
         </div>
       ))}
     </div>

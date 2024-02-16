@@ -15,9 +15,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Main />} />
       <Route path="letters-2" element={<WordList />} loader={topLoader} />
-      <Route path="letters-3" element={<WordList />} />
-      <Route path="rare-1" element={<WordList />} />
-      <Route path="rare-2" element={<WordList />} />
+      <Route path="letters-3" element={<WordList />} loader={topLoader} />
+      <Route path="rare-1" element={<WordList />} loader={topLoader} />
+      <Route path="rare-2" element={<WordList />} loader={topLoader} />
       <Route path="*" element={<Main />} />
     </Route>
   )
