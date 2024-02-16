@@ -8,12 +8,13 @@ import {
 import Main from "./pages/Main";
 import WordList from "./pages/WordList";
 import RootLayout from "./layouts/RootLayout";
+import { topLoader } from "./loaders/TopLoader";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Main />} />
-      <Route path="letters-2" element={<WordList />} />
+      <Route path="letters-2" element={<WordList />} loader={topLoader} />
       <Route path="letters-3" element={<WordList />} />
       <Route path="rare-1" element={<WordList />} />
       <Route path="rare-2" element={<WordList />} />
