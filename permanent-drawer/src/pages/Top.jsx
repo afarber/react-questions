@@ -1,16 +1,15 @@
 "use client";
 
 import { useLoaderData } from "react-router";
-import "./WordList.css";
+import "./Top.css";
 import { Link } from "react-router-dom";
 
-export default function WordList() {
+export default function Top() {
   const top = useLoaderData();
-  // eslint-disable-next-line no-undef
-  console.log(LETTERS);
+  console.log(top);
 
   return (
-    <div className="wordList">
+    <div className="topList">
       {top.data.map((user) => (
         <Link to={"/user/" + user.uid} key={user.uid}>
           <p>
