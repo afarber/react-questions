@@ -1,3 +1,7 @@
+.wordList p {
+  margin: 0;
+}
+
 span.tile {
   color: #000;
   background-color: #fc0;
