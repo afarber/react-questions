@@ -1,6 +1,5 @@
 "use client";
 
-import "./MainDrawer.css";
 import DrawerItem from "./DrawerItem";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,7 +10,6 @@ import {
   Fullscreen,
   History,
   PlayCircle,
-  Settings,
   Share,
   SkipNext,
   SwapHoriz,

@@ -1,7 +1,6 @@
 "use client";
 
 import { useLoaderData } from "react-router";
-import "./Top.css";
 import { Link } from "react-router-dom";
 
 export default function Top() {

@@ -1,6 +1,5 @@
 "use client";
 
-import "./User.css";
 import { useLoaderData, useParams } from "react-router";
 
 export default function User() {

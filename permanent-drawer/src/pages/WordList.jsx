@@ -1,7 +1,6 @@
 "use client";
 
 import { useLoaderData } from "react-router";
-import "./WordList.css";
 
 export default function WordList() {
   const filtered = useLoaderData();

@@ -1,6 +1,5 @@
 "use client";
 
-import "./Main.css";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import MainDrawer from "../components/MainDrawer";

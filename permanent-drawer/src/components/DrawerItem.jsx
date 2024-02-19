@@ -1,6 +1,5 @@
 "use client";
 
-import "./DrawerItem.css";
 import PropTypes from "prop-types";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";

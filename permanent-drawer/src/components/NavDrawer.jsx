@@ -1,6 +1,5 @@
 "use client";
 
-import "./NavDrawer.css";
 import DrawerItem from "./DrawerItem";
 import Drawer from "@mui/material/Drawer";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,7 +11,6 @@ import {
   EmojiEvents,
   Help,
   MenuBook,
-  ModeNight,
   Search,
   Settings,
 } from "@mui/icons-material";
