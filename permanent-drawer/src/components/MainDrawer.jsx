@@ -27,7 +27,6 @@ const drawerActions = [
   { text: "Resign", icon: <Flag /> },
   { text: "Pile: 79", icon: <Casino /> },
   { text: "Moves history", icon: <History /> },
-  { text: "Settings", icon: <Settings /> },
   { text: "Share", icon: <Share /> },
   { text: "Play", icon: <PlayCircle /> },
   { text: "Shuffle", icon: <SwapHoriz /> },

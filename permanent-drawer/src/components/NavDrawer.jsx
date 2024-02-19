@@ -14,6 +14,7 @@ import {
   MenuBook,
   ModeNight,
   Search,
+  Settings,
 } from "@mui/icons-material";
 
 const drawerWidth = 240;
@@ -21,7 +22,7 @@ const drawerWidth = 240;
 const drawerLinks1 = [
   { path: "new-game", text: "New game", icon: <AddCircle /> },
   { path: "stats", text: "Statistics", icon: <BarChart /> },
-  { path: "rating", text: "Rating", icon: <EmojiEvents /> },
+  { path: "top", text: "Rating", icon: <EmojiEvents /> },
 ];
 
 const drawerLinks2 = [
@@ -33,7 +34,7 @@ const drawerLinks2 = [
 ];
 
 const drawerLinks3 = [
-  { path: "night-mode", text: "Night mode", icon: <ModeNight /> },
+  { path: "settings", text: "Settings", icon: <Settings /> },
   { path: "help", text: "Help", icon: <Help /> },
   { path: "privacy-policy", text: "Privacy policy", icon: <Help /> },
   { path: "terms-of-service", text: "Terms of service", icon: <Help /> },
