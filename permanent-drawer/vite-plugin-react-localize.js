@@ -38,9 +38,7 @@ export default function localize(lang) {
     name: "localize-plugin",
     transform(code, id) {
       console.log("localize lang:", lang);
-      console.log("localize code:", code.length);
       console.log("localize id:", id);
-      // TODO replace placeholders
       return code
         .replace("__NEW_GAME__", localizedStrings[lang].__NEW_GAME__)
         .replace("__STATISTICS__", localizedStrings[lang].__STATS__)
