@@ -2,8 +2,10 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import localize from "./vite-plugin-react-localize";
 
-const lang =
-  process.argv.find((arg) => arg.startsWith("--lang=")).split("=")[1] || "en";
+const lastArg =
+  process.argv.length > 0 ? process.argv[process.argv.length - 1] : "";
+const groups = lastArg.match("--lang=(en|de|fr|nl|pl|ru)");
+const lang = groups ? groups[1] : "en";
 
 // https://vitejs.dev/config/
 export default defineConfig({

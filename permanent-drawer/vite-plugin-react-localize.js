@@ -37,11 +37,10 @@ export default function localize(lang) {
   return {
     name: "localize-plugin",
     transform(code, id) {
-      console.log("localize lang:", lang);
-      console.log("localize id:", id);
+      console.log(lang, id);
       return code
         .replace("__NEW_GAME__", localizedStrings[lang].__NEW_GAME__)
-        .replace("__STATISTICS__", localizedStrings[lang].__STATS__)
+        .replace("__STATS__", localizedStrings[lang].__STATS__)
         .replace("__RATING__", localizedStrings[lang].__RATING__);
     },
   };
