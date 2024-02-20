@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import localize from "./localize-plugin";
+import localize from "./vite-plugin-react-localize";
 
 const lang =
   process.argv.find((arg) => arg.startsWith("--lang=")).split("=")[1] || "en";

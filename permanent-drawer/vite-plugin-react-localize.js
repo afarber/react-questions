@@ -3,10 +3,13 @@
 export default function localize(lang) {
   return {
     name: "localize-plugin",
-    transform(code) {
-      console.log("localize lang: ", lang);
+    input: "src/index.js",
+    transform(code, id) {
+      console.log("localize lang:", lang);
+      console.log("localize code:", code.length);
+      console.log("localize id:", id);
       // TODO replace placeholders
-      return code;
+      return code.replace("Permanent Drawer", "XXX YYY ZZZ");
     },
   };
 }
