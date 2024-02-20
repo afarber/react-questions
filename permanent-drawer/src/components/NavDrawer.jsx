@@ -18,9 +18,9 @@ import {
 const drawerWidth = 240;
 
 const drawerLinks1 = [
-  { path: "new-game", text: "New game", icon: <AddCircle /> },
-  { path: "stats", text: "Statistics", icon: <BarChart /> },
-  { path: "top", text: "Rating", icon: <EmojiEvents /> },
+  { path: "new-game", text: "__NEW_GAME__", icon: <AddCircle /> },
+  { path: "stats", text: "__STATS__", icon: <BarChart /> },
+  { path: "top", text: "__RATING__", icon: <EmojiEvents /> },
 ];
 
 const drawerLinks2 = [
