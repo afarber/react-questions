@@ -1,13 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import localize from "./localize-plugin";
 
-const args = process.argv.slice(2);
 const lang =
-  args.find((arg) => arg.startsWith("--lang=")).split("=")[1] || "en";
+  process.argv.find((arg) => arg.startsWith("--lang=")).split("=")[1] || "en";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), localize(lang)],
   build: {
     target: "es2015",
     rollupOptions: {

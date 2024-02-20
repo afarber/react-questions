@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build en": "vite build --lang=en",
-    "build de": "vite build --lang=de",
-    "build fr": "vite build --lang=fr",
-    "build nl": "vite build --lang=nl",
-    "build pl": "vite build --lang=pl",
-    "build ru": "vite build --lang=ru",
+    "build en": "vite build -- --lang=en",
+    "build de": "vite build -- --lang=de",
+    "build fr": "vite build -- --lang=fr",
+    "build nl": "vite build -- --lang=nl",
+    "build pl": "vite build -- --lang=pl",
+    "build ru": "vite build -- --lang=ru",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
