@@ -10,6 +10,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/appbar-drawer/screenshot.png)
 
+[localize-bundle](https://github.com/afarber/react-questions/tree/master/localize-bundle) use a Vite plugin to generate localized bundles:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/localize-bundle/screenshot.png)
+
 [permanent-drawer](https://github.com/afarber/react-questions/tree/master/permanent-drawer) display a permanent drawer on the left side:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/permanent-drawer/screenshot.png)
