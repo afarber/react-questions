@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <h1>How to localize the bundle?</h1>
-      <MyButton p="40" label="__YES__" />
+      <MyButton label="__YES__" />
       <MyButton label="__NO__" />
       <MyButton label="__CANCEL__" />
       <div>
