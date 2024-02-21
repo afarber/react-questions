@@ -38,7 +38,7 @@ export default function localize(lang) {
     name: "localize-plugin",
     transform(code, id) {
       console.log(lang, id);
-      return code.replace(/__[_A-Z]+__/g, function (match) {
+      return code.replaceAll(/__[_A-Z]+__/g, function (match) {
         return localizedStrings[lang][match] || match;
       });
     },
