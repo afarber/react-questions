@@ -21,9 +21,21 @@ const localizedStrings = {
   },
 };
 
-export default function localize() {
+function replacePlacesholders(src, lang) {
+  return src.replaceAll(/__[A-Z]+__/g, function (match) {
+    return localizedStrings[lang][match] || match;
+  });
+}
+
+export default function localize(isBuildingBundle) {
   return {
     name: "localize-plugin",
+    transform(src, id) {
+      // replace placeholders in .jsx files, when not building the bundle
+      return id.endsWith(".jsx") && !isBuildingBundle
+        ? replacePlacesholders(src, "de")
+        : src;
+    },
     generateBundle(outputOptions, bundle) {
       for (const [fileName, bundleValue] of Object.entries(bundle)) {
         if (!fileName.endsWith("index.js")) {
@@ -32,19 +44,17 @@ export default function localize() {
         const indexJsPath = path.resolve(outputOptions.dir, fileName);
         console.log("\nReplacing placeholders in", indexJsPath);
 
+        // create index-XX.js file for each language, in the same folder as index.js
         for (const lang of Object.keys(localizedStrings)) {
           const indexLangPath = path.resolve(
             outputOptions.dir,
             `index-${lang}.js`
           );
           console.log("Creating localized file", indexLangPath);
-          const replacedContent = bundleValue.code.replaceAll(
-            /__[A-Z]+__/g,
-            function (match) {
-              return localizedStrings[lang][match] || match;
-            }
+          fs.writeFileSync(
+            indexLangPath,
+            replacePlacesholders(bundleValue.code, lang)
           );
-          fs.writeFileSync(indexLangPath, replacedContent);
         }
       }
     },
