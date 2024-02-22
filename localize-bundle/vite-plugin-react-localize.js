@@ -21,31 +21,30 @@ const localizedStrings = {
   },
 };
 
-export default function localize(lang) {
+export default function localize() {
   return {
     name: "localize-plugin",
-    transform(code, id) {
-      //console.log(lang, id);
-      return code.replaceAll(/__[A-Z]+__/g, function (match) {
-        return localizedStrings[lang][match] || match;
-      });
-    },
     generateBundle(outputOptions, bundle) {
-      //console.log("outputOptions", outputOptions);
-      //console.log("bundle", bundle["index.js"].code.length);
+      for (const [fileName, bundleValue] of Object.entries(bundle)) {
+        if (!fileName.endsWith("index.js")) {
+          continue;
+        }
+        const indexJsPath = path.resolve(outputOptions.dir, fileName);
+        console.log("\nReplacing placeholders in", indexJsPath);
 
-      // TODO iterate bundle dictionary instead of using find()
-      const indexJs = Object.keys(bundle).find((fileName) =>
-        fileName.endsWith("index.js")
-      );
-      if (indexJs) {
-        const sourcePath = path.resolve(outputOptions.dir, indexJs);
-        console.log("sourcePath", sourcePath);
-
-        for (const [lang, value] of Object.entries(localizedStrings)) {
-          const destPath = path.resolve(outputOptions.dir, `index-${lang}.js`);
-          console.log("destPath", destPath);
-          // TODO replace placeholders in bundle["index.js"].code
+        for (const lang of Object.keys(localizedStrings)) {
+          const indexLangPath = path.resolve(
+            outputOptions.dir,
+            `index-${lang}.js`
+          );
+          console.log("Creating localized file", indexLangPath);
+          const replacedContent = bundleValue.code.replaceAll(
+            /__[A-Z]+__/g,
+            function (match) {
+              return localizedStrings[lang][match] || match;
+            }
+          );
+          fs.writeFileSync(indexLangPath, replacedContent);
         }
       }
     },
