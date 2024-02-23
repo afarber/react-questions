@@ -15,7 +15,7 @@ import {
   Settings,
 } from "@mui/icons-material";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const drawerLinks1 = [
   { path: "new-game", text: "__NEW_GAME__", icon: <AddCircle /> },

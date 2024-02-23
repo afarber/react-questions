@@ -14,20 +14,22 @@ import {
   SkipNext,
   SwapHoriz,
   SwapVert,
+  VerticalAlignBottom,
 } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
 const drawerActions = [
-  { text: "Full screen", icon: <Fullscreen /> },
-  { text: "Swap", icon: <SwapVert /> },
-  { text: "Skip", icon: <SkipNext /> },
-  { text: "Resign", icon: <Flag /> },
-  { text: "Pile: 79", icon: <Casino /> },
-  { text: "Moves history", icon: <History /> },
-  { text: "Share", icon: <Share /> },
-  { text: "Play", icon: <PlayCircle /> },
-  { text: "Shuffle", icon: <SwapHoriz /> },
+  { text: "__FULL_SCREEN__", icon: <Fullscreen /> },
+  { text: "__SWAP__", icon: <SwapVert /> },
+  { text: "__SKIP__", icon: <SkipNext /> },
+  { text: "__RESIGN__", icon: <Flag /> },
+  { text: "__PILE__: 43", icon: <Casino /> },
+  { text: "__MOVES_HISTORY__", icon: <History /> },
+  { text: "__SHARE__", icon: <Share /> },
+  { text: "__PLAY__", icon: <PlayCircle /> },
+  { text: "__SHUFFLE__", icon: <SwapHoriz /> },
+  { text: "__RECALL__", icon: <VerticalAlignBottom /> },
 ];
 
 export default function MainDrawer() {
