@@ -24,18 +24,19 @@ const drawerLinks1 = [
 ];
 
 const drawerLinks2 = [
-  { path: "words-search", text: "Word search", icon: <Search /> },
-  { path: "letters-2", text: "2 letters", icon: <MenuBook /> },
-  { path: "letters-3", text: "3 letters", icon: <MenuBook /> },
-  { path: "rare-1", text: "Letter Q", icon: <MenuBook /> },
-  { path: "rare-2", text: "Letter Z", icon: <MenuBook /> },
+  { path: "words-search", text: "__WORD_SEARCH__", icon: <Search /> },
+  { path: "letters-2", text: "__TWO_LETTERS__", icon: <MenuBook /> },
+  { path: "letters-3", text: "__THREE_LETTERS__", icon: <MenuBook /> },
+  { path: "rare-1", text: "__RARE_ONE__", icon: <MenuBook /> },
+  { path: "rare-2", text: "__RARE_TWO__", icon: <MenuBook /> },
 ];
 
 const drawerLinks3 = [
-  { path: "settings", text: "Settings", icon: <Settings /> },
-  { path: "help", text: "Help", icon: <Help /> },
-  { path: "privacy-policy", text: "Privacy policy", icon: <Help /> },
-  { path: "terms-of-service", text: "Terms of service", icon: <Help /> },
+  { path: "settings", text: "__SETTINGS__", icon: <Settings /> },
+  { path: "help", text: "__HELP__", icon: <Help /> },
+  { path: "privacy-policy", text: "__PRIVACY_POLICY__", icon: <Help /> },
+  { path: "terms-of-service", text: "__TERMS_OF_SERVICE__", icon: <Help /> },
+  { path: "terms-of-service", text: "__IMPRINT__", icon: <Help /> },
 ];
 
 export default function NavDrawer() {
