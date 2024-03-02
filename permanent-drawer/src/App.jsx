@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import Main from "./pages/Main";
+import WordSearch from "./pages/WordSearch";
 import WordList from "./pages/WordList";
 import User from "./pages/User";
 import Top from "./pages/Top";
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Main />} />
       <Route path="top" element={<Top />} loader={topLoader} />
+      <Route path="words-search" element={<WordSearch />} />
       <Route path="letters-2" element={<WordList />} loader={letters2Loader} />
       <Route path="letters-3" element={<WordList />} loader={letters3Loader} />
       <Route path="rare-1" element={<WordList />} loader={rare1Loader} />
