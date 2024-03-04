@@ -2,15 +2,18 @@
 
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
+import { Box, InputAdornment } from "@mui/material";
+import { ThumbDown, ThumbUp } from "@mui/icons-material";
 
 export default function WordSearch() {
   const [word, setWord] = useState("");
   const [description, setDescription] = useState("");
+  const [found, setFound] = useState(false);
 
   const handleChange = (ev) => {
     ev.preventDefault();
-    const key = ev.target.value;
-    // TODO key = hashWord(ev.target.value.trim());
+    const key = ev.target.value.trim().toUpperCase();
+    // TODO key = hashWord(key);
     console.log(key);
     setWord(key);
 
@@ -20,7 +23,9 @@ export default function WordSearch() {
       return;
     }
 
-    if (!HASHED.hasOwnProperty(key)) {
+    setFound(HASHED.hasOwnProperty(key));
+    // TODO this does not work, use prevState
+    if (!found) {
       setDescription("The word is not found in the game dictionary");
       return;
     }
@@ -30,22 +35,18 @@ export default function WordSearch() {
   };
 
   return (
-    <div>
-      <form>
-        <TextField
-          id="wordInput"
-          label="__ENTER_WORD__"
-          value={word}
-          onChange={handleChange}
-        />
-      </form>
+    <Box component="form" noValidate autoComplete="on">
+      <TextField
+        id="wordInput"
+        label="__ENTER_WORD__"
+        value={word}
+        onChange={handleChange}
+        sx={{ mr: 4 }}
+      />
 
-      <div>
-        <h2>Word:</h2>
-        <p>{word}</p>
-        <h2>Description:</h2>
-        <p>{description}</p>
-      </div>
-    </div>
+      {found ? <ThumbUp color="primary" /> : <ThumbDown color="error" />}
+
+      <div>{description}</div>
+    </Box>
   );
 }
