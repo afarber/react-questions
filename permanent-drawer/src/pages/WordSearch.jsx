@@ -5,9 +5,28 @@ import TextField from "@mui/material/TextField";
 
 export default function WordSearch() {
   const [word, setWord] = useState("");
+  const [description, setDescription] = useState("");
 
-  const handleChange = (e) => {
-    setWord(e.target.value);
+  const handleChange = (ev) => {
+    ev.preventDefault();
+    const key = ev.target.value;
+    // TODO key = hashWord(ev.target.value.trim());
+    console.log(key);
+    setWord(key);
+
+    // TODO set error
+    if (key.length < 2) {
+      setDescription("");
+      return;
+    }
+
+    if (!HASHED.hasOwnProperty(key)) {
+      setDescription("The word is not found in the game dictionary");
+      return;
+    }
+
+    const value = HASHED[key];
+    setDescription(value || "");
   };
 
   return (
@@ -15,7 +34,7 @@ export default function WordSearch() {
       <form>
         <TextField
           id="wordInput"
-          label="Enter a word"
+          label="__ENTER_WORD__"
           value={word}
           onChange={handleChange}
         />
@@ -25,7 +44,7 @@ export default function WordSearch() {
         <h2>Word:</h2>
         <p>{word}</p>
         <h2>Description:</h2>
-        <p>A brief description of the word goes here.</p>
+        <p>{description}</p>
       </div>
     </div>
   );
