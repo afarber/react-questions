@@ -26,21 +26,18 @@ export default function App() {
     const key = ev.target.value.trim().toUpperCase();
     setWord(key);
 
-    // TODO set error
     if (key.length < 2) {
       setDescription("");
       return;
     }
 
     setFound(DICT.hasOwnProperty(key));
-    // TODO this does not work, use prevState
     if (!found) {
       setDescription("The word is not found in the dictionary");
       return;
     }
 
-    const value = DICT[key];
-    setDescription(value || "");
+    setDescription(DICT[key] || "");
   };
 
   return (
