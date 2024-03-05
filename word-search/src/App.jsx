@@ -5,6 +5,17 @@ import TextField from "@mui/material/TextField";
 import { Box, InputAdornment } from "@mui/material";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
 
+const DICT = {
+  AA: "Rough, cindery lava",
+  AB: "An abdominal muscle",
+  ABS: "Abdominal muscles",
+  ABSQUATULATE: "",
+  ABSQUATULATED: "",
+  ABSQUATULATES: "",
+  ABSQUATULATING: "",
+  ABY: "Pay the penalty",
+};
+
 export default function App() {
   const [word, setWord] = useState("");
   const [description, setDescription] = useState("");
@@ -13,8 +24,6 @@ export default function App() {
   const handleChange = (ev) => {
     ev.preventDefault();
     const key = ev.target.value.trim().toUpperCase();
-    // TODO key = hashWord(key);
-    console.log(key);
     setWord(key);
 
     // TODO set error
@@ -23,14 +32,14 @@ export default function App() {
       return;
     }
 
-    setFound(HASHED.hasOwnProperty(key));
+    setFound(DICT.hasOwnProperty(key));
     // TODO this does not work, use prevState
     if (!found) {
-      setDescription("The word is not found in the game dictionary");
+      setDescription("The word is not found in the dictionary");
       return;
     }
 
-    const value = HASHED[key];
+    const value = DICT[key];
     setDescription(value || "");
   };
 
