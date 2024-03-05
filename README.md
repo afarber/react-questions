@@ -54,5 +54,9 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/top-table/screenshot.png)
 
+[word-search](https://github.com/afarber/react-questions/tree/master/word-search) search for a word using MUI TextField:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/word-search/screenshot.gif)
+
 [My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[react])
 

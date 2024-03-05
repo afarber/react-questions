@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+span.tile {
+  color: #000;
+  background-color: #fc0;
+  border-bottom: 1px solid #3e6d8e;
+  border-right: 1px solid #7f9fb6;
+  padding: 4px 8px 4px 8px;
+  margin: 2px 2px 2px 0;
+  text-decoration: none;
+  line-height: 1.8;
+  white-space: nowrap;
+}

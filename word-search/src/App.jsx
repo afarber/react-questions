@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import { Box, InputAdornment } from "@mui/material";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
 
-export default function WordSearch() {
+export default function App() {
   const [word, setWord] = useState("");
   const [description, setDescription] = useState("");
   const [found, setFound] = useState(false);
@@ -38,16 +38,16 @@ export default function WordSearch() {
     <Box component="form" noValidate autoComplete="on">
       <TextField
         id="wordInput"
-        label="__ENTER_WORD__"
+        label="Enter a word"
         value={word}
         onChange={handleChange}
       />
 
-      <div>
+      <Box sx={{ p: 2 }}>
         {found ? <ThumbUp color="primary" /> : <ThumbDown color="error" />}
-      </div>
+      </Box>
 
-      <div>{description}</div>
+      <Box>{description}</Box>
     </Box>
   );
 }
