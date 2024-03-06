@@ -27,7 +27,7 @@ export default function App() {
       setFound(false);
       setDescription("");
     } else {
-      setFound(DICT.hasOwnProperty(word));
+      setFound(Object.prototype.hasOwnProperty.call(DICT, word));
       setDescription(DICT[word] || "The word is not found in the dictionary");
     }
   }, [word]);
