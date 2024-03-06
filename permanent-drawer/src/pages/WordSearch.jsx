@@ -14,24 +14,18 @@ export default function WordSearch() {
     ev.preventDefault();
     const key = ev.target.value.trim().toUpperCase();
     // TODO key = hashWord(key);
-    console.log(key);
     setWord(key);
 
-    // TODO set error
+    // use the key and not word below, because the latter is updated async
     if (key.length < 2) {
+      setFound(false);
       setDescription("");
-      return;
+    } else {
+      setFound(Object.prototype.hasOwnProperty.call(HASHED, key));
+      setDescription(
+        HASHED[key] || "The word is not found in the game dictionary"
+      );
     }
-
-    setFound(HASHED.hasOwnProperty(key));
-    // TODO this does not work, use prevState
-    if (!found) {
-      setDescription("The word is not found in the game dictionary");
-      return;
-    }
-
-    const value = HASHED[key];
-    setDescription(value || "");
   };
 
   return (
@@ -43,11 +37,11 @@ export default function WordSearch() {
         onChange={handleChange}
       />
 
-      <div>
+      <Box sx={{ p: 2 }}>
         {found ? <ThumbUp color="primary" /> : <ThumbDown color="error" />}
-      </div>
+      </Box>
 
-      <div>{description}</div>
+      <Box>{description}</Box>
     </Box>
   );
 }
