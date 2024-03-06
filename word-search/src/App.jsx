@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import { Box, InputAdornment } from "@mui/material";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
