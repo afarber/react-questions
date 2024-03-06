@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import { Box, InputAdornment } from "@mui/material";
 import { ThumbDown, ThumbUp } from "@mui/icons-material";
@@ -21,21 +21,19 @@ export default function App() {
   const [description, setDescription] = useState("");
   const [found, setFound] = useState(false);
 
-  // Whenever 'word' changes, update 'description' and 'found' accordingly
-  useEffect(() => {
-    if (word.length < 2) {
-      setFound(false);
-      setDescription("");
-    } else {
-      setFound(Object.prototype.hasOwnProperty.call(DICT, word));
-      setDescription(DICT[word] || "The word is not found in the dictionary");
-    }
-  }, [word]);
-
   const handleChange = (ev) => {
     ev.preventDefault();
     const key = ev.target.value.trim().toUpperCase();
     setWord(key);
+
+    // use the key and not word below, because the latter is updated async
+    if (key.length < 2) {
+      setFound(false);
+      setDescription("");
+    } else {
+      setFound(Object.prototype.hasOwnProperty.call(DICT, key));
+      setDescription(DICT[key] || "The word is not found in the dictionary");
+    }
   };
 
   return (
