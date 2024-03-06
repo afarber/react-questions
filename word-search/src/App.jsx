@@ -21,23 +21,21 @@ export default function App() {
   const [description, setDescription] = useState("");
   const [found, setFound] = useState(false);
 
+  // Whenever 'word' changes, update 'description' and 'found' accordingly
+  useEffect(() => {
+    if (word.length < 2) {
+      setFound(false);
+      setDescription("");
+    } else {
+      setFound(DICT.hasOwnProperty(word));
+      setDescription(DICT[word] || "The word is not found in the dictionary");
+    }
+  }, [word]);
+
   const handleChange = (ev) => {
     ev.preventDefault();
     const key = ev.target.value.trim().toUpperCase();
     setWord(key);
-
-    if (key.length < 2) {
-      setDescription("");
-      return;
-    }
-
-    setFound(DICT.hasOwnProperty(key));
-    if (!found) {
-      setDescription("The word is not found in the dictionary");
-      return;
-    }
-
-    setDescription(DICT[key] || "");
   };
 
   return (
