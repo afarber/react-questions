@@ -1,7 +1,7 @@
-# Creating the permanent-drawer app
+# Creating the word-search app
 
     npm create vite@latest
-    cd permanent-drawer
+    cd word-search
     npm install
-    npm install @mui/material @mui/icons-material @emotion/react @emotion/styled @mui/x-data-grid @mui/x-charts react-router react-router-dom
+    npm install @mui/material @mui/icons-material @emotion/react @emotion/styled
     npm run dev
