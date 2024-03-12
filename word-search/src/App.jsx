@@ -17,14 +17,12 @@ const DICT = {
 };
 
 export default function App() {
-  const [word, setWord] = useState("");
-  const [description, setDescription] = useState("");
   const [found, setFound] = useState(false);
+  const [description, setDescription] = useState("");
 
   const handleChange = (ev) => {
     ev.preventDefault();
     const key = ev.target.value.trim().toUpperCase();
-    setWord(key);
 
     // use the key and not word below, because the latter is updated async
     if (key.length < 2) {
@@ -37,13 +35,8 @@ export default function App() {
   };
 
   return (
-    <Box component="form" noValidate autoComplete="on">
-      <TextField
-        id="wordInput"
-        label="Enter a word"
-        value={word}
-        onChange={handleChange}
-      />
+    <Box component="form" noValidate autoComplete="off">
+      <TextField id="wordInput" label="Enter a word" onChange={handleChange} />
 
       <Box sx={{ p: 2 }}>
         {found ? <ThumbUp color="primary" /> : <ThumbDown color="error" />}
