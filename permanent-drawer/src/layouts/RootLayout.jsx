@@ -15,14 +15,13 @@ export default function RootLayout() {
         }}
       >
         <Toolbar>
-          <Typography variant="p" noWrap component="div">
+          <Typography variant="p" noWrap>
             Permanent drawer
           </Typography>
         </Toolbar>
       </AppBar>
 
       <NavDrawer />
-      <Toolbar />
       <Outlet />
     </Box>
   );
