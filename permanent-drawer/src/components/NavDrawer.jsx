@@ -9,6 +9,7 @@ import {
   AddCircle,
   BarChart,
   EmojiEvents,
+  Extension,
   Help,
   MenuBook,
   Search,
@@ -20,7 +21,8 @@ const drawerWidth = 260;
 const drawerLinks1 = [
   { path: "new-game", text: "__NEW_GAME__", icon: <AddCircle /> },
   { path: "stats", text: "__STATS__", icon: <BarChart /> },
-  { path: "top", text: "__RATING__", icon: <EmojiEvents /> },
+  { path: "top", text: "__TOP__", icon: <EmojiEvents /> },
+  { path: "puzzle", text: "__PUZZLE__", icon: <Extension /> },
 ];
 
 const drawerLinks2 = [
