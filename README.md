@@ -14,6 +14,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/localize-bundle/screenshot.png)
 
+[bottom-drawer](https://github.com/afarber/react-questions/tree/master/bottom-drawer) display a bottom drawer:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/bottom-drawer/screenshot.png)
+
 [permanent-drawer](https://github.com/afarber/react-questions/tree/master/permanent-drawer) display a permanent drawer on the left side:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/permanent-drawer/screenshot.png)

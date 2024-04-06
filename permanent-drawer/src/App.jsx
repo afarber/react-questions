@@ -4,6 +4,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
+import React from "react";
 import RootLayout from "./layouts/RootLayout";
 import Main from "./pages/Main";
 import WordSearch from "./pages/WordSearch";
@@ -42,5 +43,21 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
+  const [login, setLogin] = React.useState({
+    action: "login",
+    gid: 0,
+    users: [
+      {
+        social: 0,
+        sid: null,
+        auth: null,
+        given: null,
+        family: null,
+        photo: null,
+        stamp: 0,
+      },
+    ],
+  });
+
   return <RouterProvider router={router} />;
 }
