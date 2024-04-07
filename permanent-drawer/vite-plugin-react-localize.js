@@ -5,10 +5,15 @@ import path from "path";
 
 const localizedStrings = {
   en: {
+    __NEW_GAME__: "New game",
+    __SELECT_BOARD__: "Select the game board",
+    __WINTER__: "Winter",
+    __SPRING__: "Spring",
+    __SUMMER__: "Summer",
+    __AUTUMN__: "Autumn",
     __YES__: "Yes",
     __NO__: "No",
     __CANCEL__: "Cancel",
-    __NEW_GAME__: "New game",
     __STATS__: "Statistics",
     __TOP__: "Rating",
     __PUZZLE__: "Daily puzzle",
@@ -35,10 +40,15 @@ const localizedStrings = {
     __RECALL__: "Recall",
   },
   de: {
+    __NEW_GAME__: "Neues Spiel",
+    __SELECT_BOARD__: "Wählen Sie das Spielbrett",
+    __WINTER__: "Winter",
+    __SPRING__: "Frühling",
+    __SUMMER__: "Sommer",
+    __AUTUMN__: "Herbst",
     __YES__: "Ja",
     __NO__: "Nein",
     __CANCEL__: "Abbrechen",
-    __NEW_GAME__: "Neues Spiel",
     __STATS__: "Statistik",
     __TOP__: "Top",
     __PUZZLE__: "Tägliches Rätsel",
@@ -65,10 +75,15 @@ const localizedStrings = {
     __RECALL__: "Zurück",
   },
   fr: {
+    __NEW_GAME__: "Nouveau jeu",
+    __SELECT_BOARD__: "Sélectionnez le plateau de jeu",
+    __WINTER__: "Hiver",
+    __SPRING__: "Printemps",
+    __SUMMER__: "Été",
+    __AUTUMN__: "Automne",
     __YES__: "Oui",
     __NO__: "Non",
     __CANCEL__: "Annuler",
-    __NEW_GAME__: "Nouveau jeu",
     __STATS__: "Statistiques",
     __TOP__: "Évaluation",
     __PUZZLE__: "Puzzle quotidien",
@@ -95,10 +110,15 @@ const localizedStrings = {
     __RECALL__: "Rappel",
   },
   nl: {
+    __NEW_GAME__: "Nieuw spel",
+    __SELECT_BOARD__: "Selecteer het spelbord",
+    __WINTER__: "Winter",
+    __SPRING__: "Lente",
+    __SUMMER__: "Zomer",
+    __AUTUMN__: "Herfst",
     __YES__: "Ja",
     __NO__: "Nee",
     __CANCEL__: "Annuleren",
-    __NEW_GAME__: "Nieuw spel",
     __STATS__: "Statistieken",
     __TOP__: "Beoordeling",
     __PUZZLE__: "Dagelijkse puzzel",
@@ -125,10 +145,15 @@ const localizedStrings = {
     __RECALL__: "Herinneren",
   },
   pl: {
+    __NEW_GAME__: "Nowa gra",
+    __SELECT_BOARD__: "Wybierz planszę do gry",
+    __WINTER__: "Zima",
+    __SPRING__: "Wiosna",
+    __SUMMER__: "Lato",
+    __AUTUMN__: "Jesień",
     __YES__: "Tak",
     __NO__: "Nie",
     __CANCEL__: "Anuluj",
-    __NEW_GAME__: "Nowa gra",
     __STATS__: "Statystyki",
     __TOP__: "Ocena",
     __PUZZLE__: "Puzzle codziennie",
@@ -155,10 +180,15 @@ const localizedStrings = {
     __RECALL__: "Przypomnieć",
   },
   ru: {
+    __NEW_GAME__: "Новая игра",
+    __SELECT_BOARD__: "Выберите игровую доску",
+    __WINTER__: "Зима",
+    __SPRING__: "Весна",
+    __SUMMER__: "Лето",
+    __AUTUMN__: "Осень",
     __YES__: "Да",
     __NO__: "Нет",
     __CANCEL__: "Отмена",
-    __NEW_GAME__: "Новая игра",
     __STATS__: "Статистика",
     __TOP__: "Рейтинг",
     __PUZZLE__: "Загадка дня",
@@ -187,6 +217,7 @@ const localizedStrings = {
 };
 
 function replacePlacesholders(src, lang) {
+  // replace all letters and underscores surrounded by 2 underscores
   return src.replaceAll(/__[A-Z_]+?__/g, function (match) {
     return localizedStrings[lang][match] || match;
   });

@@ -5,42 +5,48 @@ import path from "path";
 
 const localizedStrings = {
   en: {
-    __SELECT_BOARD__: "Select the new game board",
+    __NEW_GAME__: "New game",
+    __SELECT_BOARD__: "Select the game board",
     __WINTER__: "Winter",
     __SPRING__: "Spring",
     __SUMMER__: "Summer",
     __AUTUMN__: "Autumn",
   },
   de: {
-    __SELECT_BOARD__: "Wählen Sie das neue Spielbrett",
+    __NEW_GAME__: "Neues Spiel",
+    __SELECT_BOARD__: "Wählen Sie das Spielbrett",
     __WINTER__: "Winter",
     __SPRING__: "Frühling",
     __SUMMER__: "Sommer",
     __AUTUMN__: "Herbst",
   },
   fr: {
-    __SELECT_BOARD__: "Sélectionnez le nouveau plateau de jeu",
+    __NEW_GAME__: "Nouveau jeu",
+    __SELECT_BOARD__: "Sélectionnez le plateau de jeu",
     __WINTER__: "Hiver",
     __SPRING__: "Printemps",
     __SUMMER__: "Été",
     __AUTUMN__: "Automne",
   },
   nl: {
-    __SELECT_BOARD__: "Selecteer het nieuwe spelbord",
+    __NEW_GAME__: "Nieuw spel",
+    __SELECT_BOARD__: "Selecteer het spelbord",
     __WINTER__: "Winter",
     __SPRING__: "Lente",
     __SUMMER__: "Zomer",
     __AUTUMN__: "Herfst",
   },
   pl: {
-    __SELECT_BOARD__: "Wybierz nową planszę do gry",
+    __NEW_GAME__: "Nowa gra",
+    __SELECT_BOARD__: "Wybierz planszę do gry",
     __WINTER__: "Zima",
     __SPRING__: "Wiosna",
     __SUMMER__: "Lato",
     __AUTUMN__: "Jesień",
   },
   ru: {
-    __SELECT_BOARD__: "Выберите новую игровую доску",
+    __NEW_GAME__: "Новая игра",
+    __SELECT_BOARD__: "Выберите игровую доску",
     __WINTER__: "Зима",
     __SPRING__: "Весна",
     __SUMMER__: "Лето",
@@ -49,7 +55,8 @@ const localizedStrings = {
 };
 
 function replacePlacesholders(src, lang) {
-  return src.replaceAll(/__[A-Z]+__/g, function (match) {
+  // replace all letters and underscores surrounded by 2 underscores
+  return src.replaceAll(/__[A-Z_]+?__/g, function (match) {
     return localizedStrings[lang][match] || match;
   });
 }

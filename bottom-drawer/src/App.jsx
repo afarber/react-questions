@@ -55,7 +55,7 @@ export default function App() {
 
   return (
     <>
-      <Button onClick={toggleDrawer(true)}>New game</Button>
+      <Button onClick={toggleDrawer(true)}>__NEW_GAME__</Button>
       <Drawer anchor="bottom" open={drawerOpen} onClose={toggleDrawer(false)}>
         {createDrawerList()}
       </Drawer>
