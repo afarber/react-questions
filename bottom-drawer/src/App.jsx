@@ -9,6 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Typography from "@mui/material/Typography";
 import { ThumbUp, ThumbDown } from "@mui/icons-material";
 
 const BOARD_IDS = ["Winter", "Spring", "Summer", "Autumn"];
@@ -29,11 +30,14 @@ export default function App() {
 
   const createDrawerList = () => (
     <Box
-      sx={{ width: "auto" }}
+      sx={{ width: "auto", p: 3 }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
+      <Typography variant="p" gutterBottom>
+        Select game board:
+      </Typography>
       <List>
         {BOARD_IDS.map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -51,7 +55,7 @@ export default function App() {
 
   return (
     <>
-      <Button onClick={toggleDrawer(true)}>Open the bottom drawer</Button>
+      <Button onClick={toggleDrawer(true)}>New game</Button>
       <Drawer anchor="bottom" open={drawerOpen} onClose={toggleDrawer(false)}>
         {createDrawerList()}
       </Drawer>
