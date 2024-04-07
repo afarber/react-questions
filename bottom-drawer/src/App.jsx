@@ -10,9 +10,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
-import { ThumbUp, ThumbDown } from "@mui/icons-material";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-const BOARD_IDS = ["Winter", "Spring", "Summer", "Autumn"];
+const BOARD_NAMES = ["Winter", "Spring", "Summer", "Autumn"];
 
 export default function App() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -30,20 +30,20 @@ export default function App() {
 
   const createDrawerList = () => (
     <Box
-      sx={{ width: "auto", p: 3 }}
+      sx={{ width: "auto", p: 4 }}
       role="presentation"
       onClick={toggleDrawer(false)}
       onKeyDown={toggleDrawer(false)}
     >
       <Typography variant="p" gutterBottom>
-        Select game board:
+        Select new game board:
       </Typography>
       <List>
-        {BOARD_IDS.map((text, index) => (
+        {BOARD_NAMES.map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => console.log(index, text)}>
               <ListItemIcon>
-                {index % 2 === 0 ? <ThumbUp /> : <ThumbDown />}
+                <AddCircleOutlineIcon />
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
