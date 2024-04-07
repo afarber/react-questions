@@ -12,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
-const BOARD_NAMES = ["Winter", "Spring", "Summer", "Autumn"];
+const BOARD_NAMES = ["__WINTER__", "__SPRING__", "__SUMMER__", "__AUTUMN__"];
 
 export default function App() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -36,7 +36,7 @@ export default function App() {
       onKeyDown={toggleDrawer(false)}
     >
       <Typography variant="p" gutterBottom>
-        Select new game board:
+        __SELECT_BOARD__:
       </Typography>
       <List>
         {BOARD_NAMES.map((text, index) => (
