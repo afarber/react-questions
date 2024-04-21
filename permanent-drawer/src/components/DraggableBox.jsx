@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import { Texture } from "pixi.js-legacy";
 import { Sprite } from "@pixi/react";
 import React from "react";
 

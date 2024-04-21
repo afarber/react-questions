@@ -1,21 +1,20 @@
 "use client";
 
-import { Point } from "pixi.js-legacy";
-import { Stage, Container, useApp } from "@pixi/react";
-import { DraggableBox } from "../components/DraggableBox";
+import { Application, Point, Sprite, Texture } from "pixi.js-legacy";
+//import { DraggableBox } from "../components/DraggableBox";
+import { useEffect, useRef } from "react";
 
-const width = 800;
-const height = 500;
-const backgroundColor = 0x8d9dad;
+const app = new Application({
+  width: 800,
+  height: 600,
+  backgroundColor: 0x5bba6f,
+});
 
 // the relative offset point of the click on the tile
 let grabPoint = new Point();
 let draggedTile;
 
-export default function Main() {
-  // app -> PIXI.Application
-  const app = useApp();
-
+export default function PixiApp() {
   function onDragStart(event) {
     draggedTile = event.target;
     draggedTile.toLocal(event.global, null, grabPoint);
@@ -47,34 +46,29 @@ export default function Main() {
     draggedTile = null;
   }
 
-  return (
-    <Stage width={width} height={height} options={{ backgroundColor }}>
-      <Container sortableChildren={true}>
-        <DraggableBox
-          tint={0xff00ff}
-          onDragStart={onDragStart}
-          onDragMove={onDragStart}
-          onDragEnd={onDragEnd}
-          x={20}
-          y={20}
-        />
-        <DraggableBox
-          tint={0x00ffff}
-          onDragStart={onDragStart}
-          onDragMove={onDragStart}
-          onDragEnd={onDragEnd}
-          x={140}
-          y={20}
-        />
-        <DraggableBox
-          tint={0x00ff00}
-          onDragStart={onDragStart}
-          onDragMove={onDragStart}
-          onDragEnd={onDragEnd}
-          x={280}
-          y={20}
-        />
-      </Container>
-    </Stage>
-  );
+  const ref = useRef();
+
+  useEffect(() => {
+    // On first render add app to DOM
+    ref.current.appendChild(app.view);
+    // Start the PixiJS app
+    app.start();
+
+    const texture = Texture.from("https://pixijs.com/assets/bunny.png");
+    const bunny = new Sprite(texture);
+    bunny.anchor.set(0.5);
+    bunny.x = 50;
+    bunny.y = 70;
+    bunny.width = 100;
+    bunny.height = 100;
+
+    app.stage.addChild(bunny);
+
+    return () => {
+      // On unload stop the application
+      app.stop();
+    };
+  }, []);
+
+  return <div ref={ref} />;
 }

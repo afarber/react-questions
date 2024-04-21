@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import React from "react";
 import RootLayout from "./layouts/RootLayout";
-import Main from "./pages/Main";
+import PixiApp from "./pages/PixiApp";
 import WordSearch from "./pages/WordSearch";
 import WordList from "./pages/WordList";
 import User from "./pages/User";
@@ -25,7 +25,7 @@ import { rare2Loader } from "./loaders/Rare2Loader";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Main />} />
+      <Route index element={<PixiApp />} />
       <Route path="top" element={<Top />} loader={topLoader} />
       <Route path="words-search" element={<WordSearch />} />
       <Route path="letters-2" element={<WordList />} loader={letters2Loader} />
@@ -37,7 +37,7 @@ const router = createBrowserRouter(
       <Route path="help" element={<Help />} />
       <Route path="privacy-policy" element={<Privacy />} />
       <Route path="terms-of-service" element={<Tos />} />
-      <Route path="*" element={<Main />} />
+      <Route path="*" element={<PixiApp />} />
     </Route>
   )
 );
