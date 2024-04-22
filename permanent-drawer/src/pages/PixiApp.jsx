@@ -9,22 +9,35 @@ const app = new Application({
   autoResize: true,
 });
 
-const rectBlue = new Graphics().beginFill(0x0000ff).drawRect(0, 0, 200, 100);
 const rectRed = new Graphics()
   .beginFill(0xff0000)
   .drawRect(-200, -100, 200, 100);
+const rectGreen = new Graphics()
+  .beginFill(0x00ff00)
+  .drawRect(0, -100, 200, 100);
+const rectBlue = new Graphics().beginFill(0x0000ff).drawRect(-200, 0, 200, 100);
 
 function resize() {
+  console.log(
+    "resize window:",
+    window.innerWidth,
+    window.innerHeight,
+    "app.screen:",
+    app.screen.width,
+    app.screen.height
+  );
   // Resize the renderer
   app.renderer.resize(window.innerWidth - 260, window.innerHeight);
   // You can use the 'screen' property as the renderer visible
   // area, this is more useful than view.width/height because
   // it handles resolution
-  rectBlue.position.set(0, 0);
   rectRed.position.set(app.screen.width, app.screen.height);
+  rectGreen.position.set(0, app.screen.height);
+  rectBlue.position.set(app.screen.width, 0);
 }
 
 export default function PixiApp() {
+  const canvasParent = useRef();
   // the relative offset point of the click on the tile
   let grabPoint = new Point();
   let draggedTile;
@@ -60,17 +73,17 @@ export default function PixiApp() {
     draggedTile = null;
   }
 
-  const ref = useRef();
-
   useEffect(() => {
+    console.log("useEffect mount");
     // On first render add app to DOM
-    ref.current.appendChild(app.view);
+    canvasParent.current.appendChild(app.view);
 
     // Start the PixiJS app
     app.start();
 
-    app.stage.addChild(rectBlue);
     app.stage.addChild(rectRed);
+    app.stage.addChild(rectGreen);
+    app.stage.addChild(rectBlue);
 
     const texture = Texture.from("https://pixijs.com/assets/bunny.png");
     const bunny = new Sprite(texture);
@@ -86,10 +99,11 @@ export default function PixiApp() {
     resize();
 
     return () => {
+      console.log("useEffect unmount");
       // On unload stop the application
       app.stop();
     };
   }, []);
 
-  return <div ref={ref} style={{ background: "#f0f" }} />;
+  return <div ref={canvasParent} id="canvasParent" />;
 }
