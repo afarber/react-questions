@@ -34,6 +34,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/react-admin/screenshot.png)
 
+[responsive-master-detail](https://github.com/afarber/react-questions/tree/master/responsive-master-detail) display details on larger screens:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-master-detail/screenshot.png)
+
 [responsive-mui](https://github.com/afarber/react-questions/tree/master/responsive-mui) based on the tutorial [Material UI 5 (MUI) React Tutorial | MUI Responsive Real Project](https://youtu.be/fzxEECHnsvU):
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-mui/screenshot.png)
