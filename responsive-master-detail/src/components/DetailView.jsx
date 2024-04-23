@@ -1,12 +1,13 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const DetailView = () => {
-  const selectedItem = "Item 1"; // Assume this is the selected item
+  const { id } = useParams();
 
   return (
     <div>
       <h2>Detail View</h2>
-      <p>Selected Item: {selectedItem}</p>
+      <p>Selected Page: {id}</p>
     </div>
   );
 };

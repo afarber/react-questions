@@ -13,7 +13,9 @@ const MasterList = () => {
       <h2>Master List</h2>
       <ul>
         {pages.map((page) => (
-          <li key={page.id}>{page.title}</li>
+          <li key={page.id}>
+            <Link to="/page/${page.id}">{page.title}</Link>
+          </li>
         ))}
       </ul>
       <Outlet />
