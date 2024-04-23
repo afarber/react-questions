@@ -34,7 +34,7 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/react-admin/screenshot.png)
 
-[responsive-master-detail](https://github.com/afarber/react-questions/tree/master/responsive-master-detail) display details on larger screens:
+[responsive-master-detail](https://github.com/afarber/react-questions/tree/master/responsive-master-detail) asked at Stackoverflow [How to create a responsive master detail app using React Router?](https://stackoverflow.com/q/78372543/165071)
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-master-detail/screenshot.gif)
 
