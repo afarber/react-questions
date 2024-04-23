@@ -9,8 +9,8 @@ const MasterList = () => {
   ];
 
   return (
-    <div>
-      <h2>Master List</h2>
+    <div style={{ background: "lightblue", margin: "4px" }}>
+      <h3>Master List</h3>
       <nav>
         <ul>
           {pages.map((page) => (

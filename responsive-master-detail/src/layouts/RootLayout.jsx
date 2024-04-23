@@ -12,11 +12,16 @@ export default function RootLayout() {
       style={{
         display: "flex",
         justifyContent: "space-around",
-        alignItems: "center",
+        alignItems: "flex-start",
       }}
     >
       <MasterList />
-      {!isSmallScreen && <Outlet />}
+      {!isSmallScreen && (
+        <div>
+          <h3>Detail</h3>
+          <Outlet />
+        </div>
+      )}
     </div>
   );
 }
