@@ -1,11 +1,19 @@
 "use client";
 
-import { Outlet } from "react-router";
+import { Outlet, useMatch } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function SmallLayout() {
+  const isHome = useMatch("/");
+
   return (
     <div style={{ textAlign: "center" }}>
-      <h3>Detail</h3>
+      {!isHome && (
+        <>
+          <Link to="/">Back to home</Link>
+          <h3>Detail</h3>
+        </>
+      )}
       <Outlet />
     </div>
   );
