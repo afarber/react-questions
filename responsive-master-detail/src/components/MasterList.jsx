@@ -9,7 +9,7 @@ const MasterList = () => {
   ];
 
   return (
-    <div style={{ background: "lightblue", margin: "4px" }}>
+    <div style={{ background: "lightblue" }}>
       <h3>Master List</h3>
       <nav>
         <ul>
