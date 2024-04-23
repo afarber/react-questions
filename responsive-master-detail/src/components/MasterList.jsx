@@ -1,16 +1,22 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 const MasterList = () => {
-  const items = ["Item 1", "Item 2", "Item 3"];
+  const pages = [
+    { id: 1, title: "Page 1" },
+    { id: 2, title: "Page 2" },
+    { id: 3, title: "Page 3" },
+  ];
 
   return (
     <div>
       <h2>Master List</h2>
       <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
+        {pages.map((page) => (
+          <li key={page.id}>{page.title}</li>
         ))}
       </ul>
+      <Outlet />
     </div>
   );
 };
