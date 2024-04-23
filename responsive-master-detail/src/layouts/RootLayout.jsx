@@ -8,7 +8,13 @@ export default function RootLayout() {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+      }}
+    >
       <MasterList />
       {!isSmallScreen && <Outlet />}
     </div>
