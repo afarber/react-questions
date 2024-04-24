@@ -26,7 +26,7 @@ const App = () => {
             <Route
               index
               element={
-                isSmallScreen ? <MasterList /> : <div>Select a link!</div>
+                isSmallScreen ? <MasterList /> : <div>Select a game!</div>
               }
             />
             <Route path="game/:pixiBunnies" element={<DetailView />} />
