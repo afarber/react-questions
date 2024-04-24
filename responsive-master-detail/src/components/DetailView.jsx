@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 const DetailView = () => {
   const { pageId } = useParams();
 
-  console.log(pageId);
+  console.log("pageId", pageId);
 
   return (
     <div>
