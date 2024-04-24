@@ -15,7 +15,7 @@ import MasterList from "./components/MasterList";
 import { useMediaQuery } from "@react-hook/media-query";
 
 const App = () => {
-  const isSmallScreen = useMediaQuery("(max-width: 600px)");
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const router = React.useMemo(
     () =>

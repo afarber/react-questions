@@ -1,5 +1,7 @@
+/* a more general solution might be to use "*" here: */
 html,
-body {
+body,
+h3 {
   margin: 0;
   padding: 0;
   overflow: hidden;
