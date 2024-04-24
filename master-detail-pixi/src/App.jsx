@@ -29,7 +29,7 @@ const App = () => {
                 isSmallScreen ? <MasterList /> : <div>Select a link!</div>
               }
             />
-            <Route path="page/:pageId" element={<DetailView />} />
+            <Route path="game/:pixiBunnies" element={<DetailView />} />
           </Route>
         )
       ),

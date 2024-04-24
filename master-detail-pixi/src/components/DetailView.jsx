@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
 
 const DetailView = () => {
-  const { pageId } = useParams();
+  const { pixiBunnies } = useParams();
 
   return (
     <div style={{ background: "lightyellow" }}>
-      <h3>Detail View</h3>
-      <p>Selected Page: {pageId}</p>
+      <p>Show game with so many bunnies: {pixiBunnies}</p>
     </div>
   );
 };

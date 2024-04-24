@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
 const MasterList = () => {
-  const pages = [
-    { id: 1, title: "Page 1" },
-    { id: 2, title: "Page 2" },
-    { id: 3, title: "Page 3" },
-    { id: 4, title: "Page 4" },
+  const games = [
+    { id: 1, title: "Game 1" },
+    { id: 2, title: "Game 2" },
+    { id: 3, title: "Game 3" },
+    { id: 4, title: "Game 4" },
   ];
 
   return (
@@ -13,9 +13,9 @@ const MasterList = () => {
       <h3>Master List</h3>
       <nav>
         <ul>
-          {pages.map((page) => (
-            <li key={page.id}>
-              <NavLink to={"/page/" + page.id}>{page.title}</NavLink>
+          {games.map((game) => (
+            <li key={game.id}>
+              <NavLink to={"/game/" + game.id}>{game.title}</NavLink>
             </li>
           ))}
         </ul>
