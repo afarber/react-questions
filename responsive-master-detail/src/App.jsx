@@ -24,13 +24,7 @@ const App = () => {
             element={isSmallScreen ? <SmallLayout /> : <LargeLayout />}
           >
             {isSmallScreen && <Route index element={<MasterList />} />}
-            <Route
-              path="page:pageId"
-              element={({ params }) => (
-                <DetailView pageId={parseInt(params.pageId)} />
-              )}
-            />
-            <Route path="*" element={<DetailView pageId={4} />} />
+            <Route path="page/:pageId" element={<DetailView />} />
           </Route>
         )
       ),
