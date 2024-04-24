@@ -1,15 +1,13 @@
 /* a more general solution might be to use "*" here: */
 html,
 body,
-h3 {
+h3,
+ul {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  text-align: center;
 }
 
 nav > ul {
-  text-align: center;
   list-style-type: none;
-  padding: 0;
-  margin: 0;
 }

@@ -4,10 +4,10 @@ const DetailView = () => {
   const { pageId } = useParams();
 
   return (
-    <div>
-      <h2>Detail View</h2>
+    <>
+      <h3>Detail View</h3>
       <p>Selected Page: {pageId}</p>
-    </div>
+    </>
   );
 };
 

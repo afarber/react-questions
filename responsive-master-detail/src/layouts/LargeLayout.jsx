@@ -13,7 +13,7 @@ export default function LargeLayout() {
       }}
     >
       <MasterList />
-      <div style={{ flexGrow: 1, textAlign: "center" }}>
+      <div style={{ flexGrow: 1 }}>
         <Outlet />
       </div>
     </div>
