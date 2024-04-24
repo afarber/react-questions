@@ -1,0 +1,13 @@
+/* a more general solution might be to use "*" here: */
+html,
+body,
+h3,
+ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav a.active {
+  color: red;
+}

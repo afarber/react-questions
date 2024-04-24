@@ -38,6 +38,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-master-detail/screenshot.gif)
 
+[master-detail-pixi](https://github.com/afarber/react-questions/tree/master/master-detail-pixi) same as above, but with PixiJS bunnies:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/master-detail-pixi/screenshot.png)
+
 [responsive-mui](https://github.com/afarber/react-questions/tree/master/responsive-mui) based on the tutorial [Material UI 5 (MUI) React Tutorial | MUI Responsive Real Project](https://youtu.be/fzxEECHnsvU):
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-mui/screenshot.png)
