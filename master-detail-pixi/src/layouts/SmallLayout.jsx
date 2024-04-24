@@ -11,7 +11,7 @@ export default function SmallLayout() {
       <Outlet />
       {!isHome && (
         <div>
-          <Link to="/">Back to Master List</Link>
+          <Link to="/">Back to Games List</Link>
         </div>
       )}
     </>

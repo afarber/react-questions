@@ -10,7 +10,7 @@ const MasterList = () => {
 
   return (
     <div style={{ background: "lightblue" }}>
-      <h3>Master List</h3>
+      <h3>Select a game!</h3>
       <nav>
         <ul>
           {games.map((game) => (

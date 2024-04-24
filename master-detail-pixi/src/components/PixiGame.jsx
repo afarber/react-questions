@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-const DetailView = () => {
+const PixiGame = () => {
   const { pixiBunnies } = useParams();
 
   return (
@@ -10,4 +10,4 @@ const DetailView = () => {
   );
 };
 
-export default DetailView;
+export default PixiGame;
