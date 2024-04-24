@@ -80,7 +80,6 @@ const PixiGame = () => {
     // On first render add app to DOM
     canvasParent.current.appendChild(app.view);
 
-    // Start the PixiJS app
     app.start();
 
     app.stage.addChild(rectRed);
@@ -102,7 +101,6 @@ const PixiGame = () => {
 
     return () => {
       console.log("useEffect unmount");
-      // On unload stop the application
       app.stop();
     };
   }, []);
