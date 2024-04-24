@@ -23,7 +23,12 @@ const App = () => {
             path="/"
             element={isSmallScreen ? <SmallLayout /> : <LargeLayout />}
           >
-            {isSmallScreen && <Route index element={<MasterList />} />}
+            <Route
+              index
+              element={
+                isSmallScreen ? <MasterList /> : <div>Select a link!</div>
+              }
+            />
             <Route path="page/:pageId" element={<DetailView />} />
           </Route>
         )

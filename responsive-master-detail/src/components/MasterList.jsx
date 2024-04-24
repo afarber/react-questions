@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const MasterList = () => {
   const pages = [
@@ -15,7 +15,7 @@ const MasterList = () => {
         <ul>
           {pages.map((page) => (
             <li key={page.id}>
-              <Link to={"/page/" + page.id}>{page.title}</Link>
+              <NavLink to={"/page/" + page.id}>{page.title}</NavLink>
             </li>
           ))}
         </ul>

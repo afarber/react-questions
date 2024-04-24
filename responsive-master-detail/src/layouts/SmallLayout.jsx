@@ -8,12 +8,12 @@ export default function SmallLayout() {
 
   return (
     <>
+      <Outlet />
       {!isHome && (
         <div>
-          <Link to="/">Back to home</Link>
+          <Link to="/">Back to Master List</Link>
         </div>
       )}
-      <Outlet />
     </>
   );
 }
