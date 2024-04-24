@@ -15,7 +15,7 @@ const MasterList = () => {
         <ul>
           {pages.map((page) => (
             <li key={page.id}>
-              <Link to={"/page" + page.id}>{page.title}</Link>
+              <Link to={"/page/" + page.id}>{page.title}</Link>
             </li>
           ))}
         </ul>

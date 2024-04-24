@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 
 const DetailView = () => {
-  const { id } = useParams();
+  const { pageId } = useParams();
+
+  console.log(pageId);
 
   return (
     <div>
       <h2>Detail View</h2>
-      <p>Selected Page: {id}</p>
+      <p>Selected Page: {pageId}</p>
     </div>
   );
 };

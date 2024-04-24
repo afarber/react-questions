@@ -8,12 +8,7 @@ export default function SmallLayout() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      {!isHome && (
-        <>
-          <Link to="/">Back to home</Link>
-          <h3>Detail</h3>
-        </>
-      )}
+      {!isHome && <Link to="/">Back to home</Link>}
       <Outlet />
     </div>
   );
