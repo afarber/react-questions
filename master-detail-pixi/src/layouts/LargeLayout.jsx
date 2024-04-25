@@ -9,7 +9,7 @@ export default function LargeLayout() {
       style={{
         display: "flex",
         justifyContent: "space-between",
-        alignItems: "flex-start",
+        alignItems: "stretch",
       }}
     >
       <MasterList />

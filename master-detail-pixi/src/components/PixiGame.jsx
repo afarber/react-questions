@@ -1,13 +1,19 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Application, Graphics, Point, Sprite, Texture } from "pixi.js-legacy";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const app = new Application({
-  backgroundColor: 0x5bba6f,
-  autoResize: true,
+  backgroundColor: "lightgreen",
+  width: 400,
+  height: 400,
 });
+
+// The stage will handle the move events
+app.stage.eventMode = "static";
+app.stage.hitArea = app.screen;
 
 const rectRed = new Graphics()
   .beginFill(0xff0000)
@@ -16,6 +22,10 @@ const rectGreen = new Graphics()
   .beginFill(0x00ff00)
   .drawRect(0, -100, 200, 100);
 const rectBlue = new Graphics().beginFill(0x0000ff).drawRect(-200, 0, 200, 100);
+
+rectRed.position.set(app.screen.width, app.screen.height);
+rectGreen.position.set(0, app.screen.height);
+rectBlue.position.set(app.screen.width, 0);
 
 function resize() {
   console.log(
@@ -26,17 +36,11 @@ function resize() {
     app.screen.width,
     app.screen.height
   );
-  // Resize the renderer
-  app.renderer.resize(window.innerWidth - 260, window.innerHeight - 60);
-  // You can use the 'screen' property as the renderer visible
-  // area, this is more useful than view.width/height because
-  // it handles resolution
-  rectRed.position.set(app.screen.width, app.screen.height);
-  rectGreen.position.set(0, app.screen.height);
-  rectBlue.position.set(app.screen.width, 0);
 }
 
 const PixiGame = () => {
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+
   const { pixiBunnies } = useParams();
 
   const canvasParent = useRef();
@@ -107,10 +111,43 @@ const PixiGame = () => {
 
   return (
     <div
-      ref={canvasParent}
-      id="canvasParent"
-      style={{ background: "lightyellow" }}
-    />
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "stretch",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <div
+        style={{
+          background: "magenta",
+          color: "white",
+          fontStyle: "italic",
+        }}
+      >
+        Game #{pixiBunnies} Score1:Score2
+      </div>
+      <div
+        ref={canvasParent}
+        id="canvasParent"
+        style={{
+          background: "lightyellow",
+          minWidth: "100px",
+          minHeight: "100px",
+          flexGrow: 1,
+        }}
+      />
+      <div style={{ background: "lightpink", fontStyle: "italic" }}>
+        A game hint...
+      </div>
+      {isSmallScreen && (
+        <div>
+          <Link to="/">Back to Games List</Link>
+        </div>
+      )}
+    </div>
   );
 };
 
