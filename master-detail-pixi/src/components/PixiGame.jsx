@@ -5,29 +5,9 @@ import { Link, useParams } from "react-router-dom";
 import { Application, Graphics, Point, Sprite, Texture } from "pixi.js-legacy";
 import { useMediaQuery } from "@react-hook/media-query";
 
-const app = new Application({
-  backgroundColor: "lightgreen",
-  width: 400,
-  height: 400,
-});
-
-// The stage will handle the move events
-app.stage.eventMode = "static";
-app.stage.hitArea = app.screen;
-
-const rectRed = new Graphics()
-  .beginFill(0xff0000)
-  .drawRect(-200, -100, 200, 100);
-const rectGreen = new Graphics()
-  .beginFill(0x00ff00)
-  .drawRect(0, -100, 200, 100);
-const rectBlue = new Graphics().beginFill(0x0000ff).drawRect(-200, 0, 200, 100);
-
-rectRed.position.set(app.screen.width, app.screen.height);
-rectGreen.position.set(0, app.screen.height);
-rectBlue.position.set(app.screen.width, 0);
-
 function resize() {
+  console.log("resize window:", window.innerWidth, window.innerHeight);
+  /*
   console.log(
     "resize window:",
     window.innerWidth,
@@ -36,6 +16,7 @@ function resize() {
     app.screen.width,
     app.screen.height
   );
+  */
 }
 
 const PixiGame = () => {
@@ -48,43 +29,36 @@ const PixiGame = () => {
   let grabPoint = new Point();
   let draggedTile;
 
-  function onDragStart(event) {
-    draggedTile = event.target;
-    draggedTile.toLocal(event.global, null, grabPoint);
-    grabPoint.x *= draggedTile.scale.x;
-    grabPoint.y *= draggedTile.scale.y;
-    app.stage.cursor = "pointer";
-    app.stage.on("pointermove", onDragMove);
-    // put the dragged object on the top
-    app.stage.removeChild(draggedTile);
-    app.stage.addChild(draggedTile);
-    draggedTile.startDragging();
-    console.log(this);
-  }
-
-  function onDragMove(event) {
-    draggedTile.x = event.global.x - grabPoint.x;
-    draggedTile.y = event.global.y - grabPoint.y;
-  }
-
-  function onDragEnd() {
-    // reset the tile scale and calculate its col and row
-    draggedTile.stopDragging();
-    // add the tile back, just below red and blue scores
-    //    app.stage.removeChild(draggedTile);
-    //    app.stage.addChild(draggedTile);
-
-    app.stage.cursor = null;
-    app.stage.off("pointermove", onDragMove);
-    draggedTile = null;
-  }
-
   useEffect(() => {
     console.log("useEffect mount");
-    // On first render add app to DOM
-    canvasParent.current.appendChild(app.view);
 
+    const app = new Application({
+      backgroundColor: "lightgreen",
+      width: 400,
+      height: 400,
+      //view: canvasParent.current,
+    });
+
+    canvasParent.current.appendChild(app.view);
     app.start();
+
+    // The stage will handle the move events
+    app.stage.eventMode = "static";
+    app.stage.hitArea = app.screen;
+
+    const rectRed = new Graphics()
+      .beginFill(0xff0000)
+      .drawRect(-200, -100, 200, 100);
+    const rectGreen = new Graphics()
+      .beginFill(0x00ff00)
+      .drawRect(0, -100, 200, 100);
+    const rectBlue = new Graphics()
+      .beginFill(0x0000ff)
+      .drawRect(-200, 0, 200, 100);
+
+    rectRed.position.set(app.screen.width, app.screen.height);
+    rectGreen.position.set(0, app.screen.height);
+    rectBlue.position.set(app.screen.width, 0);
 
     app.stage.addChild(rectRed);
     app.stage.addChild(rectGreen);
@@ -103,9 +77,41 @@ const PixiGame = () => {
     window.addEventListener("resize", resize);
     resize();
 
+    function onDragStart(event) {
+      draggedTile = event.target;
+      draggedTile.toLocal(event.global, null, grabPoint);
+      grabPoint.x *= draggedTile.scale.x;
+      grabPoint.y *= draggedTile.scale.y;
+      app.stage.cursor = "pointer";
+      app.stage.on("pointermove", onDragMove);
+      // put the dragged object on the top
+      app.stage.removeChild(draggedTile);
+      app.stage.addChild(draggedTile);
+      draggedTile.startDragging();
+      console.log(this);
+    }
+
+    function onDragMove(event) {
+      draggedTile.x = event.global.x - grabPoint.x;
+      draggedTile.y = event.global.y - grabPoint.y;
+    }
+
+    function onDragEnd() {
+      // reset the tile scale and calculate its col and row
+      draggedTile.stopDragging();
+      // add the tile back, just below red and blue scores
+      //    app.stage.removeChild(draggedTile);
+      //    app.stage.addChild(draggedTile);
+
+      app.stage.cursor = null;
+      app.stage.off("pointermove", onDragMove);
+      draggedTile = null;
+    }
+
     return () => {
       console.log("useEffect unmount");
-      app.stop();
+      //app.stop();
+      app.destroy(true, true);
     };
   }, []);
 
