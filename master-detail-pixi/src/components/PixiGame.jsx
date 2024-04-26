@@ -63,25 +63,16 @@ const PixiGame = () => {
     resize();
 
     function resize() {
-      if (app && app.screen) {
-        console.log(
-          "resize window:",
-          window.innerWidth,
-          "x",
-          window.innerHeight,
-          "app.screen:",
-          app.screen.width,
-          "x",
-          app.screen.height
-        );
-      } else {
-        console.log(
-          "resize window:",
-          window.innerWidth,
-          "x",
-          window.innerHeight
-        );
-      }
+      console.log(
+        "resize window:",
+        window.innerWidth,
+        "x",
+        window.innerHeight,
+        "app.screen:",
+        app.screen.width,
+        "x",
+        app.screen.height
+      );
     }
 
     function onDragStart(event) {
@@ -117,7 +108,7 @@ const PixiGame = () => {
 
     return () => {
       console.log("useEffect unmount");
-      //app.stop();
+      window.removeEventListener("resize", resize);
       app.destroy(true, true);
     };
   }, []);
