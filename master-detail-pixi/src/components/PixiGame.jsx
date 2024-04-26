@@ -152,3 +152,41 @@ const PixiGame = () => {
 };
 
 export default PixiGame;
+
+/*
+window.onresize = function () {
+  if (!fullscreen.getFullscreenElement() && fullscreen.isEmbeddedInIframe()) {
+    try {
+      // request dimensions from parent site and call resizeApp() in the callback
+      requestIframeDimensions();
+      return;
+    } catch (ex) {
+      // can fail if parent site SDK not yet initialized
+    }
+  }
+
+  const w = Math.min(window.innerWidth, screen.width);
+  const h = 0.8 * Math.min(window.innerHeight, screen.height);
+  resizeApp(w, h);
+};
+
+window.resizeApp = function (w, h) {
+  w = Math.floor(0.98 * w);
+  h = Math.floor(0.98 * h);
+
+  console.log("resizeApp w x h: " + w + " x " + h);
+  const fullDiv = document.getElementById("fullDiv");
+  fullDiv.style.width = w + "px";
+  fullDiv.style.height = h + "px";
+
+  const boardPx = Math.min(w - 420, h - 90);
+  app.renderer.view.style.width = boardPx + "px";
+  app.renderer.view.style.height = boardPx + "px";
+
+  // set hint and total divs to the same width as canvas
+  const hintDiv = document.getElementById("hintDiv");
+  hintDiv.style.width = boardPx + "px";
+  const totalDiv = document.getElementById("totalDiv");
+  totalDiv.style.width = boardPx + "px";
+};
+*/
