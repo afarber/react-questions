@@ -5,20 +5,6 @@ import { Link, useParams } from "react-router-dom";
 import { Application, Graphics, Point, Sprite, Texture } from "pixi.js-legacy";
 import { useMediaQuery } from "@react-hook/media-query";
 
-function resize() {
-  console.log("resize window:", window.innerWidth, window.innerHeight);
-  /*
-  console.log(
-    "resize window:",
-    window.innerWidth,
-    window.innerHeight,
-    "app.screen:",
-    app.screen.width,
-    app.screen.height
-  );
-  */
-}
-
 const PixiGame = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
@@ -34,9 +20,8 @@ const PixiGame = () => {
 
     const app = new Application({
       backgroundColor: "lightgreen",
-      width: 400,
-      height: 400,
-      //view: canvasParent.current,
+      width: 1020,
+      height: 1020,
     });
 
     canvasParent.current.appendChild(app.view);
@@ -76,6 +61,28 @@ const PixiGame = () => {
     // https://jsfiddle.net/bigtimebuddy/oaLwp0p9/
     window.addEventListener("resize", resize);
     resize();
+
+    function resize() {
+      if (app && app.screen) {
+        console.log(
+          "resize window:",
+          window.innerWidth,
+          "x",
+          window.innerHeight,
+          "app.screen:",
+          app.screen.width,
+          "x",
+          app.screen.height
+        );
+      } else {
+        console.log(
+          "resize window:",
+          window.innerWidth,
+          "x",
+          window.innerHeight
+        );
+      }
+    }
 
     function onDragStart(event) {
       draggedTile = event.target;
