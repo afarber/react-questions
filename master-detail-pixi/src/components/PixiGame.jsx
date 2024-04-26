@@ -68,11 +68,25 @@ const PixiGame = () => {
         window.innerWidth,
         "x",
         window.innerHeight,
-        "app.screen:",
-        app.screen.width,
+        "canvasParent:",
+        canvasParent.current.clientWidth,
         "x",
-        app.screen.height
+        canvasParent.current.clientHeight,
+        "app.view:",
+        app.view.clientWidth,
+        "x",
+        app.view.clientHeight
       );
+
+      // TODO https://legacy.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
+
+      const dim = Math.min(
+        canvasParent.current.clientWidth,
+        canvasParent.current.clientHeight
+      );
+
+      //app.renderer.view.style.width = dim + "px";
+      //app.renderer.view.style.height = dim + "px";
     }
 
     function onDragStart(event) {
