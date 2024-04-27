@@ -29,16 +29,7 @@ const ParentChildComponent = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "stretch",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
+    <div className="flexRoot">
       <div className="hint">Game #1 Score1:Score2</div>
       <div className="parent" ref={parentRef}>
         <canvas ref={childRef}></canvas>

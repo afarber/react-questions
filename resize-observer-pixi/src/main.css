@@ -5,9 +5,18 @@ body {
   overflow: hidden;
 }
 
+.flexRoot {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  height: 100vh;
+}
+
 canvas {
-  width: 1020;
-  height: 1020;
+  width: 1020px;
+  height: 1020px;
   border: 4px green dotted;
   box-sizing: content-box;
 }
