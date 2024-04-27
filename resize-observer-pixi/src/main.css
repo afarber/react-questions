@@ -23,8 +23,9 @@ body {
 canvas {
   width: 1020px;
   height: 1020px;
+  background-color: yellow;
   border: 4px green dotted;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .hint,
