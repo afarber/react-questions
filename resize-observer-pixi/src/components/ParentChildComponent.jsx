@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const ParentChildComponent = () => {
   const parentRef = useRef(null);
@@ -28,10 +28,30 @@ const ParentChildComponent = () => {
   return (
     <div
       ref={parentRef}
-      style={{ width: "300px", height: "200px", border: "1px solid black" }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "stretch",
+        width: "100%",
+        height: "100vh",
+        border: "1px solid black",
+      }}
     >
-      <div ref={childRef} style={{ border: "1px solid red" }}>
+      <div
+        style={{
+          background: "magenta",
+          color: "white",
+          fontStyle: "italic",
+        }}
+      >
+        Game #1 Score1:Score2
+      </div>
+      <div ref={childRef} style={{ flexGrow: 1, border: "1px solid red" }}>
         Child
+      </div>
+      <div style={{ background: "lightpink", fontStyle: "italic" }}>
+        A game hint...
       </div>
     </div>
   );
