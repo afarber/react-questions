@@ -5,8 +5,8 @@ body {
   overflow: hidden;
 }
 
-/* the flexRoot contains: status, parent, hint */
-.flexRoot {
+/* the fullRoot contains: status, parent, hint */
+.fullRoot {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

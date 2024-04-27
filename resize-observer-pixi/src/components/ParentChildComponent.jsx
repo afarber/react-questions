@@ -32,7 +32,7 @@ const ParentChildComponent = () => {
   }, []);
 
   return (
-    <div className="flexRoot">
+    <div className="fullRoot">
       <div className="hint">Game #1 Score1:Score2</div>
       <div className="parent" ref={parentRef}>
         <canvas ref={childRef}></canvas>
