@@ -34,6 +34,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/react-admin/screenshot.png)
 
+[resize-observer-pixi](https://github.com/afarber/react-questions/tree/master/resize-observer-pixi) maintain 1:1 aspect ratio of a PixiJS app:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/resize-observer-pixi/screenshot.png)
+
 [responsive-master-detail](https://github.com/afarber/react-questions/tree/master/responsive-master-detail) asked at Stackoverflow [How to create a responsive master detail app using React Router?](https://stackoverflow.com/q/78372543/165071)
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-master-detail/screenshot.gif)
