@@ -12,11 +12,14 @@ const ParentChildComponent = () => {
       for (let entry of entries) {
         const { width, height } = entry.contentRect;
         const minDimension = Math.min(width, height);
-        console.log(
-          `parent: ${width} x ${height} -> child: ${minDimension} x ${minDimension}`
-        );
+
+        // maintain the 1:1 aspect ratio of the child element
         childElement.style.width = `${minDimension}px`;
         childElement.style.height = `${minDimension}px`;
+
+        console.log(
+          `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
+        );
       }
     });
 

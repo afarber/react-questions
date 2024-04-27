@@ -15,6 +15,8 @@
       <div class="hint">A game hint to do this and that...</div>
     </div>
     <script>
+      "use strict";
+
       const parentElement = document.getElementById("parent");
       const childElement = document.getElementById("child");
 
@@ -22,18 +24,13 @@
         for (let entry of entries) {
           const { width, height } = entry.contentRect;
           const minDimension = Math.min(width, height);
-          const maxDimension = Math.max(width, height);
 
-          const diff = Math.floor((maxDimension - minDimension) / 2);
-          const paddingLeft = width > height ? diff : 0;
-          const paddingTop = width < height ? diff : 0;
-
+          // maintain the 1:1 aspect ratio of the child element
           childElement.style.width = `${minDimension}px`;
           childElement.style.height = `${minDimension}px`;
-          childElement.style.transform = `translate(${paddingLeft}px, ${paddingTop}px)`;
 
           console.log(
-            `parent ${width} x ${height} -> child ${childElement.style.width} x ${childElement.style.height} @ ${childElement.style.transform}`
+            `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
           );
         }
       });
