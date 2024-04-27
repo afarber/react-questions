@@ -10,7 +10,8 @@ const PixiGame = () => {
 
   const { pixiBunnies } = useParams();
 
-  const canvasParent = useRef();
+  const parentRef = useRef(null);
+  const childRef = useRef(null);
   // the relative offset point of the click on the tile
   let grabPoint = new Point();
   let draggedTile;
@@ -18,13 +19,36 @@ const PixiGame = () => {
   useEffect(() => {
     console.log("useEffect mount");
 
+    const parentElement = parentRef.current;
+    //const childElement = childRef.current;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width, height } = entry.contentRect;
+        const minDimension = Math.floor(Math.min(width, height));
+
+        // maintain the 1:1 aspect ratio of the child element
+        //childElement.style.width = `${minDimension}px`;
+        //childElement.style.height = `${minDimension}px`;
+
+        app.renderer.view.style.width = `${minDimension}px`;
+        app.renderer.view.style.height = `${minDimension}px`;
+
+        console.log(
+          `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
+        );
+      }
+    });
+
+    resizeObserver.observe(parentElement);
+
     const app = new Application({
       backgroundColor: "lightgreen",
       width: 1020,
       height: 1020,
     });
 
-    canvasParent.current.appendChild(app.view);
+    parentElement.appendChild(app.view);
     app.start();
 
     // The stage will handle the move events
@@ -58,37 +82,7 @@ const PixiGame = () => {
     bunny.height = 100;
     app.stage.addChild(bunny);
 
-    // https://jsfiddle.net/bigtimebuddy/oaLwp0p9/
-    window.addEventListener("resize", resize);
-    resize();
-
-    function resize() {
-      console.log(
-        "resize window:",
-        window.innerWidth,
-        "x",
-        window.innerHeight,
-        "canvasParent:",
-        canvasParent.current.clientWidth,
-        "x",
-        canvasParent.current.clientHeight,
-        "app.view:",
-        app.view.clientWidth,
-        "x",
-        app.view.clientHeight
-      );
-
-      // TODO https://legacy.reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node
-
-      const dim = Math.min(
-        canvasParent.current.clientWidth,
-        canvasParent.current.clientHeight
-      );
-
-      //app.renderer.view.style.width = dim + "px";
-      //app.renderer.view.style.height = dim + "px";
-    }
-
+    /*
     function onDragStart(event) {
       draggedTile = event.target;
       draggedTile.toLocal(event.global, null, grabPoint);
@@ -119,47 +113,22 @@ const PixiGame = () => {
       app.stage.off("pointermove", onDragMove);
       draggedTile = null;
     }
+*/
 
     return () => {
       console.log("useEffect unmount");
-      window.removeEventListener("resize", resize);
+      resizeObserver.unobserve(parentElement);
+      resizeObserver.disconnect();
       app.destroy(true, true);
     };
   }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        alignItems: "stretch",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <div
-        style={{
-          background: "magenta",
-          color: "white",
-          fontStyle: "italic",
-        }}
-      >
-        Game #{pixiBunnies} Score1:Score2
-      </div>
-      <div
-        ref={canvasParent}
-        id="canvasParent"
-        style={{
-          background: "lightyellow",
-          minWidth: "100px",
-          minHeight: "100px",
-          flexGrow: 1,
-        }}
-      />
-      <div style={{ background: "lightpink", fontStyle: "italic" }}>
-        A game hint...
-      </div>
+    <div className="fullRoot">
+      <div className="hint">Game #{pixiBunnies} Score1:Score2</div>
+      <div className="parent" ref={parentRef}></div>
+      <canvas id="child" ref={childRef}></canvas>
+      <div className="status">A game hint to do this and that...</div>
       {isSmallScreen && (
         <div>
           <Link to="/">Back to Games List</Link>
@@ -170,41 +139,3 @@ const PixiGame = () => {
 };
 
 export default PixiGame;
-
-/*
-window.onresize = function () {
-  if (!fullscreen.getFullscreenElement() && fullscreen.isEmbeddedInIframe()) {
-    try {
-      // request dimensions from parent site and call resizeApp() in the callback
-      requestIframeDimensions();
-      return;
-    } catch (ex) {
-      // can fail if parent site SDK not yet initialized
-    }
-  }
-
-  const w = Math.min(window.innerWidth, screen.width);
-  const h = 0.8 * Math.min(window.innerHeight, screen.height);
-  resizeApp(w, h);
-};
-
-window.resizeApp = function (w, h) {
-  w = Math.floor(0.98 * w);
-  h = Math.floor(0.98 * h);
-
-  console.log("resizeApp w x h: " + w + " x " + h);
-  const fullDiv = document.getElementById("fullDiv");
-  fullDiv.style.width = w + "px";
-  fullDiv.style.height = h + "px";
-
-  const boardPx = Math.min(w - 420, h - 90);
-  app.renderer.view.style.width = boardPx + "px";
-  app.renderer.view.style.height = boardPx + "px";
-
-  // set hint and total divs to the same width as canvas
-  const hintDiv = document.getElementById("hintDiv");
-  hintDiv.style.width = boardPx + "px";
-  const totalDiv = document.getElementById("totalDiv");
-  totalDiv.style.width = boardPx + "px";
-};
-*/
