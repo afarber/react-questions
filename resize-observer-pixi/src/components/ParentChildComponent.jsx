@@ -12,6 +12,9 @@ const ParentChildComponent = () => {
       for (let entry of entries) {
         const { width, height } = entry.contentRect;
         const minDimension = Math.min(width, height);
+        console.log(
+          `parent: ${width} x ${height} -> child: ${minDimension} x ${minDimension}`
+        );
         childElement.style.width = `${minDimension}px`;
         childElement.style.height = `${minDimension}px`;
       }
@@ -27,7 +30,6 @@ const ParentChildComponent = () => {
 
   return (
     <div
-      ref={parentRef}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -35,24 +37,13 @@ const ParentChildComponent = () => {
         alignItems: "stretch",
         width: "100%",
         height: "100vh",
-        border: "1px solid black",
       }}
     >
-      <div
-        style={{
-          background: "magenta",
-          color: "white",
-          fontStyle: "italic",
-        }}
-      >
-        Game #1 Score1:Score2
+      <div className="hint">Game #1 Score1:Score2</div>
+      <div className="parent" ref={parentRef}>
+        <canvas ref={childRef}></canvas>
       </div>
-      <div ref={childRef} style={{ flexGrow: 1, border: "1px solid red" }}>
-        Child
-      </div>
-      <div style={{ background: "lightpink", fontStyle: "italic" }}>
-        A game hint...
-      </div>
+      <div className="status">A game hint to do this and that...</div>
     </div>
   );
 };
