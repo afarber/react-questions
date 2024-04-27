@@ -22,11 +22,19 @@
         for (let entry of entries) {
           const { width, height } = entry.contentRect;
           const minDimension = Math.min(width, height);
-          console.log(
-            `parent: ${width} x ${height} -> child: ${minDimension} x ${minDimension}`
-          );
+          const maxDimension = Math.max(width, height);
+
+          const diff = Math.floor((maxDimension - minDimension) / 2);
+          const paddingLeft = width > height ? diff : 0;
+          const paddingTop = width < height ? diff : 0;
+
           childElement.style.width = `${minDimension}px`;
           childElement.style.height = `${minDimension}px`;
+          childElement.style.transform = `translate(${paddingLeft}px, ${paddingTop}px)`;
+
+          console.log(
+            `parent ${width} x ${height} -> child ${childElement.style.width} x ${childElement.style.height} @ ${childElement.style.transform}`
+          );
         }
       });
 

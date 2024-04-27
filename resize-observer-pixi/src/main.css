@@ -10,17 +10,17 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  width: 100%;
   height: 100vh;
 }
 
 /* the parent holds: status, canvas, hint */
 .parent {
   border: 4px solid red;
-  flex-grow: 1;
+  flex: 1;
 }
 
 canvas {
+  position: absolute;
   width: 1020px;
   height: 1020px;
   background-color: yellow;
@@ -33,5 +33,4 @@ canvas {
   background: lightblue;
   font-style: italic;
   text-align: center;
-  flex-grow: 0;
 }
