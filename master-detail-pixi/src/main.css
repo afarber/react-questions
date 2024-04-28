@@ -35,8 +35,6 @@ nav a.active {
 }
 
 .child {
-  width: 1020px;
-  height: 1020px;
   background-color: yellow;
   border: 4px green dotted;
   /* draw the border inside of the canvas element */

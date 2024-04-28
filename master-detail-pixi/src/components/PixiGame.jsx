@@ -87,7 +87,7 @@ const PixiGame = () => {
     <div className="fullRoot">
       <div className="hint">Game #{pixiBunnies} Score1:Score2</div>
       <div className="parent" ref={parentRef}></div>
-      <canvas id="child" ref={childRef}></canvas>
+      <canvas className="child" id="child" ref={childRef}></canvas>
       <div className="status">A game hint to do this and that...</div>
       {isSmallScreen && (
         <div>
