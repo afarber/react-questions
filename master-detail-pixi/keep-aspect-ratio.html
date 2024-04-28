@@ -39,9 +39,9 @@
       resizeObserver.observe(parentElement);
 
       const app = new PIXI.Application({
-        backgroundColor: "lightgreen",
-        width: 1020,
-        height: 1020,
+        backgroundColor: 0xccffcc,
+        width: 800,
+        height: 800,
         view: childElement,
       });
 
@@ -52,29 +52,23 @@
       app.stage.eventMode = "static";
       app.stage.hitArea = app.screen;
 
-      const rectRed = new PIXI.Graphics()
-        .beginFill(0xff0000)
-        .drawRect(-200, -100, 200, 100);
-      const rectGreen = new PIXI.Graphics()
-        .beginFill(0x00ff00)
-        .drawRect(0, -100, 200, 100);
-      const rectBlue = new PIXI.Graphics()
-        .beginFill(0x0000ff)
-        .drawRect(-200, 0, 200, 100);
-
-      rectRed.position.set(app.screen.width, app.screen.height);
-      rectGreen.position.set(0, app.screen.height);
-      rectBlue.position.set(app.screen.width, 0);
-
-      app.stage.addChild(rectRed);
-      app.stage.addChild(rectGreen);
-      app.stage.addChild(rectBlue);
+      const background = new PIXI.Graphics();
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if ((i + j) % 2 == 0) {
+            background.beginFill(0xccccff);
+            background.drawRect(i * 100, j * 100, 100, 100);
+            background.endFill();
+          }
+        }
+      }
+      app.stage.addChild(background);
 
       const texture = PIXI.Texture.from("https://pixijs.com/assets/bunny.png");
       const bunny = new PIXI.Sprite(texture);
       bunny.anchor.set(0.5);
       bunny.x = 50;
-      bunny.y = 70;
+      bunny.y = 50;
       bunny.width = 100;
       bunny.height = 100;
       app.stage.addChild(bunny);

@@ -12,9 +12,6 @@ const PixiGame = () => {
 
   const parentRef = useRef(null);
   const childRef = useRef(null);
-  // the relative offset point of the click on the tile
-  let grabPoint = new Point();
-  let draggedTile;
 
   useEffect(() => {
     console.log("useEffect mount");
@@ -44,8 +41,8 @@ const PixiGame = () => {
 
     const app = new Application({
       backgroundColor: "lightgreen",
-      width: 1020,
-      height: 1020,
+      width: 800,
+      height: 800,
     });
 
     parentElement.appendChild(app.view);
@@ -55,65 +52,26 @@ const PixiGame = () => {
     app.stage.eventMode = "static";
     app.stage.hitArea = app.screen;
 
-    const rectRed = new Graphics()
-      .beginFill(0xff0000)
-      .drawRect(-200, -100, 200, 100);
-    const rectGreen = new Graphics()
-      .beginFill(0x00ff00)
-      .drawRect(0, -100, 200, 100);
-    const rectBlue = new Graphics()
-      .beginFill(0x0000ff)
-      .drawRect(-200, 0, 200, 100);
-
-    rectRed.position.set(app.screen.width, app.screen.height);
-    rectGreen.position.set(0, app.screen.height);
-    rectBlue.position.set(app.screen.width, 0);
-
-    app.stage.addChild(rectRed);
-    app.stage.addChild(rectGreen);
-    app.stage.addChild(rectBlue);
+    const background = new Graphics();
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if ((i + j) % 2 == 0) {
+          background.beginFill(0xccccff);
+          background.drawRect(i * 100, j * 100, 100, 100);
+          background.endFill();
+        }
+      }
+    }
+    app.stage.addChild(background);
 
     const texture = Texture.from("https://pixijs.com/assets/bunny.png");
     const bunny = new Sprite(texture);
     bunny.anchor.set(0.5);
     bunny.x = 50;
-    bunny.y = 70;
+    bunny.y = 50;
     bunny.width = 100;
     bunny.height = 100;
     app.stage.addChild(bunny);
-
-    /*
-    function onDragStart(event) {
-      draggedTile = event.target;
-      draggedTile.toLocal(event.global, null, grabPoint);
-      grabPoint.x *= draggedTile.scale.x;
-      grabPoint.y *= draggedTile.scale.y;
-      app.stage.cursor = "pointer";
-      app.stage.on("pointermove", onDragMove);
-      // put the dragged object on the top
-      app.stage.removeChild(draggedTile);
-      app.stage.addChild(draggedTile);
-      draggedTile.startDragging();
-      console.log(this);
-    }
-
-    function onDragMove(event) {
-      draggedTile.x = event.global.x - grabPoint.x;
-      draggedTile.y = event.global.y - grabPoint.y;
-    }
-
-    function onDragEnd() {
-      // reset the tile scale and calculate its col and row
-      draggedTile.stopDragging();
-      // add the tile back, just below red and blue scores
-      //    app.stage.removeChild(draggedTile);
-      //    app.stage.addChild(draggedTile);
-
-      app.stage.cursor = null;
-      app.stage.off("pointermove", onDragMove);
-      draggedTile = null;
-    }
-*/
 
     return () => {
       console.log("useEffect unmount");
