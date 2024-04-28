@@ -89,7 +89,7 @@ const PixiGame = () => {
   }, []);
 
   return (
-    <div className="fullRoot">
+    <div className="verticalFlexContainer">
       <div className="hint">Game #{pixiBunnies} Score1:Score2</div>
       <div className="parent" ref={parentRef}>
         {/* <canvas className="child" id="child" ref={childRef}></canvas> */}
