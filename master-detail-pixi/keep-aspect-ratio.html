@@ -11,7 +11,7 @@
     <div class="fullRoot">
       <div class="status">Game #1 Score1:Score2</div>
       <div class="parent" id="parent">
-        <canvas class="child" id="child"></canvas>
+        <!-- <canvas class="child" id="child"></canvas> -->
       </div>
       <div class="hint">A game hint to do this and that...</div>
     </div>
@@ -19,7 +19,19 @@
       "use strict";
 
       const parentElement = document.getElementById("parent");
-      const childElement = document.getElementById("child");
+      //const childElement = document.getElementById("child");
+
+      const app = new PIXI.Application({
+        backgroundColor: 0xccffcc,
+        width: 800,
+        height: 800,
+        //view: childElement,
+      });
+
+      const childElement = app.view;
+      childElement.id = "child";
+      childElement.classList.add("child");
+      parentElement.appendChild(childElement);
 
       const resizeObserver = new ResizeObserver((entries) => {
         for (let entry of entries) {
@@ -37,15 +49,6 @@
       });
 
       resizeObserver.observe(parentElement);
-
-      const app = new PIXI.Application({
-        backgroundColor: 0xccffcc,
-        width: 800,
-        height: 800,
-        view: childElement,
-      });
-
-      // parentElement.appendChild(app.view);
 
       const background = new PIXI.Graphics();
       for (let i = 0; i < 8; i++) {

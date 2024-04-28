@@ -17,7 +17,20 @@ const PixiGame = () => {
     console.log("useEffect mount");
 
     const parentElement = parentRef.current;
-    const childElement = childRef.current;
+    //const childElement = childRef.current;
+
+    const app = new Application({
+      backgroundColor: 0xccffcc,
+      width: 800,
+      height: 800,
+      //view: childElement,
+    });
+
+    const childElement = app.view;
+    childElement.id = "child";
+    childElement.classList.add("child");
+    childRef.current = childElement;
+    parentElement.appendChild(childElement);
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
@@ -44,15 +57,6 @@ const PixiGame = () => {
 
     console.log("parentElement mount", parentElement);
     console.log("childElement mount", childElement);
-
-    const app = new Application({
-      backgroundColor: "lightgreen",
-      width: 800,
-      height: 800,
-      view: childElement,
-    });
-
-    //parentElement.appendChild(app.view);
 
     const background = new Graphics();
     for (let i = 0; i < 8; i++) {
@@ -86,8 +90,9 @@ const PixiGame = () => {
   return (
     <div className="fullRoot">
       <div className="hint">Game #{pixiBunnies} Score1:Score2</div>
-      <div className="parent" ref={parentRef}></div>
-      <canvas className="child" id="child" ref={childRef}></canvas>
+      <div className="parent" ref={parentRef}>
+        {/* <canvas className="child" id="child" ref={childRef}></canvas> */}
+      </div>
       <div className="status">A game hint to do this and that...</div>
       {isSmallScreen && (
         <div>
