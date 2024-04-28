@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Application, Graphics, Point, Sprite, Texture } from "pixi.js-legacy";
+import { Application, Graphics, Sprite, Texture } from "pixi.js-legacy";
 import { useMediaQuery } from "@react-hook/media-query";
 
 const PixiGame = () => {
@@ -17,7 +17,7 @@ const PixiGame = () => {
     console.log("useEffect mount");
 
     const parentElement = parentRef.current;
-    //const childElement = childRef.current;
+    const childElement = childRef.current;
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
@@ -25,11 +25,14 @@ const PixiGame = () => {
         const minDimension = Math.floor(Math.min(width, height));
 
         // maintain the 1:1 aspect ratio of the child element
-        //childElement.style.width = `${minDimension}px`;
-        //childElement.style.height = `${minDimension}px`;
+        childElement.style.width = `${minDimension}px`;
+        childElement.style.height = `${minDimension}px`;
 
-        app.renderer.view.style.width = `${minDimension}px`;
-        app.renderer.view.style.height = `${minDimension}px`;
+        //app.renderer.view.style.width = `${minDimension}px`;
+        //app.renderer.view.style.height = `${minDimension}px`;
+
+        console.log("parentElement resize", parentElement);
+        console.log("childElement resize", childElement);
 
         console.log(
           `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
@@ -39,18 +42,17 @@ const PixiGame = () => {
 
     resizeObserver.observe(parentElement);
 
+    console.log("parentElement mount", parentElement);
+    console.log("childElement mount", childElement);
+
     const app = new Application({
       backgroundColor: "lightgreen",
       width: 800,
       height: 800,
+      view: childElement,
     });
 
-    parentElement.appendChild(app.view);
-    app.start();
-
-    // The stage will handle the move events
-    app.stage.eventMode = "static";
-    app.stage.hitArea = app.screen;
+    //parentElement.appendChild(app.view);
 
     const background = new Graphics();
     for (let i = 0; i < 8; i++) {
