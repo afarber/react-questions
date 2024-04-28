@@ -26,6 +26,7 @@ const PixiGame = () => {
       //view: childElement,
     });
 
+    // the PIXI app has created a canvas element - make it a child of the parent div
     const childElement = app.view;
     childElement.id = "child";
     childElement.classList.add("child");
