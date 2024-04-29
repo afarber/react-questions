@@ -14,7 +14,7 @@ const PixiGame = () => {
   const childRef = useRef(null);
 
   useEffect(() => {
-    console.log("useEffect mount");
+    console.log("PixiGame mount");
 
     const parentElement = parentRef.current;
     //const childElement = childRef.current;
@@ -42,12 +42,6 @@ const PixiGame = () => {
         childElement.style.width = `${minDimension}px`;
         childElement.style.height = `${minDimension}px`;
 
-        //app.renderer.view.style.width = `${minDimension}px`;
-        //app.renderer.view.style.height = `${minDimension}px`;
-
-        console.log("parentElement resize", parentElement);
-        console.log("childElement resize", childElement);
-
         console.log(
           `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
         );
@@ -55,9 +49,6 @@ const PixiGame = () => {
     });
 
     resizeObserver.observe(parentElement);
-
-    console.log("parentElement mount", parentElement);
-    console.log("childElement mount", childElement);
 
     const background = new Graphics();
     for (let i = 0; i < 8; i++) {
@@ -81,9 +72,10 @@ const PixiGame = () => {
     app.stage.addChild(bunny);
 
     return () => {
-      console.log("useEffect unmount");
+      console.log("PixiGame unmount");
       resizeObserver.unobserve(parentElement);
       resizeObserver.disconnect();
+      parentElement.removeChild(childElement);
       app.destroy(true, true);
     };
   }, []);

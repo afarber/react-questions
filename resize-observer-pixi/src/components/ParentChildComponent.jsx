@@ -5,13 +5,14 @@ const ParentChildComponent = () => {
   const childRef = useRef(null);
 
   useEffect(() => {
+    console.log("ParentChildComponent mount");
     const parentElement = parentRef.current;
     const childElement = childRef.current;
 
     const resizeObserver = new ResizeObserver((entries) => {
       for (let entry of entries) {
         const { width, height } = entry.contentRect;
-        const minDimension = Math.min(width, height);
+        const minDimension = Math.floor(Math.min(width, height));
 
         // maintain the 1:1 aspect ratio of the child element
         childElement.style.width = `${minDimension}px`;
@@ -26,8 +27,10 @@ const ParentChildComponent = () => {
     resizeObserver.observe(parentElement);
 
     return () => {
+      console.log("ParentChildComponent unmount");
       resizeObserver.unobserve(parentElement);
       resizeObserver.disconnect();
+      parentElement.removeChild(childElement);
     };
   }, []);
 
