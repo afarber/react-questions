@@ -9,7 +9,7 @@ const MasterList = () => {
   ];
 
   return (
-    <div style={{ background: "lightgrey" }}>
+    <div className="left">
       <h3>Select a game!</h3>
       <nav>
         <ul>

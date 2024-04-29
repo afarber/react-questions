@@ -19,6 +19,14 @@ div.horizontalFlexContainer {
   align-items: stretch;
 }
 
+div.left {
+  background: lightgrey;
+}
+
+div.right {
+  flex-grow: 1;
+}
+
 div.verticalFlexContainer {
   display: flex;
   flex-direction: column;

@@ -7,7 +7,7 @@ export default function LargeLayout() {
   return (
     <div className="horizontalFlexContainer">
       <MasterList />
-      <div style={{ flexGrow: 1 }}>
+      <div className="right">
         <Outlet />
       </div>
     </div>

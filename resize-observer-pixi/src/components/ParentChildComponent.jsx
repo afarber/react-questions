@@ -30,15 +30,14 @@ const ParentChildComponent = () => {
       console.log("ParentChildComponent unmount");
       resizeObserver.unobserve(parentElement);
       resizeObserver.disconnect();
-      parentElement.removeChild(childElement);
     };
   }, []);
 
   return (
-    <div className="fullRoot">
+    <div className="verticalFlexContainer">
       <div className="hint">Game #1 Score1:Score2</div>
       <div className="parent" ref={parentRef}>
-        <canvas ref={childRef}></canvas>
+        <canvas className="child" ref={childRef}></canvas>
       </div>
       <div className="status">A game hint to do this and that...</div>
     </div>
