@@ -50,6 +50,10 @@ Same layout as [a static web page](https://raw.github.com/afarber/react-question
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/master-detail-pixi/keep-aspect-ratio.gif)
 
+[react-pixi-drag](https://github.com/afarber/react-questions/tree/master/react-pixi-drag) PixiJS app with draggable rectangles:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/react-pixi-drag/screenshot.gif)
+
 [responsive-mui](https://github.com/afarber/react-questions/tree/master/responsive-mui) based on the tutorial [Material UI 5 (MUI) React Tutorial | MUI Responsive Real Project](https://youtu.be/fzxEECHnsvU):
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/responsive-mui/screenshot.png)

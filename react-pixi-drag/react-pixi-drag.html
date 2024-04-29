@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React PixiJS dragging</title>
+    <link type="text/css" rel="stylesheet" href="src/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/pixi.js-legacy@7/dist/pixi-legacy.min.js"></script>
+  </head>
+  <body>
+    <div class="horizontalFlexContainer">
+      <div style="background: lightgrey">
+        <h3>Select a game!</h3>
+        <nav>
+          <ul>
+            <li>Game 1</li>
+            <li>Game 2</li>
+            <li>Game 3</li>
+            <li>Game 4</li>
+          </ul>
+        </nav>
+      </div>
+      <div style="flex-grow: 1">
+        <div class="verticalFlexContainer">
+          <div class="status">Game #1 Score1:Score2</div>
+          <div class="parent" id="parent">
+            <canvas class="child" id="child"></canvas>
+          </div>
+          <div class="hint">A game hint to do this and that...</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      "use strict";
+
+      const parentElement = document.getElementById("parent");
+      const childElement = document.getElementById("child");
+
+      const app = new PIXI.Application({
+        backgroundColor: 0xccffcc,
+        width: 800,
+        height: 800,
+        view: childElement,
+      });
+
+      // the PIXI app has created a canvas element - make it a child of the parent div
+      // const childElement = app.view;
+      // childElement.id = "child";
+      // childElement.classList.add("child");
+      // parentElement.appendChild(childElement);
+
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (let entry of entries) {
+          const { width, height } = entry.contentRect;
+          const minDimension = Math.min(width, height);
+
+          // maintain the 1:1 aspect ratio of the child element
+          childElement.style.width = `${minDimension}px`;
+          childElement.style.height = `${minDimension}px`;
+
+          console.log(
+            `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
+          );
+        }
+      });
+
+      resizeObserver.observe(parentElement);
+
+      const background = new PIXI.Graphics();
+      for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 8; j++) {
+          if ((i + j) % 2 == 0) {
+            background.beginFill(0xccccff);
+            background.drawRect(i * 100, j * 100, 100, 100);
+            background.endFill();
+          }
+        }
+      }
+      app.stage.addChild(background);
+
+      const texture = PIXI.Texture.from("https://pixijs.com/assets/bunny.png");
+      const bunny = new PIXI.Sprite(texture);
+      bunny.anchor.set(0.5);
+      bunny.x = 50;
+      bunny.y = 50;
+      bunny.width = 100;
+      bunny.height = 100;
+      app.stage.addChild(bunny);
+    </script>
+  </body>
+</html>

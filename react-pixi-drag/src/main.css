@@ -1,0 +1,56 @@
+/* a more general solution might be to use "*" here: */
+html,
+body,
+h3,
+ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+nav a.active {
+  color: red;
+}
+
+div.horizontalFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+div.verticalFlexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100vh;
+}
+
+/* the parent contains: just the canvas element, which observes the parent dimensions */
+div.parent {
+  border: 4px solid red;
+  flex: 1;
+  /* center the only child element: the canvas */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* prevent the canvas child disrupting the layout */
+  overflow: hidden;
+}
+
+canvas.child {
+  background-color: yellow;
+  border: 4px green dotted;
+  /* draw the border inside of the canvas element */
+  box-sizing: border-box;
+  /* the fix for overflowing too narrow screens */
+  max-width: 100%;
+}
+
+div.hint,
+div.status {
+  background: lightblue;
+  font-style: italic;
+  text-align: center;
+}
