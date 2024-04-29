@@ -33,6 +33,8 @@ canvas {
   border: 4px green dotted;
   /* draw the border inside of the canvas element */
   box-sizing: border-box;
+  /* the fix for overflowing too narrow screens */
+  max-width: 100%;
 }
 
 .hint,
