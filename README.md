@@ -44,7 +44,9 @@ Screenshots
 
 [master-detail-pixi](https://github.com/afarber/react-questions/tree/master/master-detail-pixi) same as above, but with PixiJS bunnies:
 
-![screenshot](https://raw.github.com/afarber/react-questions/master/master-detail-pixi/screenshot.png)
+![screenshot](https://raw.github.com/afarber/react-questions/master/master-detail-pixi/screenshot.gif)
+
+Same as [a static web page](https://raw.github.com/afarber/react-questions/master/master-detail-pixi/keep-aspect-ratio.html): ![screenshot](https://raw.github.com/afarber/react-questions/master/master-detail-pixi/keep-aspect-ratio.gif)
 
 [responsive-mui](https://github.com/afarber/react-questions/tree/master/responsive-mui) based on the tutorial [Material UI 5 (MUI) React Tutorial | MUI Responsive Real Project](https://youtu.be/fzxEECHnsvU):
 
