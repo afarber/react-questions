@@ -4,7 +4,7 @@ const DetailView = () => {
   const { pageId } = useParams();
 
   return (
-    <div style={{ background: "lightyellow" }}>
+    <div style={{ background: "#ccf" }}>
       <h3>Detail View</h3>
       <p>Selected Page: {pageId}</p>
     </div>

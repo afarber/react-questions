@@ -5,15 +5,9 @@ import MasterList from "../components/MasterList";
 
 export default function LargeLayout() {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-      }}
-    >
+    <div className="horizontalFlexContainer">
       <MasterList />
-      <div style={{ flexGrow: 1 }}>
+      <div className="right">
         <Outlet />
       </div>
     </div>

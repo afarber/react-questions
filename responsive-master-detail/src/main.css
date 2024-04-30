@@ -11,3 +11,17 @@ ul {
 nav a.active {
   color: red;
 }
+
+div.horizontalFlexContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+div.left {
+  background: #fcc;
+}
+
+div.right {
+  flex-grow: 1;
+}
