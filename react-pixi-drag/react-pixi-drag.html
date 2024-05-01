@@ -36,7 +36,7 @@
       const CELL = 100;
 
       class Tile extends PIXI.Container {
-        constructor(color, onDragStart, onDragMove, onDragEnd, x, y) {
+        constructor(color, onDragStart, onDragEnd, x, y) {
           super();
 
           this.x = x;
@@ -47,12 +47,11 @@
             typeof onDragStart === "function" &&
             typeof onDragEnd === "function"
           ) {
-            this.interactive = true;
-            this.buttonMode = true;
+            this.eventMode = "static";
+            this.cursor = "pointer";
             // setting hitArea is important for correct pointerdown events delivery
             this.hitArea = new PIXI.Rectangle(0, 0, CELL, CELL);
             this.on("pointerdown", onDragStart)
-              .on("pointermove", onDragMove)
               .on("pointerup", onDragEnd)
               .on("pointerupoutside", onDragEnd);
           } else {
@@ -82,6 +81,10 @@
           this.y = CELL * Math.floor((this.y + CELL / 2) / CELL);
         }
       }
+
+      // the relative offset point of the click on the tile
+      let grabPoint = new PIXI.Point();
+      let draggedTile;
 
       const parentElement = document.getElementById("parent");
       const childElement = document.getElementById("child");
@@ -132,70 +135,45 @@
       }
       app.stage.addChild(background);
 
-      const r = new Tile(
-        "red",
-        onDragStart,
-        onDragMove,
-        onDragEnd,
-        3 * CELL,
-        3 * CELL,
-        "red"
-      );
-      const g = new Tile(
-        "green",
-        onDragStart,
-        onDragMove,
-        onDragEnd,
-        4 * CELL,
-        3 * CELL,
-        "green"
-      );
-      const b = new Tile(
-        "blue",
-        onDragStart,
-        onDragMove,
-        onDragEnd,
-        5 * CELL,
-        3 * CELL,
-        "blue"
-      );
+      const r = new Tile("red", onDragStart, onDragEnd, 3 * CELL, 3 * CELL);
+      const g = new Tile("green", onDragStart, onDragEnd, 4 * CELL, 3 * CELL);
+      const b = new Tile("blue", onDragStart, onDragEnd, 5 * CELL, 3 * CELL);
 
       app.stage.addChild(r);
       app.stage.addChild(g);
       app.stage.addChild(b);
 
-      function onDragStart(ev) {
-        console.log("onDragStart: " + this.color);
-        this.data = ev.data;
-        var pos = this.data.getLocalPosition(this.parent);
-        this.x = pos.x - this.width / 2;
-        this.y = pos.y - this.height / 2;
-        // put the tile on top
-        app.stage.removeChild(this);
-        app.stage.addChild(this);
-        this.startDragging();
+      function onDragStart({ target, global }) {
+        draggedTile = target;
+        draggedTile.toLocal(global, null, grabPoint);
+        grabPoint.x *= draggedTile.scale.x;
+        grabPoint.y *= draggedTile.scale.y;
+        app.stage.cursor = "pointer";
+        app.stage.on("pointermove", onDragMove);
+        // put the dragged object on the top
+        app.stage.removeChild(draggedTile);
+        app.stage.addChild(draggedTile);
+        draggedTile.startDragging();
+        console.log("onDragStart:", draggedTile);
       }
 
-      function onDragMove() {
-        if (this.data) {
-          console.log("onDragMove: " + this.color);
-          var pos = this.data.getLocalPosition(this.parent);
-          this.x = pos.x - this.width / 2;
-          this.y = pos.y - this.height / 2;
-        }
+      function onDragMove({ global: { x, y } }) {
+        draggedTile.x = x - grabPoint.x;
+        draggedTile.y = y - grabPoint.y;
+        console.log("onDragMove:", draggedTile);
       }
 
       function onDragEnd() {
-        if (this.data) {
-          console.log("onDragEnd: " + this.color);
-          var pos = this.data.getLocalPosition(this.parent);
-          this.data = null;
-          // the next 2 lines are not needed here, but
-          // in my real game I put the tile beneath the HUD
-          app.stage.removeChild(this);
-          app.stage.addChildAt(this, app.stage.children.length);
-          this.stopDragging();
-        }
+        // reset the tile scale and calculate its col and row
+        draggedTile.stopDragging();
+        // the next 2 lines are not needed here, but
+        // in my real game the tile is put beneath the HUD
+        app.stage.removeChild(draggedTile);
+        app.stage.addChildAt(draggedTile, app.stage.children.length);
+        app.stage.cursor = null;
+        app.stage.off("pointermove", onDragMove);
+        draggedTile = null;
+        console.log("onDragEnd:", draggedTile);
       }
     </script>
   </body>
