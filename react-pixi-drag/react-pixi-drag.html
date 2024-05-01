@@ -33,13 +33,15 @@
     <script>
       "use strict";
 
+      const CELL = 100;
+
       class Tile extends PIXI.Container {
-        constructor(color, onDragStart, onDragMove, onDragEnd, x, y, name) {
+        constructor(color, onDragStart, onDragMove, onDragEnd, x, y) {
           super();
 
           this.x = x;
           this.y = y;
-          this.name = name;
+          this.color = color;
 
           if (
             typeof onDragStart === "function" &&
@@ -48,7 +50,7 @@
             this.interactive = true;
             this.buttonMode = true;
             // setting hitArea is important for correct pointerdown events delivery
-            this.hitArea = new PIXI.Rectangle(0, 0, 100, 100);
+            this.hitArea = new PIXI.Rectangle(0, 0, CELL, CELL);
             this.on("pointerdown", onDragStart)
               .on("pointermove", onDragMove)
               .on("pointerup", onDragEnd)
@@ -59,7 +61,7 @@
 
           this.graph = new PIXI.Graphics()
             .beginFill(color)
-            .drawRect(0, 0, 100, 100)
+            .drawRect(0, 0, CELL, CELL)
             .endFill();
           this.addChild(this.graph);
           this.cacheAsBitmap = true;
@@ -76,8 +78,8 @@
           this.scale.y = 1;
           this.alpha = 1;
           // align x, y to the checker board grid
-          this.x = 100 * Math.floor((this.x + 100 / 2) / 100);
-          this.y = 100 * Math.floor((this.y + 100 / 2) / 100);
+          this.x = CELL * Math.floor((this.x + CELL / 2) / CELL);
+          this.y = CELL * Math.floor((this.y + CELL / 2) / CELL);
         }
       }
 
@@ -86,8 +88,8 @@
 
       const app = new PIXI.Application({
         backgroundColor: 0xccffcc,
-        width: 800,
-        height: 800,
+        width: 8 * CELL,
+        height: 8 * CELL,
         view: childElement,
       });
 
@@ -123,7 +125,7 @@
         for (let j = 0; j < 8; j++) {
           if ((i + j) % 2 == 0) {
             background.beginFill(0xccccff);
-            background.drawRect(i * 100, j * 100, 100, 100);
+            background.drawRect(i * CELL, j * CELL, CELL, CELL);
             background.endFill();
           }
         }
@@ -131,30 +133,30 @@
       app.stage.addChild(background);
 
       const r = new Tile(
-        0xff0000,
+        "red",
         onDragStart,
         onDragMove,
         onDragEnd,
-        300,
-        300,
+        3 * CELL,
+        3 * CELL,
         "red"
       );
       const g = new Tile(
-        0x00ff00,
+        "green",
         onDragStart,
         onDragMove,
         onDragEnd,
-        400,
-        300,
+        4 * CELL,
+        3 * CELL,
         "green"
       );
       const b = new Tile(
-        0x0000ff,
+        "blue",
         onDragStart,
         onDragMove,
         onDragEnd,
-        500,
-        300,
+        5 * CELL,
+        3 * CELL,
         "blue"
       );
 
@@ -163,7 +165,7 @@
       app.stage.addChild(b);
 
       function onDragStart(ev) {
-        console.log("onDragStart: " + this.name);
+        console.log("onDragStart: " + this.color);
         this.data = ev.data;
         var pos = this.data.getLocalPosition(this.parent);
         this.x = pos.x - this.width / 2;
@@ -176,7 +178,7 @@
 
       function onDragMove() {
         if (this.data) {
-          console.log("onDragMove: " + this.name);
+          console.log("onDragMove: " + this.color);
           var pos = this.data.getLocalPosition(this.parent);
           this.x = pos.x - this.width / 2;
           this.y = pos.y - this.height / 2;
@@ -185,7 +187,7 @@
 
       function onDragEnd() {
         if (this.data) {
-          console.log("onDragEnd: " + this.name);
+          console.log("onDragEnd: " + this.color);
           var pos = this.data.getLocalPosition(this.parent);
           this.data = null;
           // the next 2 lines are not needed here, but
