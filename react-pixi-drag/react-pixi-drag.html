@@ -36,12 +36,11 @@
       const CELL = 100;
 
       class Tile extends PIXI.Container {
-        constructor(color, onDragStart, onDragEnd, x, y) {
+        constructor(color, onDragStart, onDragEnd, col, row) {
           super();
 
-          this.x = x;
-          this.y = y;
-          this.color = color;
+          this.x = (col + 0.5) * CELL;
+          this.y = (row + 0.5) * CELL;
 
           if (
             typeof onDragStart === "function" &&
@@ -50,7 +49,7 @@
             this.eventMode = "static";
             this.cursor = "pointer";
             // setting hitArea is important for correct pointerdown events delivery
-            this.hitArea = new PIXI.Rectangle(0, 0, CELL, CELL);
+            this.hitArea = new PIXI.Rectangle(-CELL / 2, -CELL / 2, CELL, CELL);
             this.on("pointerdown", onDragStart)
               .on("pointerup", onDragEnd)
               .on("pointerupoutside", onDragEnd);
@@ -60,7 +59,7 @@
 
           this.graph = new PIXI.Graphics()
             .beginFill(color)
-            .drawRect(0, 0, CELL, CELL)
+            .drawRect(-CELL / 2, -CELL / 2, CELL, CELL)
             .endFill();
           this.addChild(this.graph);
           this.cacheAsBitmap = true;
@@ -76,9 +75,19 @@
           this.scale.x = 1;
           this.scale.y = 1;
           this.alpha = 1;
+
           // align x, y to the checker board grid
-          this.x = CELL * Math.floor((this.x + CELL / 2) / CELL);
-          this.y = CELL * Math.floor((this.y + CELL / 2) / CELL);
+          let col = Math.floor(this.x / CELL);
+          let row = Math.floor(this.y / CELL);
+          // ensure the col is between 0 and 7
+          col = Math.max(col, 0);
+          col = Math.min(col, 7);
+          // ensure the row is between 0 and 7
+          row = Math.max(row, 0);
+          row = Math.min(row, 7);
+
+          this.x = (col + 0.5) * CELL;
+          this.y = (row + 0.5) * CELL;
         }
       }
 
@@ -135,9 +144,9 @@
       }
       app.stage.addChild(background);
 
-      const r = new Tile("red", onDragStart, onDragEnd, 3 * CELL, 3 * CELL);
-      const g = new Tile("green", onDragStart, onDragEnd, 4 * CELL, 3 * CELL);
-      const b = new Tile("blue", onDragStart, onDragEnd, 5 * CELL, 3 * CELL);
+      const r = new Tile("red", onDragStart, onDragEnd, 3, 3);
+      const g = new Tile("green", onDragStart, onDragEnd, 4, 3);
+      const b = new Tile("blue", onDragStart, onDragEnd, 5, 3);
 
       app.stage.addChild(r);
       app.stage.addChild(g);
