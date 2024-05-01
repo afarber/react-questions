@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="horizontalFlexContainer">
-      <div style="background: lightgrey">
+      <div class="left">
         <h3>Select a game!</h3>
         <nav>
           <ul>
@@ -20,7 +20,7 @@
           </ul>
         </nav>
       </div>
-      <div style="flex-grow: 1">
+      <div class="right">
         <div class="verticalFlexContainer">
           <div class="status">Game #1 Score1:Score2</div>
           <div class="parent" id="parent">
@@ -33,8 +33,35 @@
     <script>
       "use strict";
 
+      class Tile extends PIXI.Container {
+        constructor(onDragStart, onDragEnd) {
+          super();
+
+          if (
+            typeof onDragStart === "function" &&
+            typeof onDragEnd === "function"
+          ) {
+            this.on("pointerdown", onDragStart);
+            this.on("pointerup", onDragEnd);
+            this.eventMode = "static";
+            this.cursor = "pointer";
+            // it is important to set hitArea, otherwise pointerdown will be called on wrong tiles
+            this.hitArea = new PIXI.Rectangle(-50, -50, 100, 100);
+          } else {
+            this.eventMode = "none";
+          }
+
+          const rectGreen = new Graphics()
+            .beginFill(0x00ff00)
+            .drawRect(0, 0, 100, 100);
+          this.addChild(rectGreen);
+        }
+      }
+
       const parentElement = document.getElementById("parent");
       const childElement = document.getElementById("child");
+
+      let dragging = false;
 
       const app = new PIXI.Application({
         backgroundColor: 0xccffcc,
@@ -42,6 +69,15 @@
         height: 800,
         view: childElement,
       });
+
+      // The stage will handle the move events
+      app.stage.eventMode = "static";
+      app.stage.hitArea = app.screen;
+      app.stage
+        .on("pointerdown", pointerDown)
+        .on("pointerup", pointerUp)
+        .on("pointerupoutside", pointerUp)
+        .on("pointermove", pointerMove);
 
       // the PIXI app has created a canvas element - make it a child of the parent div
       // const childElement = app.view;
@@ -86,6 +122,23 @@
       bunny.width = 100;
       bunny.height = 100;
       app.stage.addChild(bunny);
+
+      function pointerMove({ target, global: { x, y } }) {
+        console.log("pointerMove", dragging, target, x, y);
+        if (dragging) {
+        }
+      }
+
+      function pointerDown(event) {
+        console.log("pointerDown", event);
+        dragging = true;
+        pointerMove(event);
+      }
+
+      function pointerUp(event) {
+        console.log("pointerDown", event);
+        dragging = false;
+      }
     </script>
   </body>
 </html>

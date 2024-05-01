@@ -20,7 +20,7 @@ div.horizontalFlexContainer {
 }
 
 div.left {
-  background: #fcc;
+  background: #ccf;
 }
 
 div.right {
@@ -58,7 +58,7 @@ canvas.child {
 
 div.hint,
 div.status {
-  background: #ccf;
+  background: #cfc;
   font-style: italic;
   text-align: center;
 }
