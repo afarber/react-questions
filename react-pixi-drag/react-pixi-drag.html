@@ -34,34 +34,55 @@
       "use strict";
 
       class Tile extends PIXI.Container {
-        constructor(onDragStart, onDragEnd) {
+        constructor(color, onDragStart, onDragMove, onDragEnd, x, y, name) {
           super();
+
+          this.x = x;
+          this.y = y;
+          this.name = name;
 
           if (
             typeof onDragStart === "function" &&
             typeof onDragEnd === "function"
           ) {
-            this.on("pointerdown", onDragStart);
-            this.on("pointerup", onDragEnd);
-            this.eventMode = "static";
-            this.cursor = "pointer";
-            // it is important to set hitArea, otherwise pointerdown will be called on wrong tiles
-            this.hitArea = new PIXI.Rectangle(-50, -50, 100, 100);
+            this.interactive = true;
+            this.buttonMode = true;
+            // setting hitArea is important for correct pointerdown events delivery
+            this.hitArea = new PIXI.Rectangle(0, 0, 100, 100);
+            this.on("pointerdown", onDragStart)
+              .on("pointermove", onDragMove)
+              .on("pointerup", onDragEnd)
+              .on("pointerupoutside", onDragEnd);
           } else {
             this.eventMode = "none";
           }
 
-          const rectGreen = new Graphics()
-            .beginFill(0x00ff00)
-            .drawRect(0, 0, 100, 100);
-          this.addChild(rectGreen);
+          this.graph = new PIXI.Graphics()
+            .beginFill(color)
+            .drawRect(0, 0, 100, 100)
+            .endFill();
+          this.addChild(this.graph);
+          this.cacheAsBitmap = true;
+        }
+
+        startDragging() {
+          this.scale.x = 1.6;
+          this.scale.y = 1.6;
+          this.alpha = 0.8;
+        }
+
+        stopDragging() {
+          this.scale.x = 1;
+          this.scale.y = 1;
+          this.alpha = 1;
+          // align x, y to the checker board grid
+          this.x = 100 * Math.floor((this.x + 100 / 2) / 100);
+          this.y = 100 * Math.floor((this.y + 100 / 2) / 100);
         }
       }
 
       const parentElement = document.getElementById("parent");
       const childElement = document.getElementById("child");
-
-      let dragging = false;
 
       const app = new PIXI.Application({
         backgroundColor: 0xccffcc,
@@ -73,11 +94,6 @@
       // The stage will handle the move events
       app.stage.eventMode = "static";
       app.stage.hitArea = app.screen;
-      app.stage
-        .on("pointerdown", pointerDown)
-        .on("pointerup", pointerUp)
-        .on("pointerupoutside", pointerUp)
-        .on("pointermove", pointerMove);
 
       // the PIXI app has created a canvas element - make it a child of the parent div
       // const childElement = app.view;
@@ -114,30 +130,70 @@
       }
       app.stage.addChild(background);
 
-      const texture = PIXI.Texture.from("https://pixijs.com/assets/bunny.png");
-      const bunny = new PIXI.Sprite(texture);
-      bunny.anchor.set(0.5);
-      bunny.x = 50;
-      bunny.y = 50;
-      bunny.width = 100;
-      bunny.height = 100;
-      app.stage.addChild(bunny);
+      const r = new Tile(
+        0xff0000,
+        onDragStart,
+        onDragMove,
+        onDragEnd,
+        300,
+        300,
+        "red"
+      );
+      const g = new Tile(
+        0x00ff00,
+        onDragStart,
+        onDragMove,
+        onDragEnd,
+        400,
+        300,
+        "green"
+      );
+      const b = new Tile(
+        0x0000ff,
+        onDragStart,
+        onDragMove,
+        onDragEnd,
+        500,
+        300,
+        "blue"
+      );
 
-      function pointerMove({ target, global: { x, y } }) {
-        console.log("pointerMove", dragging, target, x, y);
-        if (dragging) {
+      app.stage.addChild(r);
+      app.stage.addChild(g);
+      app.stage.addChild(b);
+
+      function onDragStart(ev) {
+        console.log("onDragStart: " + this.name);
+        this.data = ev.data;
+        var pos = this.data.getLocalPosition(this.parent);
+        this.x = pos.x - this.width / 2;
+        this.y = pos.y - this.height / 2;
+        // put the tile on top
+        app.stage.removeChild(this);
+        app.stage.addChild(this);
+        this.startDragging();
+      }
+
+      function onDragMove() {
+        if (this.data) {
+          console.log("onDragMove: " + this.name);
+          var pos = this.data.getLocalPosition(this.parent);
+          this.x = pos.x - this.width / 2;
+          this.y = pos.y - this.height / 2;
         }
       }
 
-      function pointerDown(event) {
-        console.log("pointerDown", event);
-        dragging = true;
-        pointerMove(event);
-      }
-
-      function pointerUp(event) {
-        console.log("pointerDown", event);
-        dragging = false;
+      function onDragEnd() {
+        if (this.data) {
+          console.log("onDragEnd: " + this.name);
+          var pos = this.data.getLocalPosition(this.parent);
+          this.data = null;
+          // the next 2 lines are not needed here, but
+          // in my real game I put the tile beneath the HUD
+          app.stage.removeChild(this);
+          app.stage.addChildAt(this, app.stage.children.length);
+          this.stopDragging();
+        }
       }
     </script>
   </body>
