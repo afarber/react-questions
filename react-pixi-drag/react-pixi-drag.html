@@ -50,9 +50,7 @@
             this.cursor = "pointer";
             // setting hitArea is important for correct pointerdown events delivery
             this.hitArea = new PIXI.Rectangle(-CELL / 2, -CELL / 2, CELL, CELL);
-            this.on("pointerdown", onDragStart)
-              .on("pointerup", onDragEnd)
-              .on("pointerupoutside", onDragEnd);
+            this.on("pointerdown", onDragStart).on("pointerup", onDragEnd);
           } else {
             this.eventMode = "none";
           }

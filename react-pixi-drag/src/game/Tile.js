@@ -1,11 +1,4 @@
-import {
-  Application,
-  Container,
-  Graphics,
-  Rectangle,
-  Sprite,
-  Texture,
-} from "pixi.js-legacy";
+import { Container, Graphics, Rectangle } from "pixi.js-legacy";
 
 export const CELL = 100;
 
