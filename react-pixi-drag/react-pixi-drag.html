@@ -163,13 +163,13 @@
         app.stage.removeChild(draggedTile);
         app.stage.addChild(draggedTile);
         draggedTile.startDragging();
-        console.log("onDragStart:", draggedTile);
+        console.log("onDragStart:", draggedTile.x, draggedTile.y);
       }
 
       function onDragMove({ global: { x, y } }) {
         draggedTile.x = x - grabPoint.x;
         draggedTile.y = y - grabPoint.y;
-        console.log("onDragMove:", draggedTile);
+        console.log("onDragMove:", draggedTile.x, draggedTile.y);
       }
 
       function onDragEnd() {
@@ -181,8 +181,8 @@
         app.stage.addChildAt(draggedTile, app.stage.children.length);
         app.stage.cursor = null;
         app.stage.off("pointermove", onDragMove);
+        console.log("onDragEnd:", draggedTile.x, draggedTile.y);
         draggedTile = null;
-        console.log("onDragEnd:", draggedTile);
       }
     </script>
   </body>
