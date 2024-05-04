@@ -11,7 +11,7 @@ import MasterList from "./components/MasterList";
 import DetailView from "./components/PixiGame";
 
 import { useMediaQuery } from "@react-hook/media-query";
-import { UserProvider } from "./UserContext";
+import { UserProvider } from "./UserProvider";
 
 const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
