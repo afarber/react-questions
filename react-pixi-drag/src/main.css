@@ -33,6 +33,8 @@ div.verticalFlexContainer {
   justify-content: space-between;
   align-items: stretch;
   height: 100vh;
+  /* prevent text selection when dragging tiles */
+  user-select: none;
 }
 
 /* the parent contains: just the canvas element, which observes the parent dimensions */
