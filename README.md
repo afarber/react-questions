@@ -18,6 +18,10 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/bottom-drawer/screenshot.gif)
 
+[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) have a global context with user details:
+
+![screenshot](https://raw.github.com/afarber/react-questions/master/login-logout/screenshot.gif)
+
 [permanent-drawer](https://github.com/afarber/react-questions/tree/master/permanent-drawer) display a permanent drawer on the left side:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/permanent-drawer/screenshot.png)
