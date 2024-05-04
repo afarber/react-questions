@@ -18,7 +18,7 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/bottom-drawer/screenshot.gif)
 
-[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) have a global context with user details:
+[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) display games only for logged in users:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/login-logout/screenshot.gif)
 

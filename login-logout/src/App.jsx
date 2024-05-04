@@ -11,6 +11,7 @@ import MasterList from "./components/MasterList";
 import DetailView from "./components/PixiGame";
 
 import { useMediaQuery } from "@react-hook/media-query";
+import { UserProvider } from "./UserContext";
 
 const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
@@ -36,7 +37,11 @@ const App = () => {
     [isSmallScreen]
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+  );
 };
 
 export default App;
