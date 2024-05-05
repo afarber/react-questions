@@ -2,11 +2,16 @@
 
 import { Outlet } from "react-router";
 import MasterList from "../components/MasterList";
+import { useContext } from "react";
+import { UserContext } from "../UserProvider";
+import Login from "../pages/Login";
 
 export default function LargeLayout() {
+  const { user } = useContext(UserContext);
+
   return (
     <div className="horizontalFlexContainer">
-      <MasterList />
+      {user ? <MasterList /> : <Login />}
       <div className="right">
         <Outlet />
       </div>
