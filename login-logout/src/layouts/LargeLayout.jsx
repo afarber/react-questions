@@ -1,9 +1,9 @@
 "use client";
 
-import { Outlet } from "react-router";
-import MasterList from "../components/MasterList";
 import { useContext } from "react";
-import { UserContext } from "../UserProvider";
+import { Outlet } from "react-router";
+import UserContext from "../UserContext";
+import MasterList from "../components/MasterList";
 import Login from "../pages/Login";
 
 export default function LargeLayout() {
