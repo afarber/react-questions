@@ -4,12 +4,11 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
+import React from "react";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
-import React from "react";
 import MasterList from "./components/MasterList";
 import DetailView from "./components/PixiGame";
-
 import { useMediaQuery } from "@react-hook/media-query";
 import { UserProvider } from "./UserProvider";
 

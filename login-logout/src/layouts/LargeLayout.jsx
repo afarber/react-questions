@@ -9,6 +9,8 @@ import Login from "../pages/Login";
 export default function LargeLayout() {
   const { user } = useContext(UserContext);
 
+  console.log(user);
+
   return (
     <div className="horizontalFlexContainer">
       {user ? <MasterList /> : <Login />}
