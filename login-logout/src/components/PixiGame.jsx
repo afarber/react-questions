@@ -9,7 +9,7 @@ import { CELL, Tile } from "../game/Tile";
 const PixiGame = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
-  const { pixiBunnies } = useParams();
+  const { gameId } = useParams();
 
   const parentRef = useRef(null);
   const childRef = useRef(null);
@@ -123,7 +123,7 @@ const PixiGame = () => {
 
   return (
     <div className="verticalFlexContainer">
-      <div className="hint">Game #{pixiBunnies} Score1:Score2</div>
+      <div className="hint">Game #{gameId} Score1:Score2</div>
       <div className="parent" ref={parentRef}>
         {/* <canvas className="child" id="child" ref={childRef}></canvas> */}
       </div>
