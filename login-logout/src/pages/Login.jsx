@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import UserContext from "../UserContext";
+import MyContext from "../MyContext";
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useContext(MyContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -19,19 +19,25 @@ const Login = () => {
   return (
     <div>
       <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="First Name"
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Last Name"
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+      <div>
+        <input
+          type="text"
+          placeholder="First Name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Last Name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+      </div>
+      <div>
+        <button onClick={handleLogin}>Login</button>
+      </div>
     </div>
   );
 };

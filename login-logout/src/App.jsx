@@ -10,18 +10,13 @@ import LargeLayout from "./layouts/LargeLayout";
 import MasterList from "./components/MasterList";
 import DetailView from "./components/PixiGame";
 import { useMediaQuery } from "@react-hook/media-query";
-import UserContext from "./UserContext";
+import MyContext from "./MyContext";
 
 const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
-  const [user, setUser] =
-    useState(/* {
-    firstName: "",
-    lastName: "",
-    userId: "",
-    photoUrl: "",
-  } */);
+  const [user, setUser] = useState();
+  const [games, setGames] = useState([]);
 
   const router = React.useMemo(
     () =>
@@ -45,9 +40,9 @@ const App = () => {
   );
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <MyContext.Provider value={{ user, setUser, games, setGames }}>
       <RouterProvider router={router} />
-    </UserContext.Provider>
+    </MyContext.Provider>
   );
 };
 

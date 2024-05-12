@@ -2,14 +2,12 @@
 
 import { useContext } from "react";
 import { Outlet } from "react-router";
-import UserContext from "../UserContext";
+import MyContext from "../MyContext";
 import MasterList from "../components/MasterList";
 import Login from "../pages/Login";
 
 export default function LargeLayout() {
-  const { user } = useContext(UserContext);
-
-  console.log(user);
+  const { user } = useContext(MyContext);
 
   return (
     <div className="horizontalFlexContainer">
