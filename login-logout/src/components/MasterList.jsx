@@ -5,6 +5,14 @@ import MyContext from "../MyContext";
 const MasterList = () => {
   const { games, setGames } = useContext(MyContext);
 
+  const addNewGame = () => {
+    const newGame = {
+      id: Math.floor(Math.random() * 1000), // Generate a random integer id
+      title: `Game ${games.length + 1}`, // Set a default title
+    };
+    setGames([...games, newGame]);
+  };
+
   /*
   const games = [
     { id: 1, title: "Game 1" },
@@ -14,14 +22,9 @@ const MasterList = () => {
   ];
 */
 
-  const handleLogin = () => {
-    const gameId = Math.random();
-    console.log(gameId);
-  };
-
   return (
     <div className="left">
-      <button onClick={handleLogin}>Start new game</button>
+      <button onClick={addNewGame}>Start new game</button>
       <nav>
         <ul>
           {games.map((game) => (
