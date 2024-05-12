@@ -3,7 +3,10 @@ import { NavLink } from "react-router-dom";
 import MyContext from "../MyContext";
 
 const MasterList = () => {
-  const { games, setGames } = useContext(MyContext);
+  const { user, games, setGames } = useContext(MyContext);
+
+  // sort games by their numerical ids
+  const sortedGames = [...games].sort((a, b) => a.id - b.id);
 
   const addNewGame = () => {
     setGames((prevState) => {
@@ -21,7 +24,7 @@ const MasterList = () => {
       <button onClick={addNewGame}>Start new game</button>
       <nav>
         <ul>
-          {games.map((game) => (
+          {sortedGames.map((game) => (
             <li key={game.id}>
               <NavLink to={"/game/" + game.id}>{game.title}</NavLink>
             </li>
