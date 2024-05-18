@@ -5,11 +5,11 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import React, { useState } from "react";
+import { useMediaQuery } from "@react-hook/media-query";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
 import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
-import { useMediaQuery } from "@react-hook/media-query";
 import MyContext from "./MyContext";
 
 const App = () => {
