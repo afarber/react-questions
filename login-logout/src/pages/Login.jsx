@@ -24,7 +24,7 @@ const Login = () => {
           type="text"
           placeholder="First Name"
           value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
+          onChange={(ev) => setFirstName(ev.target.value)}
         />
       </div>
       <div>
@@ -32,7 +32,7 @@ const Login = () => {
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+          onChange={(ev) => setLastName(ev.target.value)}
         />
       </div>
       <div>

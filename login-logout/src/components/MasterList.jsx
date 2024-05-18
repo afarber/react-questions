@@ -6,7 +6,7 @@ const MasterList = () => {
   const { user, games, setGames } = useContext(MyContext);
 
   // sort games by their numerical ids
-  const sortedGames = [...games].sort((a, b) => a.id - b.id);
+  const sortedGames = [...games].sort((game1, game2) => game1.id - game2.id);
 
   const addNewGame = () => {
     setGames((prevState) => {
