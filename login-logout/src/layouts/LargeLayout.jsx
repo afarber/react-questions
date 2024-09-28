@@ -1,5 +1,3 @@
-"use client";
-
 import { useContext } from "react";
 import { Outlet } from "react-router";
 import MasterList from "../components/MasterList";

@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
 
 const Login = () => {

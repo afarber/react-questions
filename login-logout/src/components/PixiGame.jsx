@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Application, Graphics, Point } from "pixi.js-legacy";

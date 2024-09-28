@@ -1,5 +1,3 @@
-"use client";
-
 const GameNotFound = () => {
   return <div>Game not found</div>;
 };
