@@ -1,12 +1,10 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-
 import GamesContext from "../contexts/GamesContext";
 import ThemeContext from "../contexts/ThemeContext";
-import UserContext from "../contexts/UserContext";
 
 const MasterList = () => {
-  const { user } = useContext(UserContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   const { games, setGames } = useContext(GamesContext);
 
   // sort games by their numerical ids
@@ -35,6 +33,18 @@ const MasterList = () => {
           ))}
         </ul>
       </nav>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            checked={theme === "dark"}
+            onChange={(e) => {
+              setTheme(e.target.checked ? "dark" : "light");
+            }}
+          />
+          Use dark mode
+        </label>
+      </div>
     </div>
   );
 };

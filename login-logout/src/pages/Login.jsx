@@ -3,7 +3,6 @@ import ThemeContext from "../contexts/ThemeContext";
 import UserContext from "../contexts/UserContext";
 
 const Login = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
   const { setUser } = useContext(UserContext);
 
   const [firstName, setFirstName] = useState("");
@@ -41,16 +40,6 @@ const Login = () => {
       <div>
         <button onClick={handleLogin}>Login</button>
       </div>
-      <label>
-        <input
-          type="checkbox"
-          checked={theme === "dark"}
-          onChange={(e) => {
-            setTheme(e.target.checked ? "dark" : "light");
-          }}
-        />
-        Use dark mode
-      </label>
     </div>
   );
 };
