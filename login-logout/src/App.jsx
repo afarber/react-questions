@@ -19,7 +19,7 @@ const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const [user, setUser] = useState();
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState("light");
   const [games, setGames] = useState([]);
 
   const router = useMemo(
