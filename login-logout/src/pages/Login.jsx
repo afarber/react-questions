@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
-import MyContext from "../MyContext";
+import ThemeContext from "../contexts/ThemeContext";
+import UserContext from "../contexts/UserContext";
 
 const Login = () => {
-  const { setUser } = useContext(MyContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+  const { setUser } = useContext(UserContext);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -38,6 +41,16 @@ const Login = () => {
       <div>
         <button onClick={handleLogin}>Login</button>
       </div>
+      <label>
+        <input
+          type="checkbox"
+          checked={theme === "dark"}
+          onChange={(e) => {
+            setTheme(e.target.checked ? "dark" : "light");
+          }}
+        />
+        Use dark mode
+      </label>
     </div>
   );
 };

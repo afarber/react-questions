@@ -4,21 +4,25 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import React, { useState } from "react";
+
+import { useMemo, useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
 import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
-import MyContext from "./MyContext";
+import GamesContext from "./contexts/GamesContext";
+import ThemeContext from "./contexts/ThemeContext";
+import UserContext from "./contexts/UserContext";
 
 const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const [user, setUser] = useState();
+  const [theme, setTheme] = useState();
   const [games, setGames] = useState([]);
 
-  const router = React.useMemo(
+  const router = useMemo(
     () =>
       createBrowserRouter(
         createRoutesFromElements(
@@ -40,9 +44,13 @@ const App = () => {
   );
 
   return (
-    <MyContext.Provider value={{ user, setUser, games, setGames }}>
-      <RouterProvider router={router} />
-    </MyContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <UserContext.Provider value={{ user, setUser }}>
+        <GamesContext.Provider value={{ games, setGames }}>
+          <RouterProvider router={router} />
+        </GamesContext.Provider>
+      </UserContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
