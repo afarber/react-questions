@@ -30,12 +30,7 @@ const App = () => {
             path="/"
             element={isSmallScreen ? <SmallLayout /> : <LargeLayout />}
           >
-            <Route
-              index
-              element={
-                isSmallScreen ? <MasterList /> : <div>Select a game!</div>
-              }
-            />
+            <Route index element={isSmallScreen ? <MasterList /> : <div />} />
             <Route path="game/:gameId" element={<PixiGame />} />
           </Route>
         )

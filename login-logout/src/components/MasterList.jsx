@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import Login from "../pages/Login";
 import GamesContext from "../contexts/GamesContext";
 import ThemeContext from "../contexts/ThemeContext";
+import UserContext from "../contexts/UserContext";
 
 const MasterList = () => {
+  const { user } = useContext(UserContext);
   const { theme, setTheme } = useContext(ThemeContext);
   const { games, setGames } = useContext(GamesContext);
 
@@ -23,16 +26,22 @@ const MasterList = () => {
 
   return (
     <div className="left">
-      <button onClick={addNewGame}>Start new game</button>
-      <nav>
-        <ul>
-          {sortedGames.map((game) => (
-            <li key={game.id}>
-              <NavLink to={"/game/" + game.id}>{game.title}</NavLink>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {user ? (
+        <>
+          <button onClick={addNewGame}>Start new game</button>
+          <nav>
+            <ul>
+              {sortedGames.map((game) => (
+                <li key={game.id}>
+                  <NavLink to={"/game/" + game.id}>{game.title}</NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </>
+      ) : (
+        <Login />
+      )}
       <div>
         <label>
           <input
