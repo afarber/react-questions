@@ -12,7 +12,7 @@ const MasterList = () => {
 
   const addNewGame = () => {
     setGames((prevState) => {
-      const id = Math.floor(Math.random() * 1000);
+      const id = Math.floor(1 + Math.random() * 1000);
       const newGame = {
         id: id,
         title: `Game ${id}`,

@@ -14,7 +14,6 @@ import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
 import GamesContext from "./contexts/GamesContext";
 import ThemeContext from "./contexts/ThemeContext";
-import UserContext from "./contexts/UserContext";
 
 const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
@@ -41,11 +40,13 @@ const App = () => {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <UserContext.Provider value={{ user, setUser }}>
-        <GamesContext.Provider value={{ games, setGames }}>
-          {user ? <RouterProvider router={router} /> : <Login />}
-        </GamesContext.Provider>
-      </UserContext.Provider>
+      <GamesContext.Provider value={{ games, setGames }}>
+        {user ? (
+          <RouterProvider router={router} />
+        ) : (
+          <Login setUser={setUser} />
+        )}
+      </GamesContext.Provider>
     </ThemeContext.Provider>
   );
 };

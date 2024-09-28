@@ -1,9 +1,7 @@
-import { useContext, useState } from "react";
-import UserContext from "../contexts/UserContext";
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-const Login = () => {
-  const { setUser } = useContext(UserContext);
-
+const Login = ({ setUser }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -44,3 +42,7 @@ const Login = () => {
 };
 
 export default Login;
+
+Login.propTypes = {
+  setUser: PropTypes.func,
+};
