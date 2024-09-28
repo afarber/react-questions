@@ -9,6 +9,7 @@ import { useMemo, useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
+import Login from "./pages/Login";
 import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
 import GamesContext from "./contexts/GamesContext";
@@ -42,7 +43,7 @@ const App = () => {
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <UserContext.Provider value={{ user, setUser }}>
         <GamesContext.Provider value={{ games, setGames }}>
-          <RouterProvider router={router} />
+          {user ? <RouterProvider router={router} /> : <Login />}
         </GamesContext.Provider>
       </UserContext.Provider>
     </ThemeContext.Provider>
