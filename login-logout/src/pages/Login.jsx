@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 const Login = ({ setUser }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const canLogin = firstName.length > 1 && lastName.length > 1;
 
   const handleLogin = () => {
     const userId = Math.random().toString(36).substring(7);
@@ -23,7 +24,7 @@ const Login = ({ setUser }) => {
           type="text"
           placeholder="First Name"
           value={firstName}
-          onChange={(ev) => setFirstName(ev.target.value)}
+          onChange={(ev) => setFirstName(ev.target.value.trim())}
         />
       </div>
       <div>
@@ -31,11 +32,14 @@ const Login = ({ setUser }) => {
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={(ev) => setLastName(ev.target.value)}
+          onChange={(ev) => setLastName(ev.target.value.trim())}
         />
       </div>
       <div>
-        <button onClick={handleLogin}>Login</button>
+        <button disabled={!canLogin} onClick={handleLogin}>
+          Login
+        </button>{" "}
+        {!canLogin && <i>Fill in both fields.</i>}
       </div>
     </div>
   );
