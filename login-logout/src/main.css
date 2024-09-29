@@ -81,7 +81,6 @@ canvas.child {
 
 div.hint,
 div.status {
-  background: #cfc;
   font-style: italic;
   text-align: center;
 }

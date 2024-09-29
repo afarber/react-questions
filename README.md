@@ -18,9 +18,9 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/bottom-drawer/screenshot.gif)
 
-[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) display games only for logged in users:
+[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) display games only for logged in users and select light/dark themes by clicking a checkbox:
 
-![screenshot](https://raw.github.com/afarber/react-questions/master/login-logout/screenshot.gif)
+![screenshot](https://raw.github.com/afarber/react-questions/master/login-logout/screenshot.png)
 
 [permanent-drawer](https://github.com/afarber/react-questions/tree/master/permanent-drawer) display a permanent drawer on the left side:
 
