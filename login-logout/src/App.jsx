@@ -16,11 +16,12 @@ import GamesContext from "./contexts/GamesContext";
 import ThemeContext from "./contexts/ThemeContext";
 
 const App = () => {
-  const isSmallScreen = useMediaQuery("(max-width: 640px)");
-
   const [user, setUser] = useState();
   const [theme, setTheme] = useState("light");
   const [games, setGames] = useState([]);
+
+  const divClassName = "theme-" + theme;
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const router = useMemo(
     () =>
@@ -41,11 +42,13 @@ const App = () => {
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
       <GamesContext.Provider value={{ games, setGames }}>
-        {user ? (
-          <RouterProvider router={router} />
-        ) : (
-          <Login setUser={setUser} />
-        )}
+        <div className={divClassName}>
+          {user ? (
+            <RouterProvider router={router} />
+          ) : (
+            <Login setUser={setUser} />
+          )}
+        </div>
       </GamesContext.Provider>
     </ThemeContext.Provider>
   );

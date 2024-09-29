@@ -7,8 +7,7 @@ const MasterList = () => {
   const { theme, setTheme } = useContext(ThemeContext);
   const { games, setGames } = useContext(GamesContext);
 
-  const divClassName = "left-" + theme;
-  const buttonClassName = "button-" + theme;
+  const navLinkClassName = "navlink-" + theme;
 
   // sort games by their numerical ids
   const sortedGames = [...games].sort((game1, game2) => game1.id - game2.id);
@@ -25,16 +24,16 @@ const MasterList = () => {
   };
 
   return (
-    <div className={divClassName}>
-      <button className={buttonClassName} onClick={addNewGame}>
-        Start new game
-      </button>
+    <div className="left">
+      <button onClick={addNewGame}>Start new game</button>
 
       <nav>
         <ul>
           {sortedGames.map((game) => (
             <li key={game.id}>
-              <NavLink to={"/game/" + game.id}>{game.title}</NavLink>
+              <NavLink className={navLinkClassName} to={"/game/" + game.id}>
+                {game.title}
+              </NavLink>
             </li>
           ))}
         </ul>

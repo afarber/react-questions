@@ -38,7 +38,7 @@ const Login = ({ setUser }) => {
       <div>
         <button disabled={!canLogin} onClick={handleLogin}>
           Login
-        </button>{" "}
+        </button>
         {!canLogin && <i>Fill in both fields.</i>}
       </div>
     </div>

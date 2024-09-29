@@ -13,30 +13,35 @@ nav a.active {
   color: red;
 }
 
+.navlink-light {
+  color: blue;
+}
+
+.navlink-dark {
+  color: lightblue;
+}
+
+div.theme-light {
+  background: #fff;
+  color: #333;
+}
+
+div.theme-dark {
+  background: #333;
+  color: #fff;
+}
+
+button {
+  border: 1px solid #666;
+  padding: 4px;
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
 div.horizontalFlexContainer {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-}
-
-.button-light,
-.button-dark {
-  border: 1px solid #777;
-  padding: 5px;
-  margin-right: 10px;
-  margin-top: 10px;
-}
-
-.left-light,
-.button-light {
-  background: #fff;
-  color: #336;
-}
-
-.left-dark,
-.button-dark {
-  background: #336;
-  color: #fff;
 }
 
 div.right {
