@@ -22,7 +22,7 @@ const localizedStrings = {
 };
 
 function replacePlacesholders(src, lang) {
-  return src.replaceAll(/__[A-Z]+__/g, function (match) {
+  return src.replaceAll(/__[_A-Z]+__/g, function (match) {
     return localizedStrings[lang][match] || match;
   });
 }

@@ -34,11 +34,7 @@ const App = () => {
             <Route
               index
               element={
-                isSmallScreen ? (
-                  <MasterList />
-                ) : (
-                  <div>👈 Use the menu on the left</div>
-                )
+                isSmallScreen ? <MasterList /> : <div>👈 __USE_LEFT_MENU__</div>
               }
             />
             <Route path="game/:gameId" element={<PixiGame />} />

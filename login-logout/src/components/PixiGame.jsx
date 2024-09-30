@@ -121,7 +121,7 @@ const PixiGame = () => {
 
   return (
     <div className="verticalFlexContainer">
-      <div className="hint">Game #{gameId} Score1:Score2</div>
+      <div className="hint">__GAME__ #{gameId} Score1:Score2</div>
       <div className="parent" ref={parentRef}>
         {/* <canvas className="child" id="child" ref={childRef}></canvas> */}
       </div>

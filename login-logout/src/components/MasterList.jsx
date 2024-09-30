@@ -17,7 +17,7 @@ const MasterList = () => {
       const id = Math.floor(1 + Math.random() * 1000);
       const newGame = {
         id: id,
-        title: `Game ${id}`,
+        title: `__GAME__ #${id}`,
       };
       return [...prevState, newGame];
     });
@@ -25,7 +25,7 @@ const MasterList = () => {
 
   return (
     <div className="left">
-      <button onClick={addNewGame}>Start new game</button>
+      <button onClick={addNewGame}>__START_NEW_GAME__</button>
 
       <nav>
         <ul>
@@ -48,7 +48,7 @@ const MasterList = () => {
               setTheme(ev.target.checked ? "dark" : "light");
             }}
           />
-          Use dark mode
+          __USE_DARK_THEME__
         </label>
       </div>
     </div>
