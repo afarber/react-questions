@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import GamesContext from "../contexts/GamesContext";
-import ThemeContext from "../contexts/ThemeContext";
+import OptionsContext from "../contexts/OptionsContext";
 
 const MasterList = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(OptionsContext);
   const { games, setGames } = useContext(GamesContext);
 
   const navLinkClassName = "navlink-" + theme;

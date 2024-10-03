@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
 import GamesContext from "./contexts/GamesContext";
-import ThemeContext from "./contexts/ThemeContext";
+import OptionsContext from "./contexts/OptionsContext";
 
 const App = () => {
   const [user, setUser] = useState();
@@ -45,7 +45,7 @@ const App = () => {
   );
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <OptionsContext.Provider value={{ theme, setTheme }}>
       <GamesContext.Provider value={{ games, setGames }}>
         <div className={divClassName}>
           {user ? (
@@ -55,7 +55,7 @@ const App = () => {
           )}
         </div>
       </GamesContext.Provider>
-    </ThemeContext.Provider>
+    </OptionsContext.Provider>
   );
 };
 
