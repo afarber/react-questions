@@ -12,6 +12,8 @@ const localizedStrings = {
     __START_NEW_GAME__: "Start new game",
     __USE_DARK_THEME__: "Use dark theme",
     __USE_LEFT_MENU__: "Use left menu",
+    __HINT__: "A game hint to do this and that...",
+    __BACK__: "Back to the games list",
   },
   de: {
     __YES__: "Ja",
@@ -21,6 +23,8 @@ const localizedStrings = {
     __START_NEW_GAME__: "Neues Spiel starten",
     __USE_DARK_THEME__: "Dunkelmodus aktivieren",
     __USE_LEFT_MENU__: "Benutzen Sie das Menü auf der linken Seite",
+    __HINT__: "Ein Spieltipp, um dies und das zu tun...",
+    __BACK__: "Zurück zur Spieleliste",
   },
   fr: {
     __YES__: "Oui",
@@ -30,6 +34,8 @@ const localizedStrings = {
     __START_NEW_GAME__: "Démarrer une nouvelle partie",
     __USE_DARK_THEME__: "Utiliser le mode sombre",
     __USE_LEFT_MENU__: "Utilisez le menu de gauche",
+    __HINT__: "Une astuce de jeu pour faire ceci et cela...",
+    __BACK__: "Retour à la liste des jeux",
   },
 };
 

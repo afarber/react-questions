@@ -4,10 +4,10 @@ import GamesContext from "../contexts/GamesContext";
 import OptionsContext from "../contexts/OptionsContext";
 
 const MasterList = () => {
-  const { theme, setTheme } = useContext(OptionsContext);
+  const { options, setOptions } = useContext(OptionsContext);
   const { games, setGames } = useContext(GamesContext);
 
-  const navLinkClassName = "navlink-" + theme;
+  const navLinkClassName = "navlink-" + options.theme;
 
   // sort games by their numerical ids
   const sortedGames = [...games].sort((game1, game2) => game1.id - game2.id);
@@ -43,9 +43,12 @@ const MasterList = () => {
         <label>
           <input
             type="checkbox"
-            checked={theme === "dark"}
+            checked={options.theme === "dark"}
             onChange={(ev) => {
-              setTheme(ev.target.checked ? "dark" : "light");
+              setOptions((prevOptions) => ({
+                ...prevOptions,
+                ["theme"]: ev.target.checked ? "dark" : "light",
+              }));
             }}
           />
           __USE_DARK_THEME__

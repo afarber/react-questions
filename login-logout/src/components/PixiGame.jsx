@@ -125,10 +125,10 @@ const PixiGame = () => {
       <div className="parent" ref={parentRef}>
         {/* <canvas className="child" id="child" ref={childRef}></canvas> */}
       </div>
-      <div className="status">A game hint to do this and that...</div>
+      <div className="status">__HINT__</div>
       {isSmallScreen && (
         <div>
-          <Link to="/">Back to Games List</Link>
+          <Link to="/">__BACK__</Link>
         </div>
       )}
     </div>

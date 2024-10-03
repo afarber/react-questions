@@ -17,10 +17,10 @@ import OptionsContext from "./contexts/OptionsContext";
 
 const App = () => {
   const [user, setUser] = useState();
-  const [theme, setTheme] = useState("light");
+  const [options, setOptions] = useState({ "theme": "light", "volume": 10 });
   const [games, setGames] = useState([]);
 
-  const divClassName = "theme-" + theme;
+  const divClassName = "theme-" + options.theme;
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const router = useMemo(
@@ -45,7 +45,7 @@ const App = () => {
   );
 
   return (
-    <OptionsContext.Provider value={{ theme, setTheme }}>
+    <OptionsContext.Provider value={{ options, setOptions }}>
       <GamesContext.Provider value={{ games, setGames }}>
         <div className={divClassName}>
           {user ? (
