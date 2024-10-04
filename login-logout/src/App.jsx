@@ -7,6 +7,7 @@ import {
 
 import { useMemo, useState, useEffect } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
+import { OPTIONS_KEY, DEFAULT_OPTIONS } from "./Constants";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
 import Login from "./pages/Login";
@@ -16,11 +17,9 @@ import GamesContext from "./contexts/GamesContext";
 import OptionsContext from "./contexts/OptionsContext";
 
 const App = () => {
-  const DEFAULT_OPTIONS = { "theme": "light", "volume": 10 };
-
   const readOptionsFromLocalStorage = () => {
     try {
-      const optionsJsonStr = localStorage.getItem("options");
+      const optionsJsonStr = localStorage.getItem(OPTIONS_KEY);
       return optionsJsonStr ? JSON.parse(optionsJsonStr) : DEFAULT_OPTIONS;
     } catch (error) {
       console.error("Failed to read options from localStorage:", error);
@@ -30,7 +29,7 @@ const App = () => {
 
   const writeOptionsToLocalStorage = () => {
     try {
-      localStorage.setItem("options", JSON.stringify(options));
+      localStorage.setItem(OPTIONS_KEY, JSON.stringify(options));
     } catch (error) {
       console.error("Failed to write options to localStorage:", error);
     }
@@ -45,7 +44,7 @@ const App = () => {
   // Update local storage, whenever the options state changes
   useEffect(writeOptionsToLocalStorage, [options]);
 
-  const divClassName = "theme-" + options.theme;
+  const divClassName = "theme-" + options[THEME_KEY];
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const router = useMemo(

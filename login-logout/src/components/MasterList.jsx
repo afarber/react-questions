@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { THEME_KEY, THEME_LIGHT, THEME_DARK } from "../Constants";
 import GamesContext from "../contexts/GamesContext";
 import OptionsContext from "../contexts/OptionsContext";
 
@@ -43,11 +44,11 @@ const MasterList = () => {
         <label>
           <input
             type="checkbox"
-            checked={options.theme === "dark"}
+            checked={options[THEME_KEY] === THEME_DARK}
             onChange={(ev) => {
               setOptions((prevOptions) => ({
                 ...prevOptions,
-                ["theme"]: ev.target.checked ? "dark" : "light",
+                [THEME_KEY]: ev.target.checked ? THEME_DARK : THEME_LIGHT,
               }));
             }}
           />
