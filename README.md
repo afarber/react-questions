@@ -18,7 +18,7 @@ Screenshots
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/bottom-drawer/screenshot.gif)
 
-[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) display games only for logged in users and select light/dark themes by clicking a checkbox and storing the choise in localStorage:
+[login-logout](https://github.com/afarber/react-questions/tree/master/login-logout) display games only for logged in users and select light/dark themes by clicking a checkbox and storing the choice in localStorage:
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/login-logout/screenshot.png)
 

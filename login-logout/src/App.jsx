@@ -7,7 +7,7 @@ import {
 
 import { useMemo, useState, useEffect } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
-import { OPTIONS_KEY, DEFAULT_OPTIONS } from "./Constants";
+import { OPTIONS_KEY, THEME_KEY, DEFAULT_OPTIONS } from "./Constants";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
 import Login from "./pages/Login";
