@@ -18,7 +18,6 @@ import OptionsContext from "./contexts/OptionsContext";
 const App = () => {
   const DEFAULT_OPTIONS = { "theme": "light", "volume": 10 };
 
-  // Read JSON str from local storage to use as initial options state value
   const readOptionsFromLocalStorage = () => {
     try {
       const optionsJsonStr = localStorage.getItem("options");
@@ -29,7 +28,6 @@ const App = () => {
     }
   };
 
-  // Update local storage, whenever the options state changes
   const writeOptionsToLocalStorage = () => {
     try {
       localStorage.setItem("options", JSON.stringify(options));
@@ -40,8 +38,11 @@ const App = () => {
 
   const [user, setUser] = useState();
   const [games, setGames] = useState([]);
+
+  // Read JSON str from local storage to use as initial options state value
   const [options, setOptions] = useState(readOptionsFromLocalStorage);
 
+  // Update local storage, whenever the options state changes
   useEffect(writeOptionsToLocalStorage, [options]);
 
   const divClassName = "theme-" + options.theme;
