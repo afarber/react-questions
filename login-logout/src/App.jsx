@@ -29,6 +29,31 @@ const App = () => {
     }
   };
 
+  const createRouterMemo = () => {
+    const indexElement = isSmallScreen ? (
+      <MasterList />
+    ) : (
+      <div>👈 __USE_LEFT_MENU__</div>
+    );
+
+    return createBrowserRouter([
+      {
+        path: "/",
+        element: isSmallScreen ? <SmallLayout /> : <LargeLayout />,
+        children: [
+          {
+            path: "game/:gameId",
+            element: <PixiGame />,
+          },
+          {
+            index: true,
+            element: indexElement,
+          },
+        ],
+      },
+    ]);
+  };
+
   const [user, setUser] = useState();
   const [games, setGames] = useState([]);
 
@@ -40,31 +65,7 @@ const App = () => {
 
   const divClassName = "theme-" + options[THEME_KEY];
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
-
-  const router = useMemo(
-    () =>
-      createBrowserRouter([
-        {
-          path: "/",
-          element: isSmallScreen ? <SmallLayout /> : <LargeLayout />,
-          children: [
-            {
-              path: "game/:gameId",
-              element: PixiGame,
-            },
-            {
-              index: true,
-              element: isSmallScreen ? (
-                <MasterList />
-              ) : (
-                <div>👈 __USE_LEFT_MENU__</div>
-              ),
-            },
-          ],
-        },
-      ]),
-    [isSmallScreen]
-  );
+  const router = useMemo(createRouterMemo, [isSmallScreen, games]);
 
   return (
     <OptionsContext.Provider value={{ options, setOptions }}>
