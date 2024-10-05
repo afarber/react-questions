@@ -1,12 +1,6 @@
-import {
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-  createRoutesFromElements,
-} from "react-router-dom";
-
 import { useMemo, useState, useEffect } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { OPTIONS_KEY, THEME_KEY, DEFAULT_OPTIONS } from "./Constants";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
@@ -49,22 +43,26 @@ const App = () => {
 
   const router = useMemo(
     () =>
-      createBrowserRouter(
-        createRoutesFromElements(
-          <Route
-            path="/"
-            element={isSmallScreen ? <SmallLayout /> : <LargeLayout />}
-          >
-            <Route
-              index
-              element={
-                isSmallScreen ? <MasterList /> : <div>👈 __USE_LEFT_MENU__</div>
-              }
-            />
-            <Route path="game/:gameId" element={<PixiGame />} />
-          </Route>
-        )
-      ),
+      createBrowserRouter([
+        {
+          path: "/",
+          element: isSmallScreen ? <SmallLayout /> : <LargeLayout />,
+          children: [
+            {
+              path: "game/:gameId",
+              element: PixiGame,
+            },
+            {
+              index: true,
+              element: isSmallScreen ? (
+                <MasterList />
+              ) : (
+                <div>👈 __USE_LEFT_MENU__</div>
+              ),
+            },
+          ],
+        },
+      ]),
     [isSmallScreen]
   );
 
