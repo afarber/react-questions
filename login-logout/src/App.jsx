@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 import {
   Navigate,
@@ -34,26 +34,12 @@ const App = () => {
     }
   };
 
-  const selectPage = () => {
-    if (!user) {
-      return <Login setUser={setUser} />;
-    }
-
-    if (games.length === 0) {
-      return <NoGames />;
-    }
-
-    return <RouterProvider router={createRouter()} />;
-  };
-
   const createRouter = () => {
-    const indexElement = isSmallScreen ? (
-      <MasterList />
-    ) : (
-      <div>👈 __USE_LEFT_MENU__</div>
-    );
+    let indexPath = "login";
 
-    //const firstGamePath = "game/" + games[0]["id"];
+    if (user) {
+      indexPath = games.length === 0 ? "nogames" : "game/" + games[0]["id"];
+    }
 
     return createBrowserRouter([
       {
@@ -61,13 +47,24 @@ const App = () => {
         element: isSmallScreen ? <SmallLayout /> : <LargeLayout />,
         children: [
           {
+            path: "login",
+            element: <Login setUser={setUser} />,
+          },
+          {
+            path: "nogames",
+            element: <NoGames />,
+          },
+          {
+            path: "list",
+            element: <MasterList />,
+          },
+          {
             path: "game/:gameId",
             element: <PixiGame />,
           },
           {
             index: true,
-            element: indexElement,
-            //element: <Navigate to={firstGamePath} replace="true" />,
+            element: <Navigate to={indexPath} replace="true" />,
           },
         ],
       },
@@ -89,7 +86,9 @@ const App = () => {
   return (
     <OptionsContext.Provider value={{ options, setOptions }}>
       <GamesContext.Provider value={{ games, setGames }}>
-        <div className={divClassName}>{selectPage()}</div>
+        <div className={divClassName}>
+          <RouterProvider router={createRouter()} />
+        </div>
       </GamesContext.Provider>
     </OptionsContext.Provider>
   );

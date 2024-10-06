@@ -133,7 +133,7 @@ const PixiGame = () => {
       <div className="status">__HINT__</div>
       {isSmallScreen && (
         <div>
-          <Link className={linkClassName} to="/">
+          <Link className={linkClassName} to="/list">
             __BACK__
           </Link>
         </div>
