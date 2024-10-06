@@ -1,10 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Application, Graphics, Point } from "pixi.js-legacy";
 import { useMediaQuery } from "@react-hook/media-query";
 import { CELL, Tile } from "../game/Tile";
+import OptionsContext from "../contexts/OptionsContext";
 
 const PixiGame = () => {
+  const { options } = useContext(OptionsContext);
+
+  const linkClassName = "link-" + options.theme;
+
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const { gameId } = useParams();
@@ -128,7 +133,9 @@ const PixiGame = () => {
       <div className="status">__HINT__</div>
       {isSmallScreen && (
         <div>
-          <Link to="/">__BACK__</Link>
+          <Link className={linkClassName} to="/">
+            __BACK__
+          </Link>
         </div>
       )}
     </div>

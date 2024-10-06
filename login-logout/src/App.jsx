@@ -1,10 +1,15 @@
 import { useMemo, useState, useEffect } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from "react-router-dom";
 import { OPTIONS_KEY, THEME_KEY, DEFAULT_OPTIONS } from "./Constants";
 import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
 import Login from "./pages/Login";
+import NoGames from "./pages/NoGames";
 import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
 import GamesContext from "./contexts/GamesContext";
@@ -29,12 +34,26 @@ const App = () => {
     }
   };
 
-  const createRouterMemo = () => {
+  const selectPage = () => {
+    if (!user) {
+      return <Login setUser={setUser} />;
+    }
+
+    if (games.length === 0) {
+      return <NoGames />;
+    }
+
+    return <RouterProvider router={createRouter()} />;
+  };
+
+  const createRouter = () => {
     const indexElement = isSmallScreen ? (
       <MasterList />
     ) : (
       <div>👈 __USE_LEFT_MENU__</div>
     );
+
+    //const firstGamePath = "game/" + games[0]["id"];
 
     return createBrowserRouter([
       {
@@ -48,6 +67,7 @@ const App = () => {
           {
             index: true,
             element: indexElement,
+            //element: <Navigate to={firstGamePath} replace="true" />,
           },
         ],
       },
@@ -65,18 +85,11 @@ const App = () => {
 
   const divClassName = "theme-" + options[THEME_KEY];
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
-  const router = useMemo(createRouterMemo, [isSmallScreen, games]);
 
   return (
     <OptionsContext.Provider value={{ options, setOptions }}>
       <GamesContext.Provider value={{ games, setGames }}>
-        <div className={divClassName}>
-          {user ? (
-            <RouterProvider router={router} />
-          ) : (
-            <Login setUser={setUser} />
-          )}
-        </div>
+        <div className={divClassName}>{selectPage()}</div>
       </GamesContext.Provider>
     </OptionsContext.Provider>
   );

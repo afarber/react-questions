@@ -8,7 +8,7 @@ const MasterList = () => {
   const { options, setOptions } = useContext(OptionsContext);
   const { games, setGames } = useContext(GamesContext);
 
-  const navLinkClassName = "navlink-" + options.theme;
+  const linkClassName = "link-" + options.theme;
 
   // sort games by their numerical ids
   const sortedGames = [...games].sort((game1, game2) => game1.id - game2.id);
@@ -24,6 +24,13 @@ const MasterList = () => {
     });
   };
 
+  const toggleTheme = (ev) => {
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      [THEME_KEY]: ev.target.checked ? THEME_DARK : THEME_LIGHT,
+    }));
+  };
+
   return (
     <div className="left">
       <button onClick={addNewGame}>__START_NEW_GAME__</button>
@@ -32,7 +39,7 @@ const MasterList = () => {
         <ul>
           {sortedGames.map((game) => (
             <li key={game.id}>
-              <NavLink className={navLinkClassName} to={"/game/" + game.id}>
+              <NavLink className={linkClassName} to={"/game/" + game.id}>
                 {game.title}
               </NavLink>
             </li>
@@ -45,12 +52,7 @@ const MasterList = () => {
           <input
             type="checkbox"
             checked={options[THEME_KEY] === THEME_DARK}
-            onChange={(ev) => {
-              setOptions((prevOptions) => ({
-                ...prevOptions,
-                [THEME_KEY]: ev.target.checked ? THEME_DARK : THEME_LIGHT,
-              }));
-            }}
+            onChange={toggleTheme}
           />
           __USE_DARK_THEME__
         </label>

@@ -13,11 +13,11 @@ nav a.active {
   color: red;
 }
 
-.navlink-light {
+.link-light {
   color: blue;
 }
 
-.navlink-dark {
+.link-dark {
   color: lightblue;
 }
 
