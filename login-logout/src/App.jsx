@@ -35,20 +35,12 @@ const App = () => {
   };
 
   const createRouter = () => {
-    let indexPath = "/login";
-
-    if (user) {
-      indexPath = games.length === 0 ? "/empty" : "/game/" + games[0]["id"];
-    }
+    const indexPath = games.length === 0 ? "/empty" : "/game/" + games[0]["id"];
 
     return createBrowserRouter([
       {
         index: true,
         element: <Navigate to={indexPath} replace="true" />,
-      },
-      {
-        path: "/login",
-        element: <Login setUser={setUser} />,
       },
       {
         path: "/empty",
@@ -87,7 +79,11 @@ const App = () => {
     <OptionsContext.Provider value={{ options, setOptions }}>
       <GamesContext.Provider value={{ games, setGames }}>
         <div className={divClassName}>
-          <RouterProvider router={createRouter()} />
+          {user ? (
+            <RouterProvider router={createRouter()} />
+          ) : (
+            <Login setUser={setUser} />
+          )}
         </div>
       </GamesContext.Provider>
     </OptionsContext.Provider>

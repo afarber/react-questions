@@ -1,9 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router";
 
 const Login = ({ setUser }) => {
-  const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const canLogin = firstName.length > 1 && lastName.length > 1;
@@ -18,7 +16,6 @@ const Login = ({ setUser }) => {
       userId,
       photoUrl: "",
     });
-    navigate("/");
   };
 
   return (
