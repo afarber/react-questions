@@ -8,24 +8,26 @@ const MasterList = () => {
   const { options, setOptions } = useContext(OptionsContext);
   const { games, setGames } = useContext(GamesContext);
 
-  const navigate = useNavigate();
   const linkClassName = "link-" + options.theme;
 
   // sort games by their numerical ids
   const sortedGames = [...games].sort((game1, game2) => game1.id - game2.id);
 
+  const navigate = useNavigate();
+
   const addNewGame = (ev) => {
-    setGames((prevState) => {
-      const newGameId = Math.floor(1 + Math.random() * 1000);
-      const newGameObj = {
-        id: newGameId,
-        title: `__GAME__ #${newGameId}`,
-      };
-      console.log("addNewGame", newGameObj);
-      //navigate(`/game/${newGameId}`);
-      navigate("/");
-      return [...prevState, newGameObj];
-    });
+    // create a new game with random id
+    const id = Math.floor(1 + Math.random() * 1000);
+    const game = {
+      id: id,
+      title: `__GAME__ #${id}`,
+    };
+
+    // append the new game to the list of games
+    setGames((prevGames) => [...prevGames, game]);
+
+    // display the new game in PixiGame component
+    navigate(`/game/${id}`);
   };
 
   const toggleTheme = (ev) => {
