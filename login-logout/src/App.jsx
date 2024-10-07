@@ -35,36 +35,36 @@ const App = () => {
   };
 
   const createRouter = () => {
-    let indexPath = "login";
+    let indexPath = "/login";
 
     if (user) {
-      indexPath = games.length === 0 ? "nogames" : "game/" + games[0]["id"];
+      indexPath = games.length === 0 ? "/empty" : "/game/" + games[0]["id"];
     }
 
     return createBrowserRouter([
       {
-        path: "/",
+        index: true,
+        element: <Navigate to={indexPath} replace="true" />,
+      },
+      {
+        path: "/login",
+        element: <Login setUser={setUser} />,
+      },
+      {
+        path: "/empty",
+        element: <NoGames />,
+      },
+      {
+        path: "/list",
+        element: <MasterList />,
+      },
+      {
+        path: "/game",
         element: isSmallScreen ? <SmallLayout /> : <LargeLayout />,
         children: [
           {
-            path: "login",
-            element: <Login setUser={setUser} />,
-          },
-          {
-            path: "nogames",
-            element: <NoGames />,
-          },
-          {
-            path: "list",
-            element: <MasterList />,
-          },
-          {
-            path: "game/:gameId",
+            path: ":gameId",
             element: <PixiGame />,
-          },
-          {
-            index: true,
-            element: <Navigate to={indexPath} replace="true" />,
           },
         ],
       },

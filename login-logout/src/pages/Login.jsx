@@ -8,7 +8,9 @@ const Login = ({ setUser }) => {
   const [lastName, setLastName] = useState("");
   const canLogin = firstName.length > 1 && lastName.length > 1;
 
-  const handleLogin = () => {
+  const handleLogin = (ev) => {
+    ev.preventDefault();
+
     const userId = Math.random().toString(36).substring(7);
     setUser({
       firstName,

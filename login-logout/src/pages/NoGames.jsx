@@ -6,13 +6,16 @@ const NoGames = () => {
   const { options, setOptions } = useContext(OptionsContext);
   const { games, setGames } = useContext(GamesContext);
 
-  const addNewGame = () => {
+  const addNewGame = (ev) => {
+    ev.preventDefault();
+
     setGames((prevState) => {
       const id = Math.floor(1 + Math.random() * 1000);
       const newGame = {
         id: id,
         title: `__GAME__ #${id}`,
       };
+      console.log("addNewGame", newGame);
       return [...prevState, newGame];
     });
   };

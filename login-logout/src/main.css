@@ -60,7 +60,7 @@ div.verticalFlexContainer {
 
 /* the parent contains: just the canvas element, which observes the parent dimensions */
 div.parent {
-  border: 4px solid red;
+  border: 1px solid red;
   flex: 1;
   /* center the only child element: the canvas */
   display: flex;
@@ -72,7 +72,7 @@ div.parent {
 
 canvas.child {
   background-color: yellow;
-  border: 4px green dotted;
+  border: 1px green dotted;
   /* draw the border inside of the canvas element */
   box-sizing: border-box;
   /* the fix for overflowing too narrow screens */

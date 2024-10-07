@@ -93,13 +93,13 @@ const PixiGame = () => {
       app.stage.removeChild(draggedTile);
       app.stage.addChild(draggedTile);
       draggedTile.startDragging();
-      console.log("onDragStart:", draggedTile.x, draggedTile.y);
+      //console.log("onDragStart:", draggedTile.x, draggedTile.y);
     }
 
     function onDragMove({ global: { x, y } }) {
       draggedTile.x = x - grabPoint.x;
       draggedTile.y = y - grabPoint.y;
-      console.log("onDragMove:", draggedTile.x, draggedTile.y);
+      //console.log("onDragMove:", draggedTile.x, draggedTile.y);
     }
 
     function onDragEnd() {
@@ -111,7 +111,7 @@ const PixiGame = () => {
       app.stage.addChildAt(draggedTile, app.stage.children.length);
       app.stage.cursor = null;
       app.stage.off("pointermove", onDragMove);
-      console.log("onDragEnd:", draggedTile.x, draggedTile.y);
+      //console.log("onDragEnd:", draggedTile.x, draggedTile.y);
       draggedTile = null;
     }
 
