@@ -7,8 +7,6 @@ const Login = ({ setUser }) => {
   const canLogin = firstName.length > 1 && lastName.length > 1;
 
   const handleLogin = (ev) => {
-    ev.preventDefault();
-
     const userId = Math.random().toString(36).substring(7);
     setUser({
       firstName,

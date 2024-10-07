@@ -15,16 +15,16 @@ const MasterList = () => {
   const sortedGames = [...games].sort((game1, game2) => game1.id - game2.id);
 
   const addNewGame = (ev) => {
-    ev.preventDefault();
-
     setGames((prevState) => {
-      const id = Math.floor(1 + Math.random() * 1000);
-      const newGame = {
-        id: id,
-        title: `__GAME__ #${id}`,
+      const newGameId = Math.floor(1 + Math.random() * 1000);
+      const newGameObj = {
+        id: newGameId,
+        title: `__GAME__ #${newGameId}`,
       };
-      console.log("addNewGame", newGame);
-      return [...prevState, newGame];
+      console.log("addNewGame", newGameObj);
+      //navigate(`/game/${newGameId}`);
+      navigate("/");
+      return [...prevState, newGameObj];
     });
   };
 
