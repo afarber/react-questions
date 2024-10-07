@@ -35,6 +35,7 @@ const App = () => {
   };
 
   const createRouter = () => {
+    // display either the NoGames or (MasterList +) PixiGame component
     const indexPath = games.length === 0 ? "/empty" : "/game/" + games[0]["id"];
 
     return createBrowserRouter([
