@@ -14,6 +14,7 @@ import MasterList from "./components/MasterList";
 import PixiGame from "./components/PixiGame";
 import GamesContext from "./contexts/GamesContext";
 import OptionsContext from "./contexts/OptionsContext";
+import SelectGameBoard from "./components/SelectGameBoard";
 
 const App = () => {
   const readOptionsFromLocalStorage = () => {
@@ -50,6 +51,10 @@ const App = () => {
       {
         path: "/list",
         element: <MasterList />,
+      },
+      {
+        path: "/new",
+        element: <SelectGameBoard />,
       },
       {
         path: "/game",

@@ -15,19 +15,8 @@ const MasterList = () => {
 
   const navigate = useNavigate();
 
-  const addNewGame = (ev) => {
-    // create a new game with random id
-    const id = Math.floor(1 + Math.random() * 1000);
-    const game = {
-      id: id,
-      title: `__GAME__ #${id}`,
-    };
-
-    // append the new game to the list of games
-    setGames((prevGames) => [...prevGames, game]);
-
-    // display the new game in PixiGame component
-    navigate(`/game/${id}`);
+  const selectGameBoard = (ev) => {
+    navigate("/new");
   };
 
   const toggleTheme = (ev) => {
@@ -39,7 +28,7 @@ const MasterList = () => {
 
   return (
     <div className="left">
-      <button onClick={addNewGame}>__START_NEW_GAME__</button>
+      <button onClick={selectGameBoard}>__START_NEW_GAME__</button>
 
       <nav>
         <ul>
