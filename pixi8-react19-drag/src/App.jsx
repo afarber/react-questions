@@ -1,11 +1,5 @@
 import { Application, extend } from "@pixi/react";
-import { Container, Graphics } from "pixi.js";
 import Game from "./Game";
-
-extend({
-  Container,
-  Graphics,
-});
 
 const App = () => {
   return (
