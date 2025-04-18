@@ -1,7 +1,7 @@
 import { useApplication, extend } from "@pixi/react";
 import { useEffect, useCallback } from "react";
 import { Container, Graphics, Point } from "pixi.js";
-import { Tile } from "./Tile";
+import { Tile, CELL } from "./Tile";
 
 extend({
   Container,
@@ -9,11 +9,8 @@ extend({
   Point,
 });
 
-const CELL = 100;
-
 const Game = () => {
   const { app } = useApplication();
-  console.log(app);
 
   const drawCallback = useCallback((graphics) => {
     graphics.clear();
@@ -30,6 +27,8 @@ const Game = () => {
   }, []);
 
   useEffect(() => {
+    console.log(app);
+
     // the relative offset point of the click on the tile
     let grabPoint = new Point();
     let draggedTile;
