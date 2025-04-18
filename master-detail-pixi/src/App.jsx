@@ -8,9 +8,8 @@ import SmallLayout from "./layouts/SmallLayout";
 import LargeLayout from "./layouts/LargeLayout";
 import React from "react";
 import MasterList from "./components/MasterList";
-import DetailView from "./components/PixiGame";
-
 import { useMediaQuery } from "@react-hook/media-query";
+import DetailView from "./components/DetailView";
 
 const App = () => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
