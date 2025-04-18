@@ -1,5 +1,5 @@
+import { useEffect } from "react";
 import { useApplication, extend } from "@pixi/react";
-import { useEffect, useCallback } from "react";
 import { Container, Graphics, Point } from "pixi.js";
 import { Tile, CELL } from "./Tile";
 
@@ -9,7 +9,7 @@ extend({
   Point,
 });
 
-const Game = () => {
+const PixiGame = () => {
   const { app, isInitialised } = useApplication();
 
   useEffect(() => {
@@ -87,4 +87,4 @@ const Game = () => {
   return <></>;
 };
 
-export default Game;
+export default PixiGame;

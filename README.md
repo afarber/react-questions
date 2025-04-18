@@ -58,7 +58,7 @@ Same layout as [a static web page](https://raw.github.com/afarber/react-question
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/react-pixi-drag/screenshot.gif)
 
-[pixi8-react19-drag](https://github.com/afarber/react-questions/tree/master/pixi8-react19-drag) PixiJS app with draggable rectangles (PixiJs8 using pixi-react):
+[pixi8-react19-drag](https://github.com/afarber/react-questions/tree/master/pixi8-react19-drag) PixiJS app with draggable rectangles (PixiJs 8 using pixi-react):
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/pixi8-react19-drag/screenshot.gif)
 

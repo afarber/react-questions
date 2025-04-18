@@ -19,10 +19,10 @@ export class Tile extends Container {
       this.eventMode = "none";
     }
 
-    this.graph = new Graphics()
-      .beginFill(color)
-      .drawRect(-CELL / 2, -CELL / 2, CELL, CELL)
-      .endFill();
+    this.graph = new Graphics();
+    this.graph.setFillStyle({ color: color });
+    this.graph.rect(-CELL / 2, -CELL / 2, CELL, CELL);
+    this.graph.fill();
     this.addChild(this.graph);
     this.cacheAsBitmap = true;
   }

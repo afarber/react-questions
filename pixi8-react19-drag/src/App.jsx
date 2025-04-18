@@ -1,12 +1,12 @@
-import { Application } from "@pixi/react";
-import Game from "./Game";
+import PixiApp from "./PixiApp";
+import { useMediaQuery } from "@react-hook/media-query";
 
 const App = () => {
-  return (
-    <Application resizeTo={window} backgroundColor={0xccffcc}>
-      <Game />
-    </Application>
-  );
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
+
+  // TODO add layout and router
+
+  return <PixiApp />;
 };
 
 export default App;
