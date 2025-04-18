@@ -1,4 +1,4 @@
-import { Application, extend } from "@pixi/react";
+import { Application } from "@pixi/react";
 import Game from "./Game";
 
 const App = () => {

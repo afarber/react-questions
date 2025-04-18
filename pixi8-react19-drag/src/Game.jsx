@@ -12,31 +12,7 @@ extend({
 const Game = () => {
   const { app } = useApplication();
 
-  const drawCallback = useCallback((graphics) => {
-    graphics.clear();
-    graphics.setFillStyle({ color: "0xCCCCFF" });
-
-    for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 8; j++) {
-        if ((i + j) % 2 === 0) {
-          graphics.rect(i * CELL, j * CELL, CELL, CELL);
-          graphics.fill();
-        }
-      }
-    }
-  }, []);
-
   useEffect(() => {
-    console.log(app);
-
-    // the relative offset point of the click on the tile
-    let grabPoint = new Point();
-    let draggedTile;
-
-    // The stage will handle the move events
-    app.stage.eventMode = "static";
-    app.stage.hitArea = app.screen;
-
     function onDragStart({ target, global }) {
       draggedTile = target;
       draggedTile.toLocal(global, null, grabPoint);
@@ -70,6 +46,30 @@ const Game = () => {
       draggedTile = null;
     }
 
+    console.log(app);
+
+    // the relative offset point of the click on the tile
+    let grabPoint = new Point();
+    let draggedTile;
+
+    // The stage will handle the move events
+    app.stage.eventMode = "static";
+    app.stage.hitArea = app.screen;
+    app.stage.removeChildren();
+
+    const background = new Graphics();
+    background.setFillStyle({ color: "0xCCCCFF" });
+
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if ((i + j) % 2 === 0) {
+          background.rect(i * CELL, j * CELL, CELL, CELL);
+          background.fill();
+        }
+      }
+    }
+    app.stage.addChild(background);
+
     const r = new Tile("red", onDragStart, onDragEnd, 3, 3);
     const g = new Tile("green", onDragStart, onDragEnd, 4, 3);
     const b = new Tile("blue", onDragStart, onDragEnd, 5, 3);
@@ -79,11 +79,7 @@ const Game = () => {
     app.stage.addChild(b);
   }, []);
 
-  return (
-    <pixiContainer x={0} y={0}>
-      <pixiGraphics draw={drawCallback} />
-    </pixiContainer>
-  );
+  return <></>;
 };
 
 export default Game;
