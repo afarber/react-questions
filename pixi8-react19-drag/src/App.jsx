@@ -14,16 +14,25 @@ extend({
   Graphics,
 })
 
+const CELL = 100;
+
 const App = () => {
   const drawCallback = useCallback(graphics => {
     graphics.clear()
-    graphics.setFillStyle({ color: 'red' })
-    graphics.rect(0, 0, 100, 100)
-    graphics.fill()
+    graphics.setFillStyle({ color: '0xCCCCFF' })
+
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        if ((i + j) % 2 === 0) {
+          graphics.rect(i * CELL, j * CELL, CELL, CELL);
+          graphics.fill();
+        }
+      }
+    }
   }, [])
 
-  const { app } = useApplication();
-
+  
+  /*
   useEffect(() => {
     if (app) {
       app.stage.eventMode = "static";
@@ -50,10 +59,11 @@ const App = () => {
       app.stage.addChild(b);
     }
   }, []);
+  */
 
   return (
     <Application resizeTo={window} backgroundColor={0xCCFFCC}>
-      <pixiContainer x={200} y={100}>
+      <pixiContainer x={0} y={0}>
         <pixiGraphics draw={drawCallback} />
       </pixiContainer>
     </Application>
