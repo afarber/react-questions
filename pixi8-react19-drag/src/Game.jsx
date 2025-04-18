@@ -10,9 +10,14 @@ extend({
 });
 
 const Game = () => {
-  const { app } = useApplication();
+  const { app, isInitialised } = useApplication();
 
   useEffect(() => {
+    if (!isInitialised) {
+      // wait until pixi app is initialized
+      return;
+    }
+
     function onDragStart({ target, global }) {
       draggedTile = target;
       draggedTile.toLocal(global, null, grabPoint);
@@ -77,7 +82,7 @@ const Game = () => {
     app.stage.addChild(r);
     app.stage.addChild(g);
     app.stage.addChild(b);
-  }, []);
+  }, [isInitialised]);
 
   return <></>;
 };
