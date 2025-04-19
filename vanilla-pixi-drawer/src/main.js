@@ -1,24 +1,27 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import * as PIXI from "pixi.js";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Create app
+const app = new PIXI.Application({
+  resizeTo: window,
+  backgroundColor: 0x1099bb,
+});
+document.body.appendChild(app.view);
 
-setupCounter(document.querySelector('#counter'))
+// Example graphic
+const graphics = new PIXI.Graphics();
+graphics.beginFill(0xde3249);
+graphics.drawRect(50, 50, 100, 100);
+graphics.endFill();
+app.stage.addChild(graphics);
+
+// Handle resize (automatically handled if using resizeTo: window)
+window.addEventListener("resize", () => {
+  console.log("Resized to", window.innerWidth, window.innerHeight);
+});
+
+const drawer = document.getElementById("drawer");
+
+// Example: Show after 1 second
+setTimeout(() => {
+  drawer.classList.add("show");
+}, 1000);
