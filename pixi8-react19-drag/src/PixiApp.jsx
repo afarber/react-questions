@@ -1,10 +1,13 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Application } from "@pixi/react";
 import PixiGame from "./PixiGame";
 
 const PixiApp = () => {
   const parentRef = useRef(null);
   const appRef = useRef(null);
+
+  const [desiredWidth, setDesiredWidth] = useState(400);
+  const [desiredHeight, setDesiredHeight] = useState(300);
 
   const myInit = (app) => {
     console.log("PixiApp init", app);
@@ -24,14 +27,13 @@ const PixiApp = () => {
         // maintain the 1:1 aspect ratio of the Pixi app
         const app = appRef.current;
         if (app) {
-          app.width = minDimension;
-          app.height = minDimension;
-          console.log("PixiApp resize", app, app.width, app.height);
-        }
+          setDesiredWidth(minDimension);
+          setDesiredHeight(minDimension);
 
-        console.log(
-          `parent ${width} x ${height} -> child ${minDimension} x ${minDimension}`
-        );
+          console.log(
+            `parent ${width} x ${height} -> child ${app.width} x ${app.height}`
+          );
+        }
       }
     });
 
@@ -62,7 +64,12 @@ const PixiApp = () => {
           flexGrow: 1,
         }}
       >
-        <Application onInit={myInit} backgroundColor={0xccffcc}>
+        <Application
+          onInit={myInit}
+          width={desiredWidth}
+          height={desiredHeight}
+          backgroundColor={0xccffcc}
+        >
           <PixiGame />
         </Application>
       </div>
