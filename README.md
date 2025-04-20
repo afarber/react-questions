@@ -90,9 +90,5 @@ Same layout as [a static web page](https://raw.github.com/afarber/react-question
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/word-search/screenshot.gif)
 
-[vanilla-pixi-drawer](https://github.com/afarber/react-questions/tree/master/vanilla-pixi-drawer) a vanilla Javascript app with a bottom drawer:
-
-![screenshot](https://raw.github.com/afarber/react-questions/master/vanilla-pixi-drawer/screenshot.gif)
-
 [My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[react])
 
