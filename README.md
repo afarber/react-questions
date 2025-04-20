@@ -90,5 +90,7 @@ Same layout as [a static web page](https://raw.github.com/afarber/react-question
 
 ![screenshot](https://raw.github.com/afarber/react-questions/master/word-search/screenshot.gif)
 
-[My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[react])
+![StackOverflow](http://stackoverflow.com/users/flair/165071.png)
+
+[My React-related questions at StackOverflow](http://stackoverflow.com/search?q=user:165071+[reactjs])
 
